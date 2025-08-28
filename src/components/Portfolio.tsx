@@ -150,7 +150,14 @@ export default function Portfolio() {
             onClick={() => {
               const element = document.getElementById('contact')
               if (element) {
-                element.scrollIntoView({ behavior: 'smooth' })
+                const headerHeight = 80
+                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+                const offsetPosition = elementPosition - headerHeight
+
+                window.scrollTo({
+                  top: offsetPosition,
+                  behavior: 'smooth'
+                })
               }
             }}
             className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"

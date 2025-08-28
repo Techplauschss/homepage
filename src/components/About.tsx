@@ -7,16 +7,18 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Über <span className="text-blue-600">uns</span>
+              Über <span className="text-blue-600">mich</span>
             </h2>
             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              Wir sind Imagefilme-Sauer, ein kreativer Partner für Unternehmen, die ihre Geschichte 
-              durch beeindruckende visuelle Kommunikation erzählen möchten.
+              Ich heiße <span className="font-semibold text-gray-900">Martin Sauer</span>,
+              und seit mehr als 9 Jahren lebe ich meine Leidenschaft für die Videoproduktion. 
+              Mit einem Auge fürs Detail und einem Gespür für Geschichten widme ich mich jedem 
+              Projekt mit Hingabe.
             </p>
             <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-              Mit jahrelanger Erfahrung in der Filmproduktion und einem tiefen Verständnis für 
-              moderne Marketingstrategien schaffen wir Imagefilme, die nicht nur visuell beeindrucken, 
-              sondern auch messbare Ergebnisse liefern.
+              Meine Expertise erstreckt sich über alle Aspekte der Videoproduktion: von der ersten 
+              Idee bis zum finalen Schnitt. Ich bin stets auf der Suche nach neuen, spannenden 
+              Projekten und freue mich, mit Ihnen gemeinsam Ihren Videowunsch in die Tat umzusetzen!
             </p>
             
             <div className="grid md:grid-cols-2 gap-6">
@@ -25,7 +27,7 @@ export default function About() {
                 <div className="text-gray-700">Erfolgreich produzierte Imagefilme</div>
               </div>
               <div className="bg-white p-6 rounded-lg shadow-md">
-                <div className="text-3xl font-bold text-blue-600 mb-2">5+</div>
+                <div className="text-3xl font-bold text-blue-600 mb-2">9+</div>
                 <div className="text-gray-700">Jahre Erfahrung in der Branche</div>
               </div>
             </div>
@@ -33,9 +35,9 @@ export default function About() {
           
           <div className="relative">
             <div className="bg-blue-600 rounded-lg p-8 text-white">
-              <h3 className="text-2xl font-bold mb-6">Unsere Mission</h3>
+              <h3 className="text-2xl font-bold mb-6">Meine Mission</h3>
               <p className="text-lg leading-relaxed mb-6">
-                Wir glauben daran, dass jedes Unternehmen eine einzigartige Geschichte hat, 
+                Ich glaube daran, dass jedes Unternehmen und jede Person eine einzigartige Geschichte hat, 
                 die es wert ist, erzählt zu werden.
               </p>
               <div className="space-y-4">

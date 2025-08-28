@@ -24,7 +24,14 @@ export default function Hero() {
   const scrollToContact = () => {
     const element = document.getElementById('contact')
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      const headerHeight = 80
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+      const offsetPosition = elementPosition - headerHeight
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
     }
   }
 
@@ -114,7 +121,14 @@ export default function Hero() {
               onClick={() => {
                 const element = document.getElementById('portfolio')
                 if (element) {
-                  element.scrollIntoView({ behavior: 'smooth' })
+                  const headerHeight = 80
+                  const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+                  const offsetPosition = elementPosition - headerHeight
+
+                  window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                  })
                 }
               }}
               className="border-2 border-white text-white hover:bg-white hover:text-blue-900 font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105"
@@ -126,7 +140,23 @@ export default function Hero() {
       </div>
       
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
+      <button
+        onClick={() => {
+          const element = document.getElementById('about')
+          if (element) {
+            const headerHeight = 80
+            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+            const offsetPosition = elementPosition - headerHeight
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            })
+          }
+        }}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20 hover:scale-110 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full p-2"
+        aria-label="Zur nächsten Sektion scrollen"
+      >
         <svg
           className="w-6 h-6 text-white"
           fill="none"
@@ -140,7 +170,7 @@ export default function Hero() {
             d="M19 14l-7 7m0 0l-7-7m7 7V3"
           />
         </svg>
-      </div>
+      </button>
     </section>
   )
 }
