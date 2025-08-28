@@ -19,8 +19,8 @@ export default function Portfolio() {
     { id: 'all', name: 'Alle Projekte' },
     { id: 'imagefilm', name: 'Imagefilme' },
     { id: 'event', name: 'Events' },
-    { id: 'product', name: 'Produktvideos' },
     { id: 'social', name: 'Social Media' },
+    { id: 'product', name: 'Produktvideos' },
     { id: 'recruiting', name: 'Podcasts' },
     { id: 'youtube', name: 'YouTube-Formate' }
   ]
@@ -186,62 +186,117 @@ export default function Portfolio() {
         {selectedCategory === 'recruiting' && (
           <div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {(() => {
-              const episodes = [
-                { num: 1, title: "Ratschkammerl Folge 1", subtitle: "Vorstellungsrunde", url: "https://youtu.be/NE1esKSDdj0?si=Ao1l9vHFqHcjlz9f" },
-                { num: 2, title: "Ratschkammerl Folge 2", subtitle: "Verenas & Tamaras Spezialfolge", url: "https://youtu.be/YjZ24ZG996o?si=1hJduO6g3Lh6uI0s" },
-                { num: 3, title: "Ratschkammerl Folge 3", subtitle: "Wie läuft eine Ausbildung ab?", url: "https://youtu.be/EdW-aOTy9Z0?si=tUmr18w5Kw56AiDw" },
-                { num: 4, title: "Ratschkammerl Folge 4", subtitle: "Karrierefolge", url: "https://youtu.be/cc06RnhNv28?si=O-_TZ7JugzIzP0W3" },
-                { num: 5, title: "Ratschkammerl Folge 5", subtitle: "Stemp's Zauberbackstube", url: "https://youtu.be/rgeF0DRiCLM?si=pMwf88JJ3arKPXsI" },
-                { num: 6, title: "Ratschkammerl Folge 6", subtitle: "Berufsbild Rezeptionistin", url: "https://youtu.be/bz2tle_Kqrc?si=uiaB2v7vLZwRzQb9" },
-                { num: 7, title: "Ratschkammerl Folge 7", subtitle: "Allrounder Maria zu Gast", url: "https://youtu.be/vzdFyYje3Go?si=zqaDaSoWOg_4ucWy" }
-              ];
-              
-              return episodes.map((ep) => (
-                <div key={ep.num} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105">
-                  <a
-                    href={ep.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block relative aspect-video overflow-hidden cursor-pointer"
-                  >
-                    <img
-                      src={`/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`}
-                      alt={ep.title}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        console.log('Image failed to load:', `/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`);
-                        e.currentTarget.style.display = 'none';
-                      }}
-                    />
-                  </a>
-                  <div className="p-4 relative">
-                    <h4 className="text-lg font-semibold text-gray-900 mb-1">{ep.title}</h4>
-                    <p className="text-sm text-gray-600">{ep.subtitle}</p>
-                    
-                    {/* Play Button - Bottom Right */}
+              {/* Erste 4 Episoden */}
+              {(() => {
+                const episodes = [
+                  { num: 1, title: "Ratschkammerl Folge 1", subtitle: "Vorstellungsrunde", url: "https://youtu.be/NE1esKSDdj0?si=Ao1l9vHFqHcjlz9f" },
+                  { num: 2, title: "Ratschkammerl Folge 2", subtitle: "Verenas & Tamaras Spezialfolge", url: "https://youtu.be/YjZ24ZG996o?si=1hJduO6g3Lh6uI0s" },
+                  { num: 3, title: "Ratschkammerl Folge 3", subtitle: "Wie läuft eine Ausbildung ab?", url: "https://youtu.be/EdW-aOTy9Z0?si=tUmr18w5Kw56AiDw" },
+                  { num: 4, title: "Ratschkammerl Folge 4", subtitle: "Karrierefolge", url: "https://youtu.be/cc06RnhNv28?si=O-_TZ7JugzIzP0W3" }
+                ];
+                
+                return episodes.map((ep) => (
+                  <div key={ep.num} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105">
                     <a
                       href={ep.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="absolute bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-2 transition-all duration-200 transform hover:scale-110 shadow-sm hover:shadow-md flex items-center justify-center shadow-blue-500/30 hover:shadow-blue-500/50"
-                      style={{
-                        boxShadow: '0 0 10px rgba(59, 130, 246, 0.3), 0 0 20px rgba(59, 130, 246, 0.1)'
-                      }}
+                      className="block relative aspect-video overflow-hidden cursor-pointer"
                     >
-                      <svg 
-                        className="w-4 h-4" 
-                        fill="currentColor" 
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M8 5v14l11-7z"/>
-                      </svg>
+                      <img
+                        src={`/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`}
+                        alt={ep.title}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          console.log('Image failed to load:', `/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`);
+                          e.currentTarget.style.display = 'none';
+                        }}
+                      />
                     </a>
+                    <div className="p-4 relative">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-1">{ep.title}</h4>
+                      <p className="text-sm text-gray-600">{ep.subtitle}</p>
+                      
+                      {/* Play Button - Bottom Right */}
+                      <a
+                        href={ep.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-2 transition-all duration-200 transform hover:scale-110 shadow-sm hover:shadow-md flex items-center justify-center shadow-blue-500/30 hover:shadow-blue-500/50"
+                        style={{
+                          boxShadow: '0 0 10px rgba(59, 130, 246, 0.3), 0 0 20px rgba(59, 130, 246, 0.1)'
+                        }}
+                      >
+                        <svg 
+                          className="w-4 h-4" 
+                          fill="currentColor" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                      </a>
+                    </div>
                   </div>
-                </div>
-              ));
-            })()}
-          </div>
+                ));
+              })()}
+            </div>
+            
+            {/* Letzte 3 Episoden - zentriert */}
+            <div className="flex justify-center mt-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl">
+                {(() => {
+                  const lastEpisodes = [
+                    { num: 5, title: "Ratschkammerl Folge 5", subtitle: "Stemp's Zauberbackstube", url: "https://youtu.be/rgeF0DRiCLM?si=pMwf88JJ3arKPXsI" },
+                    { num: 6, title: "Ratschkammerl Folge 6", subtitle: "Berufsbild Rezeptionistin", url: "https://youtu.be/bz2tle_Kqrc?si=uiaB2v7vLZwRzQb9" },
+                    { num: 7, title: "Ratschkammerl Folge 7", subtitle: "Allrounder Maria zu Gast", url: "https://youtu.be/vzdFyYje3Go?si=zqaDaSoWOg_4ucWy" }
+                  ];
+                  
+                  return lastEpisodes.map((ep) => (
+                    <div key={ep.num} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105">
+                      <a
+                        href={ep.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block relative aspect-video overflow-hidden cursor-pointer"
+                      >
+                        <img
+                          src={`/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`}
+                          alt={ep.title}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            console.log('Image failed to load:', `/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`);
+                            e.currentTarget.style.display = 'none';
+                          }}
+                        />
+                      </a>
+                      <div className="p-4 relative">
+                        <h4 className="text-lg font-semibold text-gray-900 mb-1">{ep.title}</h4>
+                        <p className="text-sm text-gray-600">{ep.subtitle}</p>
+                        
+                        {/* Play Button - Bottom Right */}
+                        <a
+                          href={ep.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="absolute bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-2 transition-all duration-200 transform hover:scale-110 shadow-sm hover:shadow-md flex items-center justify-center shadow-blue-500/30 hover:shadow-blue-500/50"
+                          style={{
+                            boxShadow: '0 0 10px rgba(59, 130, 246, 0.3), 0 0 20px rgba(59, 130, 246, 0.1)'
+                          }}
+                        >
+                          <svg 
+                            className="w-4 h-4" 
+                            fill="currentColor" 
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M8 5v14l11-7z"/>
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  ));
+                })()}
+              </div>
+            </div>
           </div>
         )}
 
@@ -271,8 +326,13 @@ export default function Portfolio() {
                 { num: 18, title: "AirPods I in 2023", subtitle: "Review", url: "https://www.youtube.com/watch?v=oKPV_erAoiQ" }
               ];
               
-              return products.map((product) => (
-                <div key={product.num} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105">
+              return products.map((product, index) => (
+                <div 
+                  key={product.num} 
+                  className={`bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105 ${
+                    index === 16 ? 'lg:col-start-2' : ''
+                  }`}
+                >
                   <a
                     href={product.url}
                     target="_blank"
