@@ -50,8 +50,7 @@ export default function Hero() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-black/30" /> {/* Basis Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" /> {/* Text Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent w-1/2" />
       </div>
 
       {/* Zweites Bild Hintergrund */}
@@ -67,8 +66,7 @@ export default function Hero() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-black/30" /> {/* Basis Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" /> {/* Text Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent w-1/2" />
       </div>
 
       {/* Drittes Bild Hintergrund */}
@@ -84,13 +82,12 @@ export default function Hero() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-black/30" /> {/* Basis Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" /> {/* Text Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent w-1/2" />
       </div>
 
       <div className="absolute left-8 sm:left-16 lg:left-24 xl:left-32 top-1/2 transform -translate-y-1/2 z-10 text-white">
         <div className="max-w-4xl text-left">
-          <h1 className={`text-4xl md:text-6xl font-bold mb-3 leading-tight font-poppins tracking-tight transition-all duration-1000 ease-out drop-shadow-[0_0_30px_rgba(0,0,0,0.6)] ${
+          <h1 className={`text-4xl md:text-6xl font-bold mb-3 leading-tight font-poppins tracking-tight transition-all duration-1000 ease-out drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] ${
             isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}>
             Videoproduktionen nach Maß.
