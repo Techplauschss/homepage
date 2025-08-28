@@ -1,12 +1,33 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import Logo from '@/assets/Logo.png'
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['hero', 'about', 'services', 'portfolio', 'contact']
+      const scrollPosition = window.scrollY + 100 // Offset für bessere Erkennung
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i])
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i])
+          break
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    handleScroll() // Initial check
+    
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -24,10 +45,10 @@ export default function Navigation() {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
-      <div className="max-w-7xl mx-auto px-1 sm:px-2 lg:px-4">
+    <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+      <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-6">
-          <div className="flex-shrink-0 -ml-4 flex items-center">
+          <div className="flex-shrink-0 flex items-center ml-4 sm:ml-6 lg:ml-8">
             <Link href="/" className="text-2xl font-semibold text-gray-900 font-poppins tracking-tight">
               Image- & Videoproduktionen Sauer
             </Link>
@@ -44,32 +65,42 @@ export default function Navigation() {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
               <button
-                onClick={() => scrollToSection('hero')}
-                className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
-              >
-                Home
-              </button>
-              <button
                 onClick={() => scrollToSection('about')}
-                className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
+                className={`px-3 py-2 text-sm font-medium transition-colors ${
+                  activeSection === 'about' 
+                    ? 'text-blue-600 font-bold' 
+                    : 'text-gray-700 hover:text-blue-600'
+                }`}
               >
-                Über uns
+                Über mich
               </button>
               <button
                 onClick={() => scrollToSection('services')}
-                className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
+                className={`px-3 py-2 text-sm font-medium transition-colors ${
+                  activeSection === 'services' 
+                    ? 'text-blue-600 font-bold' 
+                    : 'text-gray-700 hover:text-blue-600'
+                }`}
               >
                 Leistungen
               </button>
               <button
                 onClick={() => scrollToSection('portfolio')}
-                className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
+                className={`px-3 py-2 text-sm font-medium transition-colors ${
+                  activeSection === 'portfolio' 
+                    ? 'text-blue-600 font-bold' 
+                    : 'text-gray-700 hover:text-blue-600'
+                }`}
               >
                 Portfolio
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
+                className={`px-3 py-2 text-sm font-medium transition-colors ${
+                  activeSection === 'contact' 
+                    ? 'text-blue-600 font-bold' 
+                    : 'text-gray-700 hover:text-blue-600'
+                }`}
               >
                 Kontakt
               </button>
@@ -110,32 +141,42 @@ export default function Navigation() {
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
             <button
-              onClick={() => scrollToSection('hero')}
-              className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium w-full text-left"
-            >
-              Home
-            </button>
-            <button
               onClick={() => scrollToSection('about')}
-              className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium w-full text-left"
+              className={`block px-3 py-2 text-base font-medium w-full text-left ${
+                activeSection === 'about' 
+                  ? 'text-blue-600 font-bold' 
+                  : 'text-gray-700 hover:text-blue-600'
+              }`}
             >
-              Über uns
+              Über mich
             </button>
             <button
               onClick={() => scrollToSection('services')}
-              className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium w-full text-left"
+              className={`block px-3 py-2 text-base font-medium w-full text-left ${
+                activeSection === 'services' 
+                  ? 'text-blue-600 font-bold' 
+                  : 'text-gray-700 hover:text-blue-600'
+              }`}
             >
               Leistungen
             </button>
             <button
               onClick={() => scrollToSection('portfolio')}
-              className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium w-full text-left"
+              className={`block px-3 py-2 text-base font-medium w-full text-left ${
+                activeSection === 'portfolio' 
+                  ? 'text-blue-600 font-bold' 
+                  : 'text-gray-700 hover:text-blue-600'
+              }`}
             >
               Portfolio
             </button>
             <button
               onClick={() => scrollToSection('contact')}
-              className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium w-full text-left"
+              className={`block px-3 py-2 text-base font-medium w-full text-left ${
+                activeSection === 'contact' 
+                  ? 'text-blue-600 font-bold' 
+                  : 'text-gray-700 hover:text-blue-600'
+              }`}
             >
               Kontakt
             </button>

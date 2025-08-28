@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 
 export default function Portfolio() {
   const [selectedCategory, setSelectedCategory] = useState('all')
@@ -53,6 +54,70 @@ export default function Portfolio() {
       description: "Animiertes Erklärvideo für komplexe Dienstleistungen",
       image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       tags: ["Animation", "Explanation", "Creative"]
+    },
+    {
+      id: 7,
+      title: "Stemp Wellnessresort Minigames S1E1",
+      category: "youtube",
+      description: "Staffel 1, Folge 1",
+      image: "/minigame-thumbnails/01 thumbnail.jpg",
+      tags: ["YouTube", "Hotelbranche"]
+    },
+    {
+      id: 8,
+      title: "Stemp Wellnessresort Minigames S1E2",
+      category: "youtube",
+      description: "Staffel 1, Folge 2",
+      image: "/minigame-thumbnails/02 thumbnail.jpg",
+      tags: ["YouTube", "Hotelbranche"]
+    },
+    {
+      id: 9,
+      title: "Stemp Wellnessresort Minigames S1E3",
+      category: "youtube",
+      description: "Staffel 1, Folge 3",
+      image: "/minigame-thumbnails/03 thumbnail.jpg",
+      tags: ["YouTube", "Hotelbranche"]
+    },
+    {
+      id: 10,
+      title: "Stemp Wellnessresort Minigames S1E4",
+      category: "youtube",
+      description: "Staffel 1, Folge 4",
+      image: "/minigame-thumbnails/04 thumbnail.jpg",
+      tags: ["YouTube", "Hotelbranche"]
+    },
+    {
+      id: 11,
+      title: "Stemp Wellnessresort Minigames S2E1",
+      category: "youtube",
+      description: "Staffel 2, Folge 1",
+      image: "/minigame-thumbnails/05 thumbnail.jpg",
+      tags: ["YouTube", "Hotelbranche"]
+    },
+    {
+      id: 12,
+      title: "Stemp Wellnessresort Minigames S2E2",
+      category: "youtube",
+      description: "Staffel 2, Folge 2",
+      image: "/minigame-thumbnails/06 thumbnail.jpg",
+      tags: ["YouTube", "Hotelbranche"]
+    },
+    {
+      id: 13,
+      title: "Stemp Wellnessresort Minigames S2E3",
+      category: "youtube",
+      description: "Staffel 2, Folge 3",
+      image: "/minigame-thumbnails/07 thumbnail.jpg",
+      tags: ["YouTube", "Hotelbranche"]
+    },
+    {
+      id: 14,
+      title: "Stemp Wellnessresort Minigames S2E4",
+      category: "youtube",
+      description: "Staffel 2, Folge 4",
+      image: "/minigame-thumbnails/08 thumbnail.jpg",
+      tags: ["YouTube", "Hotelbranche"]
     }
   ]
 
@@ -63,7 +128,8 @@ export default function Portfolio() {
     { id: 'product', name: 'Produktvideos' },
     { id: 'event', name: 'Events' },
     { id: 'social', name: 'Social Media' },
-    { id: 'animation', name: 'Animation' }
+    { id: 'animation', name: 'Animation' },
+    { id: 'youtube', name: 'YouTube-Formate' }
   ]
 
   const filteredItems = selectedCategory === 'all' 
@@ -75,11 +141,11 @@ export default function Portfolio() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Unser <span className="text-blue-600">Portfolio</span>
+            Mein <span className="text-blue-600">Portfolio</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Entdecken Sie eine Auswahl unserer erfolgreich realisierten Projekte 
-            und lassen Sie sich von der Vielfalt unserer Arbeit inspirieren.
+            Entdecken Sie eine Auswahl meiner erfolgreich realisierten Projekte 
+            und lassen Sie sich von der Vielfalt meiner Arbeit inspirieren.
           </p>
 
           {/* Filter Buttons */}
@@ -101,7 +167,11 @@ export default function Portfolio() {
         </div>
 
         {/* Portfolio Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className={`grid gap-8 ${
+          selectedCategory === 'youtube' 
+            ? 'md:grid-cols-2 lg:grid-cols-4' 
+            : 'md:grid-cols-2 lg:grid-cols-3'
+        }`}>
           {filteredItems.map((item, index) => (
             <div 
               key={item.id} 
@@ -111,11 +181,20 @@ export default function Portfolio() {
               }}
             >
               <div className="relative overflow-hidden h-64">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                />
+                {typeof item.image === 'string' ? (
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                  />
+                ) : (
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                    fill
+                  />
+                )}
                 <div className="absolute inset-0 bg-blue-600 bg-opacity-0 hover:bg-opacity-80 transition-all duration-300 flex items-center justify-center">
                   <button className="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold opacity-0 hover:opacity-100 transition-opacity duration-300 transform translate-y-4 hover:translate-y-0">
                     Projekt ansehen
@@ -144,7 +223,7 @@ export default function Portfolio() {
 
         <div className="text-center mt-16">
           <p className="text-lg text-gray-600 mb-6">
-            Interessiert an unserem Portfolio? Gerne zeigen wir Ihnen weitere Referenzen.
+            Interessiert an meinem Portfolio? Gerne zeige ich Ihnen weitere Referenzen.
           </p>
           <button
             onClick={() => {

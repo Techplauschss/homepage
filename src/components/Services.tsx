@@ -3,7 +3,7 @@
 export default function Services() {
   const services = [
     {
-      title: "Imagefilm Produktion",
+      title: "Imagefilm-Produktion",
       description: "Professionelle Imagefilme, die Ihre Unternehmensidentität authentisch und beeindruckend präsentieren.",
       features: ["Konzeptentwicklung", "Drehbuch", "Professionelle Aufnahmen", "Post-Production"],
       icon: (
@@ -13,7 +13,7 @@ export default function Services() {
       )
     },
     {
-      title: "Recruiting Videos",
+      title: "Recruiting-Videos",
       description: "Überzeugende Recruiting-Videos, die talentierte Mitarbeiter für Ihr Unternehmen begeistern.",
       features: ["Employer Branding", "Mitarbeiter-Interviews", "Arbeitsplatz-Präsentation", "Social Media optimiert"],
       icon: (
@@ -69,10 +69,10 @@ export default function Services() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Unsere <span className="text-blue-600">Leistungen</span>
+            Optimale <span className="text-blue-600">Videolösungen</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Von der ersten Idee bis zum fertigen Film - wir bieten Ihnen das komplette Spektrum 
+            Von der ersten Idee bis zum fertigen Film - ich biete Ihnen das komplette Spektrum 
             moderner Videoproduktion aus einer Hand.
           </p>
         </div>

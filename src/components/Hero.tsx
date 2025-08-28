@@ -88,7 +88,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" /> {/* Text Gradient */}
       </div>
 
-      <div className="absolute left-4 sm:left-8 lg:left-12 top-1/2 transform -translate-y-1/2 z-10 text-white">
+      <div className="absolute left-8 sm:left-16 lg:left-24 xl:left-32 top-1/2 transform -translate-y-1/2 z-10 text-white">
         <div className="max-w-4xl text-left">
           <h1 className={`text-4xl md:text-6xl font-bold mb-3 leading-tight font-poppins tracking-tight transition-all duration-1000 ease-out drop-shadow-[0_0_30px_rgba(0,0,0,0.6)] ${
             isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
@@ -103,9 +103,9 @@ export default function Hero() {
           <p className={`text-lg md:text-xl mb-12 text-blue-200 max-w-3xl transition-all duration-1000 ease-out delay-400 ${
             isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}>
-            Seit über 9 Jahren verwandeln wir Visionen in fesselnde Filme.<br />
+            Seit über 9 Jahren verwandle ich Visionen in fesselnde Filme.<br />
             Ob preisgekrönte Dokumentationen oder innovative Social Media Inhalte.<br />
-            Wir schaffen professionelle Videoproduktionen, die im Gedächtnis bleiben.
+            Ich schaffe professionelle Videoproduktionen, die im Gedächtnis bleiben.
           </p>
           
           <div className={`flex flex-col sm:flex-row gap-4 items-start transition-all duration-1000 ease-out delay-600 ${

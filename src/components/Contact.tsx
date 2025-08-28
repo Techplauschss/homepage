@@ -23,7 +23,7 @@ export default function Contact() {
     e.preventDefault()
     // Hier würde normalerweise die Formular-Übermittlung stattfinden
     console.log('Form submitted:', formData)
-    alert('Vielen Dank für Ihre Anfrage! Wir werden uns schnellstmöglich bei Ihnen melden.')
+    alert('Vielen Dank für Ihre Anfrage! Ich werde mich schnellstmöglich bei Ihnen melden.')
   }
 
   return (
@@ -34,7 +34,7 @@ export default function Contact() {
             Jetzt <span className="text-blue-400">Kontakt</span> aufnehmen
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Haben Sie ein Projekt im Kopf? Lassen Sie uns darüber sprechen und gemeinsam 
+            Haben Sie ein Projekt im Kopf? Lassen Sie mich darüber sprechen und gemeinsam 
             Ihre Vision zum Leben erwecken.
           </p>
         </div>

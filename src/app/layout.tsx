@@ -15,7 +15,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "Imagefilme-Sauer | Professionelle Videoproduktion",
-  description: "Professionelle Imagefilme, Recruiting Videos und Videoproduktionen. Wir erwecken Ihre Marke zum Leben durch beeindruckende visuelle Kommunikation.",
+  description: "Professionelle Imagefilme, Recruiting-Videos und Videoproduktionen. Ich erwecke Ihre Marke zum Leben durch beeindruckende visuelle Kommunikation.",
   keywords: "Imagefilm, Videoproduktion, Recruiting Video, Produktvideo, Corporate Video",
   authors: [{ name: "Imagefilme-Sauer" }],
   viewport: "width=device-width, initial-scale=1",
