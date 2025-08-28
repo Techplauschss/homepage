@@ -8,11 +8,15 @@ import Frontphoto3 from '@/assets/Frontphoto_3.jpg'
 
 export default function Hero() {
   const [currentBackground, setCurrentBackground] = useState(0)
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
+    // Animation beim Laden der Komponente starten
+    setIsLoaded(true)
+    
     const interval = setInterval(() => {
       setCurrentBackground((prev) => (prev + 1) % 3) // Zyklus zwischen 0, 1, 2
-    }, 5000) // Alle 5 Sekunden wechseln
+    }, 6000) // Alle 6 Sekunden wechseln
 
     return () => clearInterval(interval)
   }, [])
@@ -28,8 +32,8 @@ export default function Hero() {
     <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Erstes Bild Hintergrund */}
       <div 
-        className={`absolute inset-0 transition-transform duration-1000 ease-in-out ${
-          currentBackground === 0 ? 'translate-x-0' : currentBackground === 1 || currentBackground === 2 ? '-translate-x-full' : 'translate-x-full'
+        className={`absolute inset-0 transition-opacity duration-2000 ease-in-out ${
+          currentBackground === 0 ? 'opacity-100' : 'opacity-0'
         }`}
       >
         <Image
@@ -45,8 +49,8 @@ export default function Hero() {
 
       {/* Zweites Bild Hintergrund */}
       <div 
-        className={`absolute inset-0 transition-transform duration-1000 ease-in-out ${
-          currentBackground === 1 ? 'translate-x-0' : currentBackground === 0 ? 'translate-x-full' : '-translate-x-full'
+        className={`absolute inset-0 transition-opacity duration-2000 ease-in-out ${
+          currentBackground === 1 ? 'opacity-100' : 'opacity-0'
         }`}
       >
         <Image
@@ -62,8 +66,8 @@ export default function Hero() {
 
       {/* Drittes Bild Hintergrund */}
       <div 
-        className={`absolute inset-0 transition-transform duration-1000 ease-in-out ${
-          currentBackground === 2 ? 'translate-x-0' : 'translate-x-full'
+        className={`absolute inset-0 transition-opacity duration-2000 ease-in-out ${
+          currentBackground === 2 ? 'opacity-100' : 'opacity-0'
         }`}
       >
         <Image
@@ -79,19 +83,27 @@ export default function Hero() {
 
       <div className="absolute left-4 sm:left-8 lg:left-12 top-1/2 transform -translate-y-1/2 z-10 text-white">
         <div className="max-w-4xl text-left">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight font-poppins tracking-tight">
+          <h1 className={`text-4xl md:text-6xl font-bold mb-3 leading-tight font-poppins tracking-tight transition-all duration-1000 ease-out ${
+            isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+          }`}>
             Videoproduktionen nach <span className="text-blue-300">Maß.</span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed">
+          <p className={`text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed transition-all duration-1000 ease-out delay-200 ${
+            isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+          }`}>
             Individuelle Videolösungen für Unternehmen & Privatpersonen.
           </p>
-          <p className="text-lg md:text-xl mb-12 text-blue-200 max-w-3xl">
+          <p className={`text-lg md:text-xl mb-12 text-blue-200 max-w-3xl transition-all duration-1000 ease-out delay-400 ${
+            isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+          }`}>
             Seit über 9 Jahren verwandeln wir Visionen in fesselnde Filme.<br />
             Ob preisgekrönte Dokumentationen oder innovative Social Media Inhalte.<br />
             Wir schaffen professionelle Videoproduktionen, die im Gedächtnis bleiben.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 items-start">
+          <div className={`flex flex-col sm:flex-row gap-4 items-start transition-all duration-1000 ease-out delay-600 ${
+            isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+          }`}>
             <button
               onClick={scrollToContact}
               className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
