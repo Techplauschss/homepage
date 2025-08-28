@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
+import Logo from '@/assets/Logo.png'
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -16,12 +18,19 @@ export default function Navigation() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
-          <div className="flex-shrink-0">
-            <Link href="/" className="text-2xl font-bold text-gray-900">
-              Imagefilme-Sauer
+      <div className="max-w-7xl mx-auto px-1 sm:px-2 lg:px-4">
+        <div className="flex justify-between items-center py-6">
+          <div className="flex-shrink-0 -ml-4 flex items-center">
+            <Link href="/" className="text-2xl font-semibold text-gray-900 font-poppins tracking-tight">
+              Image- & Videoproduktionen Sauer
             </Link>
+            <Image
+              src={Logo}
+              alt="Image- & Videoproduktionen Sauer Logo"
+              width={32}
+              height={32}
+              className="ml-4"
+            />
           </div>
           
           {/* Desktop Navigation */}
