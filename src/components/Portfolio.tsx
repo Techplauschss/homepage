@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import SchulzeiPhone from '../assets/some-thumbnails/Schulze_iPhone.png'
+import StempiPhone from '../assets/some-thumbnails/Stemp_iPhone.png'
 
 // Video Gallery Component with Navigation
 const VideoGallery = () => {
@@ -42,7 +43,7 @@ const VideoGallery = () => {
         </button>
 
         {/* Video Container */}
-        <div className="relative w-80 rounded-lg overflow-hidden">
+        <div className="relative w-80 rounded-lg overflow-hidden shadow-lg">
           <video 
             key={currentVideo.file} // Force re-render when video changes
             controls 
@@ -97,7 +98,7 @@ const VideoGallery = () => {
 }
 
 export default function Portfolio() {
-  const [selectedCategory, setSelectedCategory] = useState('all')
+  const [selectedCategory, setSelectedCategory] = useState('imageevent')
 
   const portfolioItems: Array<{
     id: number;
@@ -109,17 +110,15 @@ export default function Portfolio() {
   }> = []
 
   const categories = [
-    { id: 'all', name: 'Alle Projekte' },
-    { id: 'imagefilm', name: 'Imagefilme' },
-    { id: 'event', name: 'Events' },
+    { id: 'imageevent', name: 'Image- & Eventvideos' },
     { id: 'social', name: 'Social Media' },
     { id: 'product', name: 'Produktvideos' },
     { id: 'recruiting', name: 'Podcasts' },
     { id: 'youtube', name: 'YouTube-Formate' }
   ]
 
-  const filteredItems = selectedCategory === 'all' 
-    ? portfolioItems 
+  const filteredItems = selectedCategory === 'imageevent'
+    ? portfolioItems.filter(item => item.category === 'imagefilm' || item.category === 'event')
     : portfolioItems.filter(item => item.category === selectedCategory)
 
   return (
@@ -474,18 +473,36 @@ export default function Portfolio() {
 
         {/* Social Media Section - Only show for social category */}
         {selectedCategory === 'social' && (
-          <div className="flex justify-center items-start gap-16 flex-wrap">
-            <div className="flex flex-col items-center">
-              <Image
-                src={SchulzeiPhone}
-                alt="Schulze iPhone Social Media Content"
-                className="w-80 h-auto -mt-8"
-                style={{
-                  filter: 'drop-shadow(0 25px 50px rgba(0, 0, 0, 0.6))'
-                }}
-              />
+          <div className="space-y-16">
+            {/* Erste Reihe */}
+            <div className="flex justify-center items-start gap-16 flex-wrap">
+              <div className="flex flex-col items-center">
+                <Image
+                  src={SchulzeiPhone}
+                  alt="Schulze iPhone Social Media Content"
+                  className="w-80 h-auto -mt-8"
+                  style={{
+                    filter: 'drop-shadow(0 15px 20px rgba(0, 0, 0, 0.4))'
+                  }}
+                />
+              </div>
+              <VideoGallery />
             </div>
-            <VideoGallery />
+            
+            {/* Zweite Reihe */}
+            <div className="flex justify-center items-start gap-16 flex-wrap">
+              <div className="flex flex-col items-center">
+                <Image
+                  src={StempiPhone}
+                  alt="Stemp iPhone Social Media Content"
+                  className="w-80 h-auto -mt-8"
+                  style={{
+                    filter: 'drop-shadow(0 15px 20px rgba(0, 0, 0, 0.4))'
+                  }}
+                />
+              </div>
+              <VideoGallery />
+            </div>
           </div>
         )}
 
