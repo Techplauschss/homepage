@@ -6,129 +6,22 @@ import Image from 'next/image'
 export default function Portfolio() {
   const [selectedCategory, setSelectedCategory] = useState('all')
 
-  const portfolioItems = [
-    {
-      id: 1,
-      title: "TechCorp Imagefilm",
-      category: "imagefilm",
-      description: "Ein moderner Imagefilm für ein führendes Technologieunternehmen",
-      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      tags: ["Corporate", "Technology", "Innovation"]
-    },
-    {
-      id: 2,
-      title: "Startup Recruiting Video",
-      category: "recruiting",
-      description: "Authentisches Recruiting-Video für ein junges Startup",
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      tags: ["Recruiting", "Startup", "Team"]
-    },
-    {
-      id: 3,
-      title: "Produktpräsentation E-Bike",
-      category: "product",
-      description: "Dynamische Präsentation eines innovativen E-Bikes",
-      image: "https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      tags: ["Product", "Lifestyle", "Innovation"]
-    },
-    {
-      id: 4,
-      title: "Firmenveranstaltung 2024",
-      category: "event",
-      description: "Professionelle Dokumentation einer Firmenveranstaltung",
-      image: "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      tags: ["Event", "Corporate", "Documentation"]
-    },
-    {
-      id: 5,
-      title: "Social Media Kampagne",
-      category: "social",
-      description: "Kreative Social Media Videos für verschiedene Plattformen",
-      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      tags: ["Social Media", "Campaign", "Creative"]
-    },
-    {
-      id: 6,
-      title: "Animiertes Erklärvideo",
-      category: "animation",
-      description: "Animiertes Erklärvideo für komplexe Dienstleistungen",
-      image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      tags: ["Animation", "Explanation", "Creative"]
-    },
-    {
-      id: 7,
-      title: "Stemp Wellnessresort Minigames S1E1",
-      category: "youtube",
-      description: "Staffel 1, Folge 1",
-      image: "/minigame-thumbnails/01 thumbnail.jpg",
-      tags: ["YouTube", "Hotelbranche"]
-    },
-    {
-      id: 8,
-      title: "Stemp Wellnessresort Minigames S1E2",
-      category: "youtube",
-      description: "Staffel 1, Folge 2",
-      image: "/minigame-thumbnails/02 thumbnail.jpg",
-      tags: ["YouTube", "Hotelbranche"]
-    },
-    {
-      id: 9,
-      title: "Stemp Wellnessresort Minigames S1E3",
-      category: "youtube",
-      description: "Staffel 1, Folge 3",
-      image: "/minigame-thumbnails/03 thumbnail.jpg",
-      tags: ["YouTube", "Hotelbranche"]
-    },
-    {
-      id: 10,
-      title: "Stemp Wellnessresort Minigames S1E4",
-      category: "youtube",
-      description: "Staffel 1, Folge 4",
-      image: "/minigame-thumbnails/04 thumbnail.jpg",
-      tags: ["YouTube", "Hotelbranche"]
-    },
-    {
-      id: 11,
-      title: "Stemp Wellnessresort Minigames S2E1",
-      category: "youtube",
-      description: "Staffel 2, Folge 1",
-      image: "/minigame-thumbnails/05 thumbnail.jpg",
-      tags: ["YouTube", "Hotelbranche"]
-    },
-    {
-      id: 12,
-      title: "Stemp Wellnessresort Minigames S2E2",
-      category: "youtube",
-      description: "Staffel 2, Folge 2",
-      image: "/minigame-thumbnails/06 thumbnail.jpg",
-      tags: ["YouTube", "Hotelbranche"]
-    },
-    {
-      id: 13,
-      title: "Stemp Wellnessresort Minigames S2E3",
-      category: "youtube",
-      description: "Staffel 2, Folge 3",
-      image: "/minigame-thumbnails/07 thumbnail.jpg",
-      tags: ["YouTube", "Hotelbranche"]
-    },
-    {
-      id: 14,
-      title: "Stemp Wellnessresort Minigames S2E4",
-      category: "youtube",
-      description: "Staffel 2, Folge 4",
-      image: "/minigame-thumbnails/08 thumbnail.jpg",
-      tags: ["YouTube", "Hotelbranche"]
-    }
-  ]
+  const portfolioItems: Array<{
+    id: number;
+    title: string;
+    category: string;
+    description: string;
+    image: string;
+    tags: string[];
+  }> = []
 
   const categories = [
     { id: 'all', name: 'Alle Projekte' },
     { id: 'imagefilm', name: 'Imagefilme' },
-    { id: 'recruiting', name: 'Recruiting' },
+    { id: 'recruiting', name: 'Podcasts' },
     { id: 'product', name: 'Produktvideos' },
-    { id: 'event', name: 'Events' },
     { id: 'social', name: 'Social Media' },
-    { id: 'animation', name: 'Animation' },
+    { id: 'event', name: 'Events' },
     { id: 'youtube', name: 'YouTube-Formate' }
   ]
 
@@ -180,37 +73,41 @@ export default function Portfolio() {
                 animationDelay: `${index * 100}ms`
               }}
             >
-              <div className="relative overflow-hidden h-64">
-                {typeof item.image === 'string' ? (
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                  />
-                ) : (
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                    fill
-                  />
-                )}
-                <div className="absolute inset-0 bg-blue-600 bg-opacity-0 hover:bg-opacity-80 transition-all duration-300 flex items-center justify-center">
-                  <button className="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold opacity-0 hover:opacity-100 transition-opacity duration-300 transform translate-y-4 hover:translate-y-0">
-                    Projekt ansehen
-                  </button>
+              {/* 16:9 Aspect Ratio Container */}
+              <div className="relative w-full aspect-video overflow-hidden bg-gray-200">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  onError={(e) => {
+                    console.log('Image failed to load:', item.image);
+                    e.currentTarget.style.display = 'none';
+                  }}
+                  onLoad={(e) => {
+                    console.log('Image loaded successfully:', item.image);
+                  }}
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-60 transition-all duration-300 flex items-center justify-center">
+                  <div className="opacity-0 hover:opacity-100 transition-opacity duration-300 text-center">
+                    <button className="bg-white text-gray-900 px-4 py-2 rounded-lg font-semibold mb-2 block mx-auto hover:bg-gray-100 transition-colors">
+                      Projekt ansehen
+                    </button>
+                    <div className="text-white text-sm">
+                      {item.category === 'youtube' ? 'YouTube Video' : 'Projekt Details'}
+                    </div>
+                  </div>
                 </div>
               </div>
               
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">{item.description}</p>
+              <div className="p-4">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-gray-600 text-sm mb-3 leading-relaxed">{item.description}</p>
                 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5">
                   {item.tags.map((tag, tagIndex) => (
-                    <span 
+                    <span
                       key={tagIndex}
-                      className="px-3 py-1 bg-blue-100 text-blue-600 text-xs font-medium rounded-full"
+                      className="bg-blue-100 text-blue-600 px-2 py-1 rounded-md text-xs font-medium"
                     >
                       {tag}
                     </span>
@@ -220,6 +117,143 @@ export default function Portfolio() {
             </div>
           ))}
         </div>
+
+        {/* Minigame Thumbnails Section - Only show for YouTube category */}
+        {selectedCategory === 'youtube' && (
+          <div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {(() => {
+              const episodes = [
+                { num: 1, title: "Stemp Wellnessresort Minigames S1E1", subtitle: "Staffel 1, Folge 1", url: "https://www.youtube.com/watch?v=Hllapyo7LO4&list=PLzTmcq76iGjWOYOY3t0O4sjGFocn_vFG-" },
+                { num: 2, title: "Stemp Wellnessresort Minigames S1E2", subtitle: "Staffel 1, Folge 2", url: "https://youtu.be/PHLaxnB1Qs0?si=NevheDvWnlDZyfkS" },
+                { num: 3, title: "Stemp Wellnessresort Minigames S1E3", subtitle: "Staffel 1, Folge 3", url: "https://youtu.be/-925K4xpt_4?si=Oaax6W09gcog69_d" },
+                { num: 4, title: "Stemp Wellnessresort Minigames S1E4", subtitle: "Staffel 1, Folge 4", url: "https://youtu.be/lYe-FjWXvac?si=zb6Ete9i7tN5IKwU" },
+                { num: 5, title: "Stemp Wellnessresort Minigames S2E1", subtitle: "Staffel 2, Folge 1", url: "https://youtu.be/VNjW0vMIK80?si=rqdmpuuz99SmLgMz" },
+                { num: 6, title: "Stemp Wellnessresort Minigames S2E2", subtitle: "Staffel 2, Folge 2", url: "https://youtu.be/1Opipz2zJ04?si=prDUesRKacYRiCnO" },
+                { num: 7, title: "Stemp Wellnessresort Minigames S2E3", subtitle: "Staffel 2, Folge 3", url: "https://youtu.be/curAXIzgQ7E?si=yu13X6Ci8rsZp6fL" },
+                { num: 8, title: "Stemp Wellnessresort Minigames S2E4", subtitle: "Staffel 2, Folge 4", url: "https://youtu.be/X-xkvNlUvUk?si=pyzsf-uTCrNdq8J_" }
+              ];
+              
+              return episodes.map((ep) => (
+                <div key={ep.num} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105">
+                  <a
+                    href={ep.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block relative aspect-video overflow-hidden cursor-pointer"
+                  >
+                    <img
+                      src={`/minigame-thumbnails/${ep.num.toString().padStart(2, '0')}_thumbnail.jpg`}
+                      alt={ep.title}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        console.log('Image failed to load:', `/minigame-thumbnails/${ep.num.toString().padStart(2, '0')}_thumbnail.jpg`);
+                        e.currentTarget.style.display = 'none';
+                      }}
+                    />
+                  </a>
+                  <div className="p-4 relative">
+                    <h4 className="text-lg font-semibold text-gray-900 mb-1">{ep.title}</h4>
+                    <p className="text-sm text-gray-600">{ep.subtitle}</p>
+                    
+                    {/* Play Button - Bottom Right */}
+                    <a
+                      href={ep.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-2 transition-all duration-200 transform hover:scale-110 shadow-sm hover:shadow-md flex items-center justify-center shadow-blue-500/30 hover:shadow-blue-500/50"
+                      style={{
+                        boxShadow: '0 0 10px rgba(59, 130, 246, 0.3), 0 0 20px rgba(59, 130, 246, 0.1)'
+                      }}
+                    >
+                      <svg 
+                        className="w-4 h-4" 
+                        fill="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              ));
+            })()}
+          </div>
+          </div>
+        )}
+
+        {/* Podcast Thumbnails Section - Only show for Podcasts category */}
+        {selectedCategory === 'recruiting' && (
+          <div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
+            {(() => {
+              const podcastEpisodes = [
+                { num: 1, title: "Ratschkammerl Episode 1", subtitle: "Die erste Folge", url: "#" },
+                { num: 2, title: "Ratschkammerl Episode 2", subtitle: "Innovation und Trends", url: "#" },
+                { num: 3, title: "Ratschkammerl Episode 3", subtitle: "Digitale Transformation", url: "#" },
+                { num: 4, title: "Ratschkammerl Episode 4", subtitle: "Zukunft der Arbeit", url: "#" },
+                { num: 5, title: "Ratschkammerl Episode 5", subtitle: "Nachhaltigkeit in der Tech", url: "#" },
+                { num: 6, title: "Ratschkammerl Episode 6", subtitle: "KI und Gesellschaft", url: "#" },
+                { num: 7, title: "Ratschkammerl Episode 7", subtitle: "Start-up Kultur", url: "#" }
+              ];
+              
+              return (
+                <div className="col-span-full">
+                  <div className="flex flex-wrap justify-center gap-8">
+                    {podcastEpisodes.map((ep, index) => (
+                      <div 
+                        key={ep.num} 
+                        className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105"
+                        style={{ 
+                          width: 'calc(25% - 1.5rem)',
+                          minWidth: '250px'
+                        }}
+                      >
+                  <a
+                    href={ep.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block relative aspect-video overflow-hidden cursor-pointer"
+                  >
+                    <img
+                      src={`/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`}
+                      alt={ep.title}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        console.log('Image failed to load:', `/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`);
+                        e.currentTarget.style.display = 'none';
+                      }}
+                    />
+                  </a>
+                  <div className="p-4 relative">
+                    <h4 className="text-lg font-semibold text-gray-900 mb-1">{ep.title}</h4>
+                    <p className="text-sm text-gray-600">{ep.subtitle}</p>
+                    
+                    {/* Play Button - Bottom Right */}
+                    <a
+                      href={ep.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-2 transition-all duration-200 transform hover:scale-110 shadow-sm hover:shadow-md flex items-center justify-center shadow-blue-500/30 hover:shadow-blue-500/50"
+                      style={{
+                        boxShadow: '0 0 10px rgba(59, 130, 246, 0.3), 0 0 20px rgba(59, 130, 246, 0.1)'
+                      }}
+                    >
+                      <svg 
+                        className="w-4 h-4" 
+                        fill="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              ));
+            })()}
+          </div>
+          </div>
+        )}
 
         <div className="text-center mt-16">
           <p className="text-lg text-gray-600 mb-6">
