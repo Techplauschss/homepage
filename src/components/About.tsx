@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import Portrait01 from '@/assets/Portrait_01.jpeg'
 
 export default function About() {
   return (
@@ -40,13 +39,10 @@ export default function About() {
             {/* Portrait Container */}
             <div className="relative group">
               <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-                <Image
-                  src={Portrait01}
+                <img
+                  src="/Portrait_01.jpeg"
                   alt="Martin Sauer - Videoproduktion"
-                  width={500}
-                  height={600}
-                  className="object-contain w-full transition-transform duration-500 group-hover:scale-105"
-                  priority
+                  className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
                 />
                 {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
