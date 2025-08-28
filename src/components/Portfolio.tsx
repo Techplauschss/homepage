@@ -18,10 +18,10 @@ export default function Portfolio() {
   const categories = [
     { id: 'all', name: 'Alle Projekte' },
     { id: 'imagefilm', name: 'Imagefilme' },
-    { id: 'recruiting', name: 'Podcasts' },
+    { id: 'event', name: 'Events' },
     { id: 'product', name: 'Produktvideos' },
     { id: 'social', name: 'Social Media' },
-    { id: 'event', name: 'Events' },
+    { id: 'recruiting', name: 'Podcasts' },
     { id: 'youtube', name: 'YouTube-Formate' }
   ]
 
@@ -61,7 +61,7 @@ export default function Portfolio() {
 
         {/* Portfolio Grid */}
         <div className={`grid gap-8 ${
-          selectedCategory === 'youtube' || selectedCategory === 'recruiting'
+          selectedCategory === 'youtube' || selectedCategory === 'recruiting' || selectedCategory === 'product'
             ? 'md:grid-cols-2 lg:grid-cols-4' 
             : 'md:grid-cols-2 lg:grid-cols-3'
         }`}>
@@ -188,13 +188,13 @@ export default function Portfolio() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {(() => {
               const episodes = [
-                { num: 1, title: "Ratschkammerl Folge 1", subtitle: "Vorstellungsrunde", url: "#" },
-                { num: 2, title: "Ratschkammerl Folge 2", subtitle: "Verenas & Tamaras Spezialfolge", url: "#" },
-                { num: 3, title: "Ratschkammerl Folge 3", subtitle: "Wie läuft eine Ausbildung ab?", url: "#" },
-                { num: 4, title: "Ratschkammerl Folge 4", subtitle: "Karrierefolge", url: "#" },
-                { num: 5, title: "Ratschkammerl Folge 5", subtitle: "Stemp's Zauberbackstube", url: "#" },
-                { num: 6, title: "Ratschkammerl Folge 6", subtitle: "Berufsbild Rezeptionistin", url: "#" },
-                { num: 7, title: "Ratschkammerl Folge 7", subtitle: "Allrounder Maria zu Gast", url: "#" }
+                { num: 1, title: "Ratschkammerl Folge 1", subtitle: "Vorstellungsrunde", url: "https://youtu.be/NE1esKSDdj0?si=Ao1l9vHFqHcjlz9f" },
+                { num: 2, title: "Ratschkammerl Folge 2", subtitle: "Verenas & Tamaras Spezialfolge", url: "https://youtu.be/YjZ24ZG996o?si=1hJduO6g3Lh6uI0s" },
+                { num: 3, title: "Ratschkammerl Folge 3", subtitle: "Wie läuft eine Ausbildung ab?", url: "https://youtu.be/EdW-aOTy9Z0?si=tUmr18w5Kw56AiDw" },
+                { num: 4, title: "Ratschkammerl Folge 4", subtitle: "Karrierefolge", url: "https://youtu.be/cc06RnhNv28?si=O-_TZ7JugzIzP0W3" },
+                { num: 5, title: "Ratschkammerl Folge 5", subtitle: "Stemp's Zauberbackstube", url: "https://youtu.be/rgeF0DRiCLM?si=pMwf88JJ3arKPXsI" },
+                { num: 6, title: "Ratschkammerl Folge 6", subtitle: "Berufsbild Rezeptionistin", url: "https://youtu.be/bz2tle_Kqrc?si=uiaB2v7vLZwRzQb9" },
+                { num: 7, title: "Ratschkammerl Folge 7", subtitle: "Allrounder Maria zu Gast", url: "https://youtu.be/vzdFyYje3Go?si=zqaDaSoWOg_4ucWy" }
               ];
               
               return episodes.map((ep) => (
@@ -224,9 +224,83 @@ export default function Portfolio() {
                       href={ep.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="absolute bottom-4 right-4 bg-green-500 hover:bg-green-600 text-white rounded-full p-2 transition-all duration-200 transform hover:scale-110 shadow-sm hover:shadow-md flex items-center justify-center shadow-green-500/30 hover:shadow-green-500/50"
+                      className="absolute bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-2 transition-all duration-200 transform hover:scale-110 shadow-sm hover:shadow-md flex items-center justify-center shadow-blue-500/30 hover:shadow-blue-500/50"
                       style={{
-                        boxShadow: '0 0 10px rgba(34, 197, 94, 0.3), 0 0 20px rgba(34, 197, 94, 0.1)'
+                        boxShadow: '0 0 10px rgba(59, 130, 246, 0.3), 0 0 20px rgba(59, 130, 246, 0.1)'
+                      }}
+                    >
+                      <svg 
+                        className="w-4 h-4" 
+                        fill="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              ));
+            })()}
+          </div>
+          </div>
+        )}
+
+        {/* Product Videos Section - Only show for product category */}
+        {selectedCategory === 'product' && (
+          <div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {(() => {
+              const products = [
+                { num: 1, title: "iPhone 12 vs iPhone 13", subtitle: "Vergleich", url: "https://www.youtube.com/watch?v=oxfq-mdGgEQ" },
+                { num: 2, title: "iPhone 13 in 2024 kaufen", subtitle: "Review", url: "https://www.youtube.com/watch?v=LxjLWCHsyV8" },
+                { num: 3, title: "Der EINZIGE Laptop", subtitle: "Review", url: "https://www.youtube.com/watch?v=UKRMHywbUc8" },
+                { num: 4, title: "iPhone 12 Pro in 2024", subtitle: "Review", url: "https://www.youtube.com/watch?v=UVXk8e67ErQ" },
+                { num: 5, title: "iPhone 12 Pro 2024", subtitle: "Erster Eindruck", url: "https://www.youtube.com/watch?v=ODfoY5njP_A" },
+                { num: 6, title: "iPhone 12 mini vs 12", subtitle: "Vergleich", url: "https://www.youtube.com/watch?v=fmMSbme_Wg8" },
+                { num: 7, title: "iPhone 12 mini 2024", subtitle: "Erster Eindruck", url: "https://www.youtube.com/watch?v=F3SEQcixggI" },
+                { num: 8, title: "iPhone 12 mini", subtitle: "Unboxing", url: "https://www.youtube.com/watch?v=359YjOZbFHI" },
+                { num: 9, title: "iPhone 12 vs iPhone 11", subtitle: "Vergleich", url: "https://www.youtube.com/watch?v=kEkab4_0za4" },
+                { num: 10, title: "iPhone 12 in 2024", subtitle: "Review", url: "https://www.youtube.com/watch?v=3wYJkujLFc0" },
+                { num: 11, title: "iPhone 11 vs XR", subtitle: "Vergleich", url: "https://www.youtube.com/watch?v=Vkswv0xK-gk" },
+                { num: 12, title: "Apple TV 4K", subtitle: "Review", url: "https://www.youtube.com/watch?v=yPE-yJCgu10" },
+                { num: 13, title: "Refurbished iPhones", subtitle: "Fazit", url: "https://www.youtube.com/watch?v=wVAXyH4N0Vo" },
+                { num: 14, title: "iPhone 11 in 2024", subtitle: "Review", url: "https://www.youtube.com/watch?v=71eMFe7d6eI" },
+                { num: 15, title: "iPhone 11 in 2023", subtitle: "Erster Eindruck", url: "https://www.youtube.com/watch?v=8XUCHGiQm4s" },
+                { num: 16, title: "Apple-Trick für Studenten", subtitle: "Tutorial", url: "https://www.youtube.com/watch?v=28hEMajG9w4" },
+                { num: 17, title: "iPhone Xr in 2023", subtitle: "Review", url: "https://www.youtube.com/watch?v=28ZLBUOpA9o" },
+                { num: 18, title: "AirPods I in 2023", subtitle: "Review", url: "https://www.youtube.com/watch?v=oKPV_erAoiQ" }
+              ];
+              
+              return products.map((product) => (
+                <div key={product.num} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105">
+                  <a
+                    href={product.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block relative aspect-video overflow-hidden cursor-pointer"
+                  >
+                    <img
+                      src={`/techplausch-thumbnails/${product.num.toString().padStart(2, '0')} thumbnail.jpg`}
+                      alt={product.title}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        console.log('Image failed to load:', `/techplausch-thumbnails/${product.num.toString().padStart(2, '0')} thumbnail.jpg`);
+                        e.currentTarget.style.display = 'none';
+                      }}
+                    />
+                  </a>
+                  <div className="p-4 relative">
+                    <h4 className="text-lg font-semibold text-gray-900 mb-1">{product.title}</h4>
+                    <p className="text-sm text-gray-600">{product.subtitle}</p>
+                    
+                    {/* Play Button - Bottom Right */}
+                    <a
+                      href={product.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-2 transition-all duration-200 transform hover:scale-110 shadow-sm hover:shadow-md flex items-center justify-center shadow-blue-500/30 hover:shadow-blue-500/50"
+                      style={{
+                        boxShadow: '0 0 10px rgba(59, 130, 246, 0.3), 0 0 20px rgba(59, 130, 246, 0.1)'
                       }}
                     >
                       <svg 
