@@ -4,23 +4,17 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Frontphoto1 from '@/assets/Frontphoto_1.jpg'
 import Frontphoto2 from '@/assets/Frontphoto_2.jpg'
+import Frontphoto3 from '@/assets/Frontphoto_3.jpg'
 
 export default function Hero() {
   const [currentBackground, setCurrentBackground] = useState(0)
 
   useEffect(() => {
-    const timer1 = setTimeout(() => {
-      setCurrentBackground(1)
-    }, 5000) // Nach 5 Sekunden zum ersten Bild
+    const interval = setInterval(() => {
+      setCurrentBackground((prev) => (prev + 1) % 3) // Zyklus zwischen 0, 1, 2
+    }, 5000) // Alle 5 Sekunden wechseln
 
-    const timer2 = setTimeout(() => {
-      setCurrentBackground(2)
-    }, 10000) // Nach 10 Sekunden zum zweiten Bild
-
-    return () => {
-      clearTimeout(timer1)
-      clearTimeout(timer2)
-    }
+    return () => clearInterval(interval)
   }, [])
 
   const scrollToContact = () => {
@@ -32,17 +26,10 @@ export default function Hero() {
 
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Blauer Gradient Hintergrund */}
-      <div 
-        className={`absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 transition-opacity duration-1000 ${
-          currentBackground === 0 ? 'opacity-100' : 'opacity-0'
-        }`}
-      />
-      
       {/* Erstes Bild Hintergrund */}
       <div 
         className={`absolute inset-0 transition-transform duration-1000 ease-in-out ${
-          currentBackground === 1 ? 'translate-x-0' : currentBackground === 0 ? 'translate-x-full' : '-translate-x-full'
+          currentBackground === 0 ? 'translate-x-0' : currentBackground === 1 || currentBackground === 2 ? '-translate-x-full' : 'translate-x-full'
         }`}
       >
         <Image
@@ -52,13 +39,14 @@ export default function Hero() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-black/50" /> {/* Overlay für bessere Textlesbarkeit */}
+        <div className="absolute inset-0 bg-black/30" /> {/* Basis Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" /> {/* Text Gradient */}
       </div>
 
       {/* Zweites Bild Hintergrund */}
       <div 
         className={`absolute inset-0 transition-transform duration-1000 ease-in-out ${
-          currentBackground === 2 ? 'translate-x-0' : 'translate-x-full'
+          currentBackground === 1 ? 'translate-x-0' : currentBackground === 0 ? 'translate-x-full' : '-translate-x-full'
         }`}
       >
         <Image
@@ -68,24 +56,42 @@ export default function Hero() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-black/50" /> {/* Overlay für bessere Textlesbarkeit */}
+        <div className="absolute inset-0 bg-black/30" /> {/* Basis Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" /> {/* Text Gradient */}
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 text-white">
-        <div className="max-w-4xl mx-auto">
+      {/* Drittes Bild Hintergrund */}
+      <div 
+        className={`absolute inset-0 transition-transform duration-1000 ease-in-out ${
+          currentBackground === 2 ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <Image
+          src={Frontphoto3}
+          alt="Videoproduktion Hintergrund 3"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/30" /> {/* Basis Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" /> {/* Text Gradient */}
+      </div>
+
+      <div className="absolute left-4 sm:left-8 lg:left-12 top-1/2 transform -translate-y-1/2 z-10 text-white">
+        <div className="max-w-4xl text-left">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight font-poppins tracking-tight">
             Videoproduktionen nach <span className="text-blue-300">Maß.</span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed">
             Individuelle Videolösungen für Unternehmen & Privatpersonen.
           </p>
-          <p className="text-lg md:text-xl mb-12 text-blue-200 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl mb-12 text-blue-200 max-w-3xl">
             Seit über 9 Jahren verwandeln wir Visionen in fesselnde Filme.<br />
             Ob preisgekrönte Dokumentationen oder innovative Social Media Inhalte.<br />
             Wir schaffen professionelle Videoproduktionen, die im Gedächtnis bleiben.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-4 items-start">
             <button
               onClick={scrollToContact}
               className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
