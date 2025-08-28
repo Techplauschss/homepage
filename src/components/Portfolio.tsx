@@ -354,6 +354,71 @@ export default function Portfolio() {
           </div>
         )}
 
+        {/* Image- & Eventvideos Section - Only show for imageevent category */}
+        {selectedCategory === 'imageevent' && (
+          <div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {(() => {
+                const episodes = [
+                  { num: 1, title: "LMR Brandenburg e.V.", subtitle: "Imagefilm", url: "https://www.youtube.com/watch?v=9-8alDSuZd4" },
+                  { num: 2, title: "Das Stemp Wellnessresort", subtitle: "Imagefilm", url: "https://youtu.be/_WJFP7WYW0c" },
+                  { num: 3, title: "Die Lausitz im Wandel", subtitle: "Dokumentation", url: "https://youtu.be/kbJD0z6fa58?si=ige7F7cvF7_uNh6n" },
+                  { num: 4, title: "LMR Neujahrsempfang", subtitle: "Eventvideo", url: "https://youtu.be/df9zUzHkg3o?si=aqYO86f5RsSneIqH" }
+                ];
+                
+                return episodes.map((ep) => (
+                  <div key={ep.num} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105">
+                    <a
+                      href={ep.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block relative aspect-video overflow-hidden cursor-pointer"
+                    >
+                      <img
+                        src={ep.num === 1 ? `/landesmusikrat_imagefilm.jpg` : ep.num === 2 ? `/stemp_imagefilm.jpg` : ep.num === 3 ? `/filmcrew_thumbnail.jpg` : ep.num === 4 ? `/landesmusikrat2_thumbnail.jpg` : `/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`}
+                        alt={ep.title}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          const fallbackSrc = `/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`;
+                          console.log('Image failed to load:', e.currentTarget.src, 'falling back to:', fallbackSrc);
+                          if (e.currentTarget.src !== fallbackSrc) {
+                            e.currentTarget.src = fallbackSrc;
+                          } else {
+                            e.currentTarget.style.display = 'none';
+                          }
+                        }}
+                      />
+                    </a>
+                    <div className="p-4 relative">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-1">{ep.title}</h4>
+                      <p className="text-sm text-gray-600">{ep.subtitle}</p>
+                      
+                      {/* Play Button - Bottom Right */}
+                      <a
+                        href={ep.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-2 transition-all duration-200 transform hover:scale-110 shadow-sm hover:shadow-md flex items-center justify-center shadow-blue-500/30 hover:shadow-blue-500/50"
+                        style={{
+                          boxShadow: '0 0 10px rgba(59, 130, 246, 0.3), 0 0 20px rgba(59, 130, 246, 0.1)'
+                        }}
+                      >
+                        <svg 
+                          className="w-4 h-4" 
+                          fill="currentColor" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                ));
+              })()}
+            </div>
+          </div>
+        )}
+
         {/* Podcast Thumbnails Section - Only show for recruiting (Podcasts) category */}
         {selectedCategory === 'recruiting' && (
           <div>
