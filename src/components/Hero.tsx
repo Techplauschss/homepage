@@ -93,7 +93,7 @@ export default function Hero() {
           <h1 className={`text-4xl md:text-6xl font-bold mb-3 leading-tight font-poppins tracking-tight transition-all duration-1000 ease-out drop-shadow-[0_0_30px_rgba(0,0,0,0.6)] ${
             isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}>
-            Videoproduktionen nach <span className="text-cyan-400 drop-shadow-[0_0_20px_rgba(34,211,238,0.8)]">Maß.</span>
+            Videoproduktionen <span className="text-white drop-shadow-[0_0_25px_rgba(255,255,255,0.9)]">nach Maß.</span>
           </h1>
           <p className={`text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed transition-all duration-1000 ease-out delay-200 ${
             isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
