@@ -90,10 +90,10 @@ export default function Hero() {
 
       <div className="absolute left-4 sm:left-8 lg:left-12 top-1/2 transform -translate-y-1/2 z-10 text-white">
         <div className="max-w-4xl text-left">
-          <h1 className={`text-4xl md:text-6xl font-bold mb-3 leading-tight font-poppins tracking-tight transition-all duration-1000 ease-out ${
+          <h1 className={`text-4xl md:text-6xl font-bold mb-3 leading-tight font-poppins tracking-tight transition-all duration-1000 ease-out drop-shadow-[0_0_30px_rgba(0,0,0,0.6)] ${
             isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}>
-            Videoproduktionen nach <span className="text-blue-300">Maß.</span>
+            Videoproduktionen nach <span className="text-cyan-400 drop-shadow-[0_0_20px_rgba(34,211,238,0.8)]">Maß.</span>
           </h1>
           <p className={`text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed transition-all duration-1000 ease-out delay-200 ${
             isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
