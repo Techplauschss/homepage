@@ -2,6 +2,99 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import SchulzeiPhone from '../assets/some-thumbnails/Schulze_iPhone.png'
+
+// Video Gallery Component with Navigation
+const VideoGallery = () => {
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
+  
+  const videos = [
+    { id: '02', name: 'VW California', file: '02_VWCalifornia.mp4' },
+    { id: '03', name: 'Vorstellung Miethe', file: '03_VorstellungMiethe.mp4' },
+    { id: '04', name: 'Audi SQ5', file: '04_AudiSQ5.mp4' },
+    { id: '05', name: 'Enyaq Coupé', file: '05_EnyaqCoupé.mp4' },
+    { id: '06', name: 'Octavia Exclusive', file: '06_OctaviaExclusive.mp4' }
+  ]
+
+  const nextVideo = () => {
+    setCurrentVideoIndex((prev) => (prev + 1) % videos.length)
+  }
+
+  const prevVideo = () => {
+    setCurrentVideoIndex((prev) => (prev - 1 + videos.length) % videos.length)
+  }
+
+  const currentVideo = videos[currentVideoIndex]
+
+  return (
+    <div className="flex flex-col items-center space-y-4">
+      {/* Video Navigation Row */}
+      <div className="flex items-center justify-center space-x-4 group">
+        {/* Left Arrow */}
+        <button
+          onClick={prevVideo}
+          className="bg-black/50 hover:bg-black/70 text-white p-3 rounded-full opacity-60 group-hover:opacity-100 transition-all duration-300 hover:scale-110 backdrop-blur-sm"
+          aria-label="Vorheriges Video"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        {/* Video Container */}
+        <div className="relative w-80 rounded-lg overflow-hidden">
+          <video 
+            key={currentVideo.file} // Force re-render when video changes
+            controls 
+            autoPlay={currentVideoIndex === 0}
+            muted={currentVideoIndex === 0}
+            className="w-full h-auto rounded-lg"
+            preload="metadata"
+            onError={(e) => {
+              console.log('Video failed to load:', `/${currentVideo.file}`);
+            }}
+          >
+            <source src={`/${currentVideo.file}`} type="video/mp4" />
+            Ihr Browser unterstützt das Video-Format nicht.
+          </video>
+        </div>
+
+        {/* Right Arrow */}
+        <button
+          onClick={nextVideo}
+          className="bg-black/50 hover:bg-black/70 text-white p-3 rounded-full opacity-60 group-hover:opacity-100 transition-all duration-300 hover:scale-110 backdrop-blur-sm"
+          aria-label="Nächstes Video"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+      
+      {/* Video Info */}
+      <div className="text-center">
+        <h4 className="text-sm font-medium text-gray-900">{currentVideo.name}</h4>
+        <div className="flex justify-center items-center mt-2 space-x-1">
+          {videos.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentVideoIndex(index)}
+              className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                index === currentVideoIndex 
+                  ? 'bg-blue-600 w-6' 
+                  : 'bg-gray-300 hover:bg-gray-400'
+              }`}
+              aria-label={`Video ${index + 1} anzeigen`}
+            />
+          ))}
+        </div>
+        <p className="text-xs text-gray-500 mt-1">
+          {currentVideoIndex + 1} von {videos.length}
+        </p>
+      </div>
+    </div>
+  )
+}
 
 export default function Portfolio() {
   const [selectedCategory, setSelectedCategory] = useState('all')
@@ -376,6 +469,23 @@ export default function Portfolio() {
               ));
             })()}
           </div>
+          </div>
+        )}
+
+        {/* Social Media Section - Only show for social category */}
+        {selectedCategory === 'social' && (
+          <div className="flex justify-center items-start gap-16 flex-wrap">
+            <div className="flex flex-col items-center">
+              <Image
+                src={SchulzeiPhone}
+                alt="Schulze iPhone Social Media Content"
+                className="w-80 h-auto -mt-8"
+                style={{
+                  filter: 'drop-shadow(0 25px 50px rgba(0, 0, 0, 0.6))'
+                }}
+              />
+            </div>
+            <VideoGallery />
           </div>
         )}
 
