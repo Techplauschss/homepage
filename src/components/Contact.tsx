@@ -13,7 +13,6 @@ export default function Contact() {
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -25,43 +24,38 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    setSubmitStatus('idle')
 
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
+    // Erstelle mailto-Link mit den Formulardaten
+    const subject = encodeURIComponent(`Projektanfrage von ${formData.name}`)
+    const body = encodeURIComponent(`
+Name: ${formData.name}
+E-Mail: ${formData.email}
+${formData.company ? `Unternehmen: ${formData.company}` : ''}
+${formData.phone ? `Telefon: ${formData.phone}` : ''}
+${formData.project ? `Projektart: ${formData.project}` : ''}
 
-      if (response.ok) {
-        setSubmitStatus('success')
-        setFormData({
-          name: '',
-          email: '',
-          company: '',
-          phone: '',
-          project: '',
-          message: ''
-        })
-        alert('Vielen Dank für Ihre Anfrage! Wir haben Ihnen eine Bestätigung per E-Mail gesendet und werden uns schnellstmöglich bei Ihnen melden.')
-      } else {
-        const errorData = await response.json()
-        console.error('API Fehler Details:', errorData)
-        throw new Error(errorData.details || errorData.error || 'Fehler beim Senden der Anfrage')
-      }
-    } catch (error) {
-      console.error('Detaillierter Fehler beim Senden der Anfrage:', error)
-      setSubmitStatus('error')
-      
-      // Bessere Fehlermeldung für den Benutzer
-      const errorMessage = error instanceof Error ? error.message : 'Unbekannter Fehler'
-      alert(`Es ist ein Fehler aufgetreten: ${errorMessage}\n\nBitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt per E-Mail.`)
-    } finally {
-      setIsSubmitting(false)
-    }
+Nachricht:
+${formData.message}
+    `.trim())
+
+    const mailtoLink = `mailto:service@imagefilme-sauer.de?subject=${subject}&body=${body}`
+    
+    // Öffne E-Mail-Client
+    window.location.href = mailtoLink
+    
+    // Formular zurücksetzen
+    setFormData({
+      name: '',
+      email: '',
+      company: '',
+      phone: '',
+      project: '',
+      message: ''
+    })
+    
+    setIsSubmitting(false)
+    
+    alert('Ihr E-Mail-Client wird geöffnet. Bitte senden Sie die vorausgefüllte E-Mail ab.')
   }
 
   return (
