@@ -293,14 +293,11 @@ export default function Contact() {
             © 2024 Imagefilme-Sauer. Alle Rechte vorbehalten.
           </p>
           <div className="flex justify-center space-x-6">
-            <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+            <a href="/datenschutz" className="text-gray-400 hover:text-blue-400 transition-colors">
               Datenschutz
             </a>
-            <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+            <a href="/impressum" className="text-gray-400 hover:text-blue-400 transition-colors">
               Impressum
-            </a>
-            <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-              AGB
             </a>
           </div>
         </div>
