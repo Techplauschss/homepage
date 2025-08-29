@@ -12,6 +12,9 @@ export default function Contact() {
     message: ''
   })
 
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
@@ -19,11 +22,46 @@ export default function Contact() {
     })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Hier würde normalerweise die Formular-Übermittlung stattfinden
-    console.log('Form submitted:', formData)
-    alert('Vielen Dank für Ihre Anfrage! Ich werde mich schnellstmöglich bei Ihnen melden.')
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          phone: '',
+          project: '',
+          message: ''
+        })
+        alert('Vielen Dank für Ihre Anfrage! Wir haben Ihnen eine Bestätigung per E-Mail gesendet und werden uns schnellstmöglich bei Ihnen melden.')
+      } else {
+        const errorData = await response.json()
+        console.error('API Fehler Details:', errorData)
+        throw new Error(errorData.details || errorData.error || 'Fehler beim Senden der Anfrage')
+      }
+    } catch (error) {
+      console.error('Detaillierter Fehler beim Senden der Anfrage:', error)
+      setSubmitStatus('error')
+      
+      // Bessere Fehlermeldung für den Benutzer
+      const errorMessage = error instanceof Error ? error.message : 'Unbekannter Fehler'
+      alert(`Es ist ein Fehler aufgetreten: ${errorMessage}\n\nBitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt per E-Mail.`)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -117,16 +155,25 @@ export default function Contact() {
                   name="project"
                   value={formData.project}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
+                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white hover:bg-gray-600 transition-colors duration-200 cursor-pointer appearance-none"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
+                    backgroundPosition: 'right 0.5rem center',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: '1.5em 1.5em'
+                  }}
                 >
-                  <option value="">Bitte wählen</option>
-                  <option value="imagefilm">Imagefilm</option>
-                  <option value="recruiting">Recruiting Video</option>
-                  <option value="product">Produktvideo</option>
-                  <option value="event">Event-Dokumentation</option>
-                  <option value="social">Social Media Content</option>
-                  <option value="animation">Animation</option>
-                  <option value="other">Sonstiges</option>
+                  <option value="" className="bg-gray-800 text-gray-400">Wählen Sie Ihr Projekt...</option>
+                  <option value="imagefilm" className="bg-gray-800 text-white">Imagefilm / Unternehmensfilm</option>
+                  <option value="recruiting" className="bg-gray-800 text-white">Recruiting Video</option>
+                  <option value="product" className="bg-gray-800 text-white">Produktvideo / Produktpräsentation</option>
+                  <option value="event" className="bg-gray-800 text-white">Event-Dokumentation</option>
+                  <option value="social" className="bg-gray-800 text-white">Social Media Content</option>
+                  <option value="commercial" className="bg-gray-800 text-white">Werbespot / Commercial</option>
+                  <option value="testimonial" className="bg-gray-800 text-white">Testimonial / Kundenstimmen</option>
+                  <option value="tutorial" className="bg-gray-800 text-white">Tutorial / Erklärfilm</option>
+                  <option value="animation" className="bg-gray-800 text-white">Animation / Motion Graphics</option>
+                  <option value="other" className="bg-gray-800 text-white">Sonstiges</option>
                 </select>
               </div>
 
@@ -148,9 +195,14 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+                disabled={isSubmitting}
+                className={`w-full font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform shadow-lg ${
+                  isSubmitting 
+                    ? 'bg-gray-600 cursor-not-allowed' 
+                    : 'bg-blue-600 hover:bg-blue-700 hover:scale-105'
+                } text-white`}
               >
-                Anfrage senden
+                {isSubmitting ? 'Wird gesendet...' : 'Anfrage senden'}
               </button>
             </form>
           </div>
@@ -168,7 +220,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-lg mb-1">Telefon</h4>
-                    <p className="text-gray-300">+49 (0) 123 456 789</p>
+                    <p className="text-gray-300">+49 151 53352436</p>
                   </div>
                 </div>
 
@@ -180,7 +232,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-lg mb-1">E-Mail</h4>
-                    <p className="text-gray-300">info@imagefilme-sauer.de</p>
+                    <p className="text-gray-300">service@imagefilme-sauer.de</p>
                   </div>
                 </div>
 
@@ -194,8 +246,8 @@ export default function Contact() {
                   <div>
                     <h4 className="font-semibold text-lg mb-1">Adresse</h4>
                     <p className="text-gray-300">
-                      Musterstraße 123<br />
-                      12345 Musterstadt<br />
+                      Clara-Zetkin-Str. 51<br />
+                      01159 Dresden<br />
                       Deutschland
                     </p>
                   </div>
@@ -204,7 +256,7 @@ export default function Contact() {
             </div>
 
             <div className="bg-gray-800 rounded-xl p-6">
-              <h4 className="text-xl font-bold mb-4">Warum Imagefilme-Sauer?</h4>
+              <h4 className="text-xl font-bold mb-4">Ihre Vorteile</h4>
               <ul className="space-y-3 text-gray-300">
                 <li className="flex items-center">
                   <svg className="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
