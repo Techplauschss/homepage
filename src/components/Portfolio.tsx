@@ -794,12 +794,12 @@ export default function Portfolio() {
         )}
 
         <div className="text-center mt-12 sm:mt-16">
-          <div className="bg-gradient-to-br from-blue-50 via-white to-blue-50 border border-blue-100 rounded-2xl shadow-xl backdrop-blur-sm p-6 sm:p-8 mx-4 sm:mx-auto max-w-md sm:max-w-2xl">
+          <div className="bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-slate-800 dark:via-slate-900 dark:to-slate-800 border border-blue-100 dark:border-slate-700 rounded-2xl shadow-xl backdrop-blur-sm p-6 sm:p-8 mx-4 sm:mx-auto max-w-md sm:max-w-2xl">
             <div className="mb-4 sm:mb-6">
-              <p className="text-base sm:text-lg text-gray-800 mb-1 sm:mb-2 font-medium">
+              <p className="text-base sm:text-lg text-gray-800 dark:text-slate-200 mb-1 sm:mb-2 font-medium">
                 Interessiert an meinem Portfolio?
               </p>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
+              <p className="text-sm sm:text-base text-gray-600 dark:text-slate-300">
                 Gerne zeige ich Ihnen weitere Referenzen.
               </p>
             </div>
@@ -817,7 +817,7 @@ export default function Portfolio() {
                   })
                 }
               }}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-1.5 sm:py-3 px-2 sm:px-6 rounded-lg text-sm sm:text-base transition-all duration-300 transform hover:scale-105 shadow-lg w-auto sm:w-auto"
+              className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 text-white font-semibold py-1.5 sm:py-3 px-2 sm:px-6 rounded-lg text-sm sm:text-base transition-all duration-300 transform hover:scale-105 shadow-lg w-auto sm:w-auto"
             >
               Vollständiges Portfolio anfordern
             </button>

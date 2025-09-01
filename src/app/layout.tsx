@@ -20,6 +20,14 @@ export const metadata: Metadata = {
   keywords: "Imagefilm, Videoproduktion, Recruiting Video, Produktvideo, Corporate Video",
   authors: [{ name: "Imagefilme-Sauer" }],
   viewport: "width=device-width, initial-scale=1",
+  icons: {
+    icon: [
+      { url: '/favicon.png', type: 'image/png' },
+      { url: '/favicon.ico', type: 'image/x-icon' }
+    ],
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  },
 };
 
 export default function RootLayout({
