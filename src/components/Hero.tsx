@@ -155,21 +155,21 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Mobile Content - Seamless transition with gradient background */}
-        <div className="relative bg-gradient-to-b from-slate-900 via-blue-900 to-indigo-900 px-4 pt-8 pb-8">
-          <div className="max-w-4xl mx-auto text-left text-white">
-            <p className={`text-sm mb-4 text-blue-100 leading-relaxed transition-all duration-1000 ease-out delay-400 ${
+        {/* Mobile Content - Eleganter Kasten mit verbessertem Design */}
+        <div className="px-4 py-6 bg-white">
+          <div className="bg-gradient-to-br from-slate-800 via-slate-900 to-blue-900 rounded-xl shadow-xl border border-slate-700 p-6 max-w-4xl mx-auto backdrop-blur-sm">
+            <p className={`text-sm mb-3 text-slate-100 leading-relaxed transition-all duration-1000 ease-out delay-400 ${
               isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
             }`}>
               9+ Jahre Erfahrung in professioneller Videoproduktion deutschlandweit. Von Dokumentationen bis Social Media - ich schaffe Filme, die begeistern.
             </p>
             
-            <div className={`flex flex-row gap-2 items-start justify-start transition-all duration-1000 ease-out delay-600 ${
+            <div className={`flex flex-row gap-3 items-start justify-start transition-all duration-1000 ease-out delay-600 ${
               isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
             }`}>
               <button
                 onClick={scrollToContact}
-                className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-full text-sm transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg flex-1"
+                className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium py-3 px-5 rounded-full text-sm transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex-1"
               >
                 Jetzt anfragen
               </button>
@@ -187,7 +187,7 @@ export default function Hero() {
                     })
                   }
                 }}
-                className="border border-white/60 text-white hover:bg-white/10 hover:border-white font-medium py-2 px-4 rounded-full text-sm transition-all duration-300 transform hover:scale-105 backdrop-blur-sm flex-1"
+                className="border-2 border-slate-300 text-slate-100 hover:bg-slate-100 hover:text-slate-900 font-medium py-3 px-5 rounded-full text-sm transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex-1"
               >
                 Portfolio ansehen
               </button>
