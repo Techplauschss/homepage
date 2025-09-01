@@ -13,6 +13,10 @@ export default function Contact() {
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null
+    message: string
+  }>({ type: null, message: '' })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -24,38 +28,48 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitStatus({ type: null, message: '' })
 
-    // Erstelle mailto-Link mit den Formulardaten
-    const subject = encodeURIComponent(`Projektanfrage von ${formData.name}`)
-    const body = encodeURIComponent(`
-Name: ${formData.name}
-E-Mail: ${formData.email}
-${formData.company ? `Unternehmen: ${formData.company}` : ''}
-${formData.phone ? `Telefon: ${formData.phone}` : ''}
-${formData.project ? `Projektart: ${formData.project}` : ''}
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
 
-Nachricht:
-${formData.message}
-    `.trim())
+      const data = await response.json()
 
-    const mailtoLink = `mailto:service@imagefilme-sauer.de?subject=${subject}&body=${body}`
-    
-    // Öffne E-Mail-Client
-    window.location.href = mailtoLink
-    
-    // Formular zurücksetzen
-    setFormData({
-      name: '',
-      email: '',
-      company: '',
-      phone: '',
-      project: '',
-      message: ''
-    })
-    
-    setIsSubmitting(false)
-    
-    alert('Ihr E-Mail-Client wird geöffnet. Bitte senden Sie die vorausgefüllte E-Mail ab.')
+      if (response.ok) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet. Ich melde mich so schnell wie möglich bei Ihnen.'
+        })
+        // Formular zurücksetzen
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          phone: '',
+          project: '',
+          message: ''
+        })
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: data.error || 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.'
+        })
+      }
+    } catch (error) {
+      console.error('Fehler beim Senden der Nachricht:', error)
+      setSubmitStatus({
+        type: 'error',
+        message: 'Ein Fehler ist aufgetreten. Bitte überprüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.'
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -198,6 +212,34 @@ ${formData.message}
               >
                 {isSubmitting ? 'Wird gesendet...' : 'Anfrage senden'}
               </button>
+
+              {/* Status-Nachricht */}
+              {submitStatus.type && (
+                <div className={`mt-4 p-4 rounded-lg ${
+                  submitStatus.type === 'success' 
+                    ? 'bg-green-100 border border-green-400 text-green-700' 
+                    : 'bg-red-100 border border-red-400 text-red-700'
+                }`}>
+                  <div className="flex">
+                    <div className="flex-shrink-0">
+                      {submitStatus.type === 'success' ? (
+                        <svg className="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                      ) : (
+                        <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                        </svg>
+                      )}
+                    </div>
+                    <div className="ml-3">
+                      <p className="text-sm font-medium">
+                        {submitStatus.message}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
             </form>
           </div>
 
