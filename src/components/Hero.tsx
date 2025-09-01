@@ -52,7 +52,7 @@ export default function Hero() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-transparent w-2/3" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent w-2/3" />
         </div>
 
         {/* Zweites Bild Hintergrund */}
@@ -68,7 +68,7 @@ export default function Hero() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-transparent w-2/3" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent w-2/3" />
         </div>
 
         {/* Drittes Bild Hintergrund */}
@@ -84,7 +84,7 @@ export default function Hero() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-transparent w-2/3" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent w-2/3" />
         </div>
       </div>
 
