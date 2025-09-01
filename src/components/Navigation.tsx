@@ -32,7 +32,8 @@ export default function Navigation() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
-      const headerHeight = 80
+      const isMobile = window.innerWidth < 640 // sm breakpoint
+      const headerHeight = isMobile ? 50 : 80 // Kleinerer Offset auf Mobile
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
       const offsetPosition = elementPosition - headerHeight
 
@@ -52,13 +53,18 @@ export default function Navigation() {
             <Link href="/" className="hidden sm:block text-lg md:text-xl lg:text-2xl font-semibold text-gray-900 font-poppins tracking-tight">
               Image- & Videoproduktionen Sauer
             </Link>
-            <Image
-              src={Logo}
-              alt="Image- & Videoproduktionen Sauer Logo"
-              width={24}
-              height={24}
-              className="ml-0 sm:ml-3 md:ml-4 sm:w-6 sm:h-6 md:w-8 md:h-8"
-            />
+            <div className="flex items-center">
+              <Image
+                src={Logo}
+                alt="Image- & Videoproduktionen Sauer Logo"
+                width={24}
+                height={24}
+                className="ml-0 sm:ml-3 md:ml-4 sm:w-6 sm:h-6 md:w-8 md:h-8"
+              />
+              <span className="block sm:hidden ml-2 text-sm font-semibold text-gray-900 font-poppins tracking-tight">
+                Imagefilme Sauer
+              </span>
+            </div>
           </div>
           
           {/* Navigation - Visible on all screen sizes */}
@@ -96,7 +102,7 @@ export default function Navigation() {
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
-                className={`px-1 sm:px-2 md:px-3 py-2 text-[10px] sm:text-sm font-medium transition-colors ${
+                className={`hidden sm:block px-1 sm:px-2 md:px-3 py-2 text-[10px] sm:text-sm font-medium transition-colors ${
                   activeSection === 'contact' 
                     ? 'text-blue-600 font-bold' 
                     : 'text-gray-700 hover:text-blue-600'

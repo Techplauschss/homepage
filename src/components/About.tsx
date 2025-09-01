@@ -8,16 +8,16 @@ export default function About() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-35 items-center">
           <div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
+            <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
               Über <span className="text-blue-600">mich</span>
             </h2>
-            <p className="text-base sm:text-lg text-gray-700 mb-4 sm:mb-6 leading-relaxed">
+            <p className="text-sm sm:text-lg text-gray-700 mb-4 sm:mb-6 leading-relaxed">
               Ich heiße <span className="font-semibold text-gray-900">Martin Sauer</span>,
               und seit mehr als 9 Jahren lebe ich meine Leidenschaft für die Videoproduktion. 
               Mit einem Auge fürs Detail und einem Gespür für Geschichten widme ich mich jedem 
               Projekt mit Hingabe.
             </p>
-            <p className="text-base sm:text-lg text-gray-700 mb-6 sm:mb-8 leading-relaxed">
+            <p className="text-sm sm:text-lg text-gray-700 mb-6 sm:mb-8 leading-relaxed">
               Meine Expertise erstreckt sich über alle Aspekte der Videoproduktion: von der ersten 
               Idee bis zum finalen Schnitt. Ich bin stets auf der Suche nach neuen, spannenden 
               Projekten und freue mich, mit Ihnen gemeinsam Ihren Videowunsch in die Tat umzusetzen!
@@ -25,12 +25,12 @@ export default function About() {
             
             <div className="grid grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6">
               <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md">
-                <div className="text-2xl sm:text-3xl font-bold text-blue-600 mb-1 sm:mb-2">50+</div>
-                <div className="text-sm sm:text-base text-gray-700">Erfolgreiche Projekte</div>
+                <div className="text-xl sm:text-3xl font-bold text-blue-600 mb-1 sm:mb-2">50+</div>
+                <div className="text-xs sm:text-base text-gray-700">Erfolgreiche Projekte</div>
               </div>
               <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md">
-                <div className="text-2xl sm:text-3xl font-bold text-blue-600 mb-1 sm:mb-2">5+</div>
-                <div className="text-sm sm:text-base text-gray-700">Jahre Branchenerfahrung</div>
+                <div className="text-xl sm:text-3xl font-bold text-blue-600 mb-1 sm:mb-2">9+</div>
+                <div className="text-xs sm:text-base text-gray-700">Jahre Branchenerfahrung</div>
               </div>
             </div>
           </div>

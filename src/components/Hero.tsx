@@ -161,7 +161,7 @@ export default function Hero() {
             <p className={`text-sm mb-4 text-blue-100 leading-relaxed transition-all duration-1000 ease-out delay-400 ${
               isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
             }`}>
-              Seit über 9 Jahren verwandle ich Visionen in fesselnde Filme. Ob preisgekrönte Dokumentationen oder innovative Social Media Inhalte. Ich schaffe professionelle Videoproduktionen, die im Gedächtnis bleiben.
+              9+ Jahre Erfahrung in professioneller Videoproduktion deutschlandweit. Von Dokumentationen bis Social Media - ich schaffe Filme, die begeistern.
             </p>
             
             <div className={`flex flex-row gap-2 items-start justify-start transition-all duration-1000 ease-out delay-600 ${
@@ -212,7 +212,7 @@ export default function Hero() {
           <p className={`text-lg md:text-xl mb-12 text-blue-200 max-w-3xl transition-all duration-1000 ease-out delay-400 ${
             isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}>
-            Seit über 9 Jahren verwandle ich Visionen in fesselnde Filme.<br />
+            Seit über 9 Jahren verwandle ich deutschlandweit Visionen in fesselnde Filme.<br />
             Ob preisgekrönte Dokumentationen oder innovative Social Media Inhalte.<br />
             Ich schaffe professionelle Videoproduktionen, die im Gedächtnis bleiben.
           </p>
@@ -253,7 +253,8 @@ export default function Hero() {
         onClick={() => {
           const element = document.getElementById('about')
           if (element) {
-            const headerHeight = 80
+            const isMobile = window.innerWidth < 640 // sm breakpoint
+            const headerHeight = isMobile ? 50 : 80 // Kleinerer Offset auf Mobile
             const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
             const offsetPosition = elementPosition - headerHeight
 
