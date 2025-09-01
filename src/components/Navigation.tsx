@@ -32,7 +32,7 @@ export default function Navigation() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
-      const headerHeight = 80 // Etwas weniger Offset für bessere Positionierung
+      const headerHeight = 80
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
       const offsetPosition = elementPosition - headerHeight
 

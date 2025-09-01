@@ -141,7 +141,7 @@ export default function Hero() {
           </div>
 
           {/* Mobile Overlay Title */}
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent p-4">
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/80 via-slate-900/40 to-transparent p-4 z-20">
             <h1 className={`text-2xl font-bold text-white leading-tight font-poppins tracking-tight transition-all duration-1000 ease-out drop-shadow-lg ${
               isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
             }`}>
@@ -155,8 +155,8 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Mobile Content - Below image */}
-        <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 px-4 pt-6 pb-8">
+        {/* Mobile Content - Seamless transition with gradient background */}
+        <div className="relative bg-gradient-to-b from-slate-900 via-blue-900 to-indigo-900 px-4 pt-8 pb-8">
           <div className="max-w-4xl mx-auto text-left text-white">
             <p className={`text-sm mb-4 text-blue-100 leading-relaxed transition-all duration-1000 ease-out delay-400 ${
               isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
