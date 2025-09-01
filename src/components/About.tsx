@@ -13,7 +13,7 @@ export default function About() {
             </h2>
             <p className="text-sm sm:text-lg text-gray-700 dark:text-gray-300 mb-4 sm:mb-6 leading-relaxed">
               Ich heiße <span className="font-semibold text-gray-900 dark:text-gray-100">Martin Sauer</span>,
-              und seit mehr als 9 Jahren lebe ich meine Leidenschaft für die Videoproduktion. 
+              und seit mehr als fünf Jahren lebe ich meine Leidenschaft für die Videoproduktion. 
               Mit einem Auge fürs Detail und einem Gespür für Geschichten widme ich mich jedem 
               Projekt mit Hingabe.
             </p>
@@ -29,7 +29,7 @@ export default function About() {
                 <div className="text-xs sm:text-base text-gray-700 dark:text-gray-300">Erfolgreiche Projekte</div>
               </div>
               <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md dark:shadow-lg">
-                <div className="text-xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1 sm:mb-2">9+</div>
+                <div className="text-xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1 sm:mb-2">5+</div>
                 <div className="text-xs sm:text-base text-gray-700 dark:text-gray-300">Jahre Branchenerfahrung</div>
               </div>
             </div>

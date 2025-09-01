@@ -52,7 +52,7 @@ export default function Hero() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent w-1/2" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-transparent w-2/3" />
         </div>
 
         {/* Zweites Bild Hintergrund */}
@@ -68,7 +68,7 @@ export default function Hero() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent w-1/2" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-transparent w-2/3" />
         </div>
 
         {/* Drittes Bild Hintergrund */}
@@ -84,7 +84,7 @@ export default function Hero() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent w-1/2" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-transparent w-2/3" />
         </div>
       </div>
 
@@ -213,7 +213,7 @@ export default function Hero() {
           <p className={`text-lg md:text-xl mb-12 text-blue-200 max-w-3xl transition-all duration-1000 ease-out delay-400 ${
             isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}>
-            Seit über 9 Jahren verwandle ich deutschlandweit Visionen in fesselnde Filme.<br />
+            Seit über 5 Jahren verwandle ich deutschlandweit Visionen in fesselnde Filme.<br />
             Ob preisgekrönte Dokumentationen oder innovative Social Media Inhalte.<br />
             Ich schaffe professionelle Videoproduktionen, die im Gedächtnis bleiben.
           </p>
