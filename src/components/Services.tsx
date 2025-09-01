@@ -65,46 +65,48 @@ export default function Services() {
   ]
 
   return (
-    <section id="services" className="py-20 relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
+    <section id="services" className="py-12 sm:py-16 md:py-20 relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-4 -left-4 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob"></div>
-        <div className="absolute -top-4 -right-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-4000"></div>
+        <div className="absolute -top-4 -left-4 w-48 sm:w-72 h-48 sm:h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob"></div>
+        <div className="absolute -top-4 -right-4 w-48 sm:w-72 h-48 sm:h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-20 w-48 sm:w-72 h-48 sm:h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-4000"></div>
         
         {/* Grid pattern overlay */}
-        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]"></div>
+        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:25px_25px] sm:bg-[size:50px_50px]"></div>
         
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
             Optimale <span className="text-blue-400 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Videolösungen</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
             Von der ersten Idee bis zum fertigen Film - ich biete Ihnen das komplette Spektrum 
             moderner Videoproduktion aus einer Hand.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8">
           {services.map((service, index) => (
-            <div key={index} className="bg-white/10 backdrop-blur-lg rounded-xl p-8 hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-2 border border-white/20 shadow-xl hover:shadow-2xl">
-              <div className="text-blue-400 mb-4">
-                {service.icon}
+            <div key={index} className="bg-white/10 backdrop-blur-lg rounded-lg sm:rounded-xl p-4 sm:p-6 lg:p-8 hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-2 border border-white/20 shadow-xl hover:shadow-2xl text-center">
+              <div className="text-blue-400 mb-4 sm:mb-5 lg:mb-6 flex justify-center">
+                <div className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10">
+                  {service.icon}
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-white mb-4">{service.title}</h3>
-              <p className="text-gray-100 mb-6 leading-relaxed">{service.description}</p>
-              <ul className="space-y-2">
+              <h3 className="text-sm sm:text-lg lg:text-xl font-bold text-white mb-3 sm:mb-4 lg:mb-5 leading-tight">{service.title}</h3>
+              <p className="hidden sm:block text-sm lg:text-base text-gray-100 mb-4 lg:mb-5 leading-relaxed">{service.description}</p>
+              <ul className="space-y-1.5 sm:space-y-2 lg:space-y-2.5 text-left">
                 {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-sm text-gray-100">
-                    <svg className="w-4 h-4 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <li key={featureIndex} className="flex items-center text-xs sm:text-sm text-gray-100 justify-start">
+                    <svg className="w-3 h-3 sm:w-4 sm:h-4 lg:w-4 lg:h-4 text-blue-400 mr-2 sm:mr-2.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    {feature}
+                    <span className="text-xs sm:text-sm">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -112,7 +114,7 @@ export default function Services() {
           ))}
         </div>
 
-        <div className="text-center mt-16">
+        <div className="text-center mt-12 sm:mt-16">
           <button
             onClick={() => {
               const element = document.getElementById('contact')
@@ -127,7 +129,7 @@ export default function Services() {
                 })
               }
             }}
-            className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl border border-white/20 backdrop-blur-sm"
+            className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-lg text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl border border-white/20 backdrop-blur-sm w-full sm:w-auto"
           >
             Kostenloses Beratungsgespräch
           </button>

@@ -36,56 +36,168 @@ export default function Hero() {
   }
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Erstes Bild Hintergrund */}
-      <div 
-        className={`absolute inset-0 transition-opacity duration-2000 ease-in-out ${
-          currentBackground === 0 ? 'opacity-100' : 'opacity-0'
-        }`}
-      >
-        <Image
-          src={Frontphoto1}
-          alt="Videoproduktion Hintergrund"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent w-1/2" />
+    <section id="hero" className="sm:min-h-screen flex items-center justify-center relative overflow-hidden sm:block">
+      {/* Desktop Background Images - Always visible on desktop */}
+      <div className="hidden sm:block">
+        {/* Erstes Bild Hintergrund */}
+        <div 
+          className={`absolute inset-0 transition-opacity duration-2000 ease-in-out ${
+            currentBackground === 0 ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <Image
+            src={Frontphoto1}
+            alt="Videoproduktion Hintergrund"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent w-1/2" />
+        </div>
+
+        {/* Zweites Bild Hintergrund */}
+        <div 
+          className={`absolute inset-0 transition-opacity duration-2000 ease-in-out ${
+            currentBackground === 1 ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <Image
+            src={Frontphoto2}
+            alt="Videoproduktion Hintergrund 2"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent w-1/2" />
+        </div>
+
+        {/* Drittes Bild Hintergrund */}
+        <div 
+          className={`absolute inset-0 transition-opacity duration-2000 ease-in-out ${
+            currentBackground === 2 ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <Image
+            src={Frontphoto3}
+            alt="Videoproduktion Hintergrund 3"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent w-1/2" />
+        </div>
       </div>
 
-      {/* Zweites Bild Hintergrund */}
-      <div 
-        className={`absolute inset-0 transition-opacity duration-2000 ease-in-out ${
-          currentBackground === 1 ? 'opacity-100' : 'opacity-0'
-        }`}
-      >
-        <Image
-          src={Frontphoto2}
-          alt="Videoproduktion Hintergrund 2"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent w-1/2" />
+      {/* Mobile Layout - Vertical */}
+      <div className="sm:hidden w-full flex flex-col">
+        {/* Mobile Images - With overlay text */}
+        <div className="relative w-full h-64 overflow-hidden">
+          {/* Erstes Bild Mobile */}
+          <div 
+            className={`absolute inset-0 transition-opacity duration-2000 ease-in-out ${
+              currentBackground === 0 ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <Image
+              src={Frontphoto1}
+              alt="Videoproduktion Hintergrund"
+              fill
+              className="object-cover"
+              style={{ objectPosition: '95% center' }}
+              priority
+            />
+          </div>
+
+          {/* Zweites Bild Mobile */}
+          <div 
+            className={`absolute inset-0 transition-opacity duration-2000 ease-in-out ${
+              currentBackground === 1 ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <Image
+              src={Frontphoto2}
+              alt="Videoproduktion Hintergrund 2"
+              fill
+              className="object-cover"
+              style={{ objectPosition: '95% center' }}
+              priority
+            />
+          </div>
+
+          {/* Drittes Bild Mobile */}
+          <div 
+            className={`absolute inset-0 transition-opacity duration-2000 ease-in-out ${
+              currentBackground === 2 ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <Image
+              src={Frontphoto3}
+              alt="Videoproduktion Hintergrund 3"
+              fill
+              className="object-cover"
+              style={{ objectPosition: '95% center' }}
+              priority
+            />
+          </div>
+
+          {/* Mobile Overlay Title */}
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent p-4">
+            <h1 className={`text-2xl font-bold text-white leading-tight font-poppins tracking-tight transition-all duration-1000 ease-out drop-shadow-lg ${
+              isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+            }`}>
+              Videoproduktionen nach Maß.
+            </h1>
+            <p className={`text-lg mt-2 text-blue-100 leading-tight transition-all duration-1000 ease-out delay-200 drop-shadow-lg ${
+              isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+            }`}>
+              Individuelle Videolösungen für Unternehmen & Privatpersonen.
+            </p>
+          </div>
+        </div>
+
+        {/* Mobile Content - Below image */}
+        <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 px-4 pt-6 pb-8">
+          <div className="max-w-4xl mx-auto text-left text-white">
+            <p className={`text-sm mb-4 text-blue-100 leading-relaxed transition-all duration-1000 ease-out delay-400 ${
+              isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+            }`}>
+              Seit über 9 Jahren verwandle ich Visionen in fesselnde Filme. Ob preisgekrönte Dokumentationen oder innovative Social Media Inhalte. Ich schaffe professionelle Videoproduktionen, die im Gedächtnis bleiben.
+            </p>
+            
+            <div className={`flex flex-row gap-2 items-start justify-start transition-all duration-1000 ease-out delay-600 ${
+              isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+            }`}>
+              <button
+                onClick={scrollToContact}
+                className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-full text-sm transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg flex-1"
+              >
+                Jetzt anfragen
+              </button>
+              <button
+                onClick={() => {
+                  const element = document.getElementById('portfolio')
+                  if (element) {
+                    const headerHeight = 80
+                    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+                    const offsetPosition = elementPosition - headerHeight
+
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth'
+                    })
+                  }
+                }}
+                className="border border-white/60 text-white hover:bg-white/10 hover:border-white font-medium py-2 px-4 rounded-full text-sm transition-all duration-300 transform hover:scale-105 backdrop-blur-sm flex-1"
+              >
+                Portfolio ansehen
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Drittes Bild Hintergrund */}
-      <div 
-        className={`absolute inset-0 transition-opacity duration-2000 ease-in-out ${
-          currentBackground === 2 ? 'opacity-100' : 'opacity-0'
-        }`}
-      >
-        <Image
-          src={Frontphoto3}
-          alt="Videoproduktion Hintergrund 3"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent w-1/2" />
-      </div>
-
-      <div className="absolute left-8 sm:left-16 lg:left-24 xl:left-32 top-1/2 transform -translate-y-1/2 z-10 text-white">
+      {/* Desktop Content - Original positioning */}
+      <div className="hidden sm:block absolute left-8 sm:left-16 lg:left-24 xl:left-32 top-1/2 transform -translate-y-1/2 z-10 text-white">
         <div className="max-w-4xl text-left">
           <h1 className={`text-4xl md:text-6xl font-bold mb-3 leading-tight font-poppins tracking-tight transition-all duration-1000 ease-out drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] ${
             isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
@@ -151,7 +263,7 @@ export default function Hero() {
             })
           }
         }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20 hover:scale-110 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full p-2"
+        className="hidden sm:block absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20 hover:scale-110 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full p-2"
         aria-label="Zur nächsten Sektion scrollen"
       >
         <svg

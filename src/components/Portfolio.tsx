@@ -43,7 +43,7 @@ const VideoGallery = () => {
         </button>
 
         {/* Video Container */}
-        <div className="relative w-80 rounded-lg overflow-hidden shadow-lg">
+        <div className="relative w-64 sm:w-80 rounded-lg overflow-hidden shadow-lg">
           <video 
             key={currentVideo.file} // Force re-render when video changes
             controls 
@@ -129,7 +129,7 @@ const StempTikTokGallery = () => {
         </button>
 
         {/* Video Container */}
-        <div className="relative w-80 rounded-lg overflow-hidden shadow-lg">
+        <div className="relative w-64 sm:w-80 rounded-lg overflow-hidden shadow-lg">
           <video 
             key={currentVideo.file} // Force re-render when video changes
             controls 
@@ -202,24 +202,24 @@ export default function Portfolio() {
     : portfolioItems.filter(item => item.category === selectedCategory)
 
   return (
-    <section id="portfolio" className="py-20 bg-gray-50">
+    <section id="portfolio" className="py-12 sm:py-16 md:py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
             Mein <span className="text-blue-600">Portfolio</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          <p className="text-sm sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-6 sm:mb-8">
             Entdecken Sie eine Auswahl meiner erfolgreich realisierten Projekte 
             und lassen Sie sich von der Vielfalt meiner Arbeit inspirieren.
           </p>
 
           {/* Filter Buttons */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12">
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+                className={`px-3 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
                   selectedCategory === category.id
                     ? 'bg-blue-600 text-white shadow-lg'
                     : 'bg-white text-gray-700 hover:bg-blue-50 hover:text-blue-600 shadow-md'
@@ -232,10 +232,10 @@ export default function Portfolio() {
         </div>
 
         {/* Portfolio Grid */}
-        <div className={`grid gap-8 ${
+        <div className={`grid gap-4 sm:gap-6 md:gap-8 ${
           selectedCategory === 'youtube' || selectedCategory === 'recruiting' || selectedCategory === 'product'
-            ? 'md:grid-cols-2 lg:grid-cols-4' 
-            : 'md:grid-cols-2 lg:grid-cols-3'
+            ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4' 
+            : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
         }`}>
           {filteredItems.map((item, index) => (
             <div 
@@ -272,7 +272,7 @@ export default function Portfolio() {
               </div>
               
               <div className="p-4">
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+                <h3 className="text-sm sm:text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
                 <p className="text-gray-600 text-sm mb-3 leading-relaxed">{item.description}</p>
                 
                 <div className="flex flex-wrap gap-1.5">
@@ -293,7 +293,7 @@ export default function Portfolio() {
         {/* Minigame Thumbnails Section - Only show for YouTube category */}
         {selectedCategory === 'youtube' && (
           <div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 md:gap-8">
             {(() => {
               const episodes = [
                 { num: 1, title: "Stemp Wellnessresort Minigames S1E1", subtitle: "Staffel 1, Folge 1", url: "https://www.youtube.com/watch?v=Hllapyo7LO4&list=PLzTmcq76iGjWOYOY3t0O4sjGFocn_vFG-" },
@@ -324,22 +324,22 @@ export default function Portfolio() {
                       }}
                     />
                   </a>
-                  <div className="p-4 relative">
-                    <h4 className="text-lg font-semibold text-gray-900 mb-1">{ep.title}</h4>
-                    <p className="text-sm text-gray-600">{ep.subtitle}</p>
+                    <div className="p-3 sm:p-4 relative">
+                    <h4 className="text-sm sm:text-lg font-semibold text-gray-900 mb-1">{ep.title}</h4>
+                    <p className="text-xs sm:text-sm text-gray-600">{ep.subtitle}</p>
                     
                     {/* Play Button - Bottom Right */}
                     <a
                       href={ep.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="absolute bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-2 transition-all duration-200 transform hover:scale-110 shadow-sm hover:shadow-md flex items-center justify-center shadow-blue-500/30 hover:shadow-blue-500/50"
+                      className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-1.5 sm:p-2 transition-all duration-200 transform hover:scale-110 shadow-sm hover:shadow-md flex items-center justify-center shadow-blue-500/30 hover:shadow-blue-500/50"
                       style={{
                         boxShadow: '0 0 10px rgba(59, 130, 246, 0.3), 0 0 20px rgba(59, 130, 246, 0.1)'
                       }}
                     >
                       <svg 
-                        className="w-4 h-4" 
+                        className="w-3 h-3 sm:w-4 sm:h-4" 
                         fill="currentColor" 
                         viewBox="0 0 24 24"
                       >
@@ -357,7 +357,7 @@ export default function Portfolio() {
         {/* Image- & Eventvideos Section - Only show for imageevent category */}
         {selectedCategory === 'imageevent' && (
           <div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 md:gap-8">
               {(() => {
                 const episodes = [
                   { num: 1, title: "LMR Brandenburg e.V.", subtitle: "Imagefilm", url: "https://www.youtube.com/watch?v=9-8alDSuZd4" },
@@ -390,7 +390,7 @@ export default function Portfolio() {
                       />
                     </a>
                     <div className="p-4 relative">
-                      <h4 className="text-lg font-semibold text-gray-900 mb-1">{ep.title}</h4>
+                      <h4 className="text-sm sm:text-lg font-semibold text-gray-900 mb-1">{ep.title}</h4>
                       <p className="text-sm text-gray-600">{ep.subtitle}</p>
                       
                       {/* Play Button - Bottom Right */}
@@ -422,7 +422,7 @@ export default function Portfolio() {
         {/* Podcast Thumbnails Section - Only show for recruiting (Podcasts) category */}
         {selectedCategory === 'recruiting' && (
           <div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-8">
               {/* Erste 4 Episoden */}
               {(() => {
                 const episodes = [
@@ -451,7 +451,7 @@ export default function Portfolio() {
                       />
                     </a>
                     <div className="p-4 relative">
-                      <h4 className="text-lg font-semibold text-gray-900 mb-1">{ep.title}</h4>
+                      <h4 className="text-sm sm:text-lg font-semibold text-gray-900 mb-1">{ep.title}</h4>
                       <p className="text-sm text-gray-600">{ep.subtitle}</p>
                       
                       {/* Play Button - Bottom Right */}
@@ -480,7 +480,7 @@ export default function Portfolio() {
             
             {/* Letzte 3 Episoden - zentriert */}
             <div className="flex justify-center mt-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl">
+              <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8 max-w-4xl">
                 {(() => {
                   const lastEpisodes = [
                     { num: 5, title: "Ratschkammerl Folge 5", subtitle: "Stemp's Zauberbackstube", url: "https://youtu.be/rgeF0DRiCLM?si=pMwf88JJ3arKPXsI" },
@@ -507,7 +507,7 @@ export default function Portfolio() {
                         />
                       </a>
                       <div className="p-4 relative">
-                        <h4 className="text-lg font-semibold text-gray-900 mb-1">{ep.title}</h4>
+                        <h4 className="text-sm sm:text-lg font-semibold text-gray-900 mb-1">{ep.title}</h4>
                         <p className="text-sm text-gray-600">{ep.subtitle}</p>
                         
                         {/* Play Button - Bottom Right */}
@@ -540,7 +540,7 @@ export default function Portfolio() {
         {/* Product Videos Section - Only show for product category */}
         {selectedCategory === 'product' && (
           <div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-8">
             {(() => {
               const products = [
                 { num: 1, title: "iPhone 12 vs iPhone 13", subtitle: "Vergleich", url: "https://www.youtube.com/watch?v=oxfq-mdGgEQ" },
@@ -587,7 +587,7 @@ export default function Portfolio() {
                     />
                   </a>
                   <div className="p-4 relative">
-                    <h4 className="text-lg font-semibold text-gray-900 mb-1">{product.title}</h4>
+                    <h4 className="text-sm sm:text-lg font-semibold text-gray-900 mb-1">{product.title}</h4>
                     <p className="text-sm text-gray-600">{product.subtitle}</p>
                     
                     {/* Play Button - Bottom Right */}
@@ -618,14 +618,14 @@ export default function Portfolio() {
 
         {/* Social Media Section - Only show for social category */}
         {selectedCategory === 'social' && (
-          <div className="space-y-16">
+          <div className="space-y-12 sm:space-y-16">
             {/* Erste Reihe */}
-            <div className="flex justify-center items-start gap-16 flex-wrap">
+            <div className="flex justify-center items-start gap-8 sm:gap-16 flex-wrap">
               <div className="flex flex-col items-center">
                 <Image
                   src={SchulzeiPhone}
                   alt="Schulze iPhone Social Media Content"
-                  className="w-80 h-auto -mt-8"
+                  className="w-64 sm:w-80 h-auto -mt-4 sm:-mt-8"
                   style={{
                     filter: 'drop-shadow(0 15px 20px rgba(0, 0, 0, 0.4))'
                   }}
@@ -635,12 +635,12 @@ export default function Portfolio() {
             </div>
             
             {/* Zweite Reihe */}
-            <div className="flex justify-center items-start gap-16 flex-wrap">
+            <div className="flex justify-center items-start gap-8 sm:gap-16 flex-wrap">
               <div className="flex flex-col items-center">
                 <Image
                   src={StempiPhone}
                   alt="Stemp iPhone Social Media Content"
-                  className="w-80 h-auto -mt-8"
+                  className="w-64 sm:w-80 h-auto -mt-4 sm:-mt-8"
                   style={{
                     filter: 'drop-shadow(0 15px 20px rgba(0, 0, 0, 0.4))'
                   }}
@@ -651,8 +651,8 @@ export default function Portfolio() {
           </div>
         )}
 
-        <div className="text-center mt-16">
-          <p className="text-lg text-gray-600 mb-6">
+        <div className="text-center mt-12 sm:mt-16">
+          <p className="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6">
             Interessiert an meinem Portfolio? Gerne zeige ich Ihnen weitere Referenzen.
           </p>
           <button
@@ -669,7 +669,7 @@ export default function Portfolio() {
                 })
               }
             }}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-lg text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg w-full sm:w-auto"
           >
             Vollständiges Portfolio anfordern
           </button>
