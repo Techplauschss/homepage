@@ -156,7 +156,7 @@ export default function Hero() {
         </div>
 
         {/* Mobile Content - Eleganter Kasten mit verbessertem Design */}
-        <div className="px-4 py-6 bg-white">
+        <div className="px-4 py-6 bg-white dark:bg-gray-900">
           <div className="bg-gradient-to-br from-slate-800 via-slate-900 to-blue-900 rounded-xl shadow-xl border border-slate-700 p-6 max-w-4xl mx-auto backdrop-blur-sm">
             <p className={`text-sm mb-3 text-slate-100 leading-relaxed transition-all duration-1000 ease-out delay-400 ${
               isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'

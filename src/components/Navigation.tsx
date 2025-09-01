@@ -8,6 +8,32 @@ import Logo from '@/assets/Logo.png'
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
+  const [windowWidth, setWindowWidth] = useState<number>(0)
+
+  useEffect(() => {
+    // Set initial window width
+    setWindowWidth(window.innerWidth)
+    
+    // Handle window resize
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+    }
+    
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+  const [shouldShowContact, setShouldShowContact] = useState(true)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setShouldShowContact(window.innerWidth <= 910)
+    }
+    
+    handleResize() // Initial check
+    window.addEventListener('resize', handleResize)
+    
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,11 +72,11 @@ export default function Navigation() {
   }
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+    <nav className="sticky top-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm">
       <div className="px-2 sm:px-4 md:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3 md:py-6">
           <div className="flex-shrink-0 flex items-center ml-1 sm:ml-2 md:ml-4 lg:ml-8">
-            <Link href="/" className="hidden sm:block text-lg md:text-xl lg:text-2xl font-semibold text-gray-900 font-poppins tracking-tight">
+            <Link href="/" className="hidden sm:block text-lg md:text-xl lg:text-2xl font-semibold text-gray-900 dark:text-gray-100 font-poppins tracking-tight">
               Image- & Videoproduktionen Sauer
             </Link>
             <div className="flex items-center">
@@ -61,21 +87,21 @@ export default function Navigation() {
                 height={24}
                 className="ml-0 sm:ml-3 md:ml-4 sm:w-6 sm:h-6 md:w-8 md:h-8"
               />
-              <span className="block sm:hidden ml-2 text-sm font-semibold text-gray-900 font-poppins tracking-tight">
+              <span className="block sm:hidden ml-2 text-sm font-semibold text-gray-900 dark:text-gray-100 font-poppins tracking-tight">
                 Imagefilme Sauer
               </span>
             </div>
           </div>
           
           {/* Navigation - Visible on all screen sizes */}
-          <div className="block">
+          <div className="flex items-center space-x-2 sm:space-x-4">
             <div className="flex items-center space-x-2 sm:space-x-4 md:space-x-8">
               <button
                 onClick={() => scrollToSection('about')}
                 className={`px-1 sm:px-2 md:px-3 py-2 text-[10px] sm:text-sm font-medium transition-colors ${
                   activeSection === 'about' 
-                    ? 'text-blue-600 font-bold' 
-                    : 'text-gray-700 hover:text-blue-600'
+                    ? 'text-blue-600 dark:text-blue-400 font-bold' 
+                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
                 }`}
               >
                 Über mich
@@ -84,8 +110,8 @@ export default function Navigation() {
                 onClick={() => scrollToSection('services')}
                 className={`px-1 sm:px-2 md:px-3 py-2 text-[10px] sm:text-sm font-medium transition-colors ${
                   activeSection === 'services' 
-                    ? 'text-blue-600 font-bold' 
-                    : 'text-gray-700 hover:text-blue-600'
+                    ? 'text-blue-600 dark:text-blue-400 font-bold' 
+                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
                 }`}
               >
                 Leistungen
@@ -94,19 +120,19 @@ export default function Navigation() {
                 onClick={() => scrollToSection('portfolio')}
                 className={`px-1 sm:px-2 md:px-3 py-2 text-[10px] sm:text-sm font-medium transition-colors ${
                   activeSection === 'portfolio' 
-                    ? 'text-blue-600 font-bold' 
-                    : 'text-gray-700 hover:text-blue-600'
+                    ? 'text-blue-600 dark:text-blue-400 font-bold' 
+                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
                 }`}
               >
                 Portfolio
               </button>
-              <button
+                            <button
                 onClick={() => scrollToSection('contact')}
-                className={`hidden sm:block px-1 sm:px-2 md:px-3 py-2 text-[10px] sm:text-sm font-medium transition-colors ${
+                className={`px-1 sm:px-2 md:px-3 py-2 text-[10px] sm:text-sm font-medium transition-colors ${
                   activeSection === 'contact' 
-                    ? 'text-blue-600 font-bold' 
-                    : 'text-gray-700 hover:text-blue-600'
-                }`}
+                    ? 'text-blue-600 dark:text-blue-400 font-bold' 
+                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
+                } ${windowWidth > 910 ? 'block' : 'hidden'}`}
               >
                 Kontakt
               </button>

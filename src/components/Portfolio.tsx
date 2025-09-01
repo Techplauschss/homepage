@@ -204,13 +204,13 @@ export default function Portfolio() {
     : portfolioItems.filter(item => item.category === selectedCategory)
 
   return (
-    <section id="portfolio" className="py-12 sm:py-16 md:py-20 bg-gray-50">
+    <section id="portfolio" className="py-12 sm:py-16 md:py-20 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
-            Mein <span className="text-blue-600">Portfolio</span>
+          <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4 sm:mb-6">
+            Mein <span className="text-blue-600 dark:text-blue-400">Portfolio</span>
           </h2>
-          <p className="text-sm sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-6 sm:mb-8">
+          <p className="text-sm sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 max-w-3xl mx-auto mb-6 sm:mb-8">
             Entdecken Sie eine Auswahl meiner erfolgreich realisierten Projekte 
             und lassen Sie sich von der Vielfalt meiner Arbeit inspirieren.
           </p>
@@ -223,8 +223,8 @@ export default function Portfolio() {
                 onClick={() => setSelectedCategory(category.id)}
                 className={`px-3 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
                   selectedCategory === category.id
-                    ? 'bg-blue-600 text-white shadow-lg'
-                    : 'bg-white text-gray-700 hover:bg-blue-50 hover:text-blue-600 shadow-md'
+                    ? 'bg-blue-600 dark:bg-blue-500 text-white shadow-lg'
+                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 shadow-md'
                 }`}
               >
                 {category.name}
@@ -242,13 +242,13 @@ export default function Portfolio() {
           {filteredItems.map((item, index) => (
             <div 
               key={item.id} 
-              className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
               style={{
                 animationDelay: `${index * 100}ms`
               }}
             >
               {/* 16:9 Aspect Ratio Container */}
-              <div className="relative w-full aspect-video overflow-hidden bg-gray-200">
+              <div className="relative w-full aspect-video overflow-hidden bg-gray-200 dark:bg-gray-700">
                 <img
                   src={item.image}
                   alt={item.title}
@@ -263,7 +263,7 @@ export default function Portfolio() {
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-60 transition-all duration-300 flex items-center justify-center">
                   <div className="opacity-0 hover:opacity-100 transition-opacity duration-300 text-center">
-                    <button className="bg-white text-gray-900 px-4 py-2 rounded-lg font-semibold mb-2 block mx-auto hover:bg-gray-100 transition-colors">
+                    <button className="bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-4 py-2 rounded-lg font-semibold mb-2 block mx-auto hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
                       Projekt ansehen
                     </button>
                     <div className="text-white text-sm">
@@ -275,13 +275,13 @@ export default function Portfolio() {
               
               <div className="p-4">
                 <h3 className="text-sm sm:text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-600 text-sm mb-3 leading-relaxed">{item.description}</p>
+                <p className="text-gray-600 dark:text-gray-300 text-sm mb-3 leading-relaxed">{item.description}</p>
                 
                 <div className="flex flex-wrap gap-1.5">
                   {item.tags.map((tag, tagIndex) => (
                     <span
                       key={tagIndex}
-                      className="bg-blue-100 text-blue-600 px-2 py-1 rounded-md text-xs font-medium"
+                      className="bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 px-2 py-1 rounded-md text-xs font-medium"
                     >
                       {tag}
                     </span>
@@ -309,7 +309,7 @@ export default function Portfolio() {
               ];
               
               return episodes.map((ep) => (
-                <div key={ep.num} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105 relative">
+                <div key={ep.num} className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105 relative">
                   <a
                     href={ep.url}
                     target="_blank"
@@ -327,8 +327,8 @@ export default function Portfolio() {
                     />
                   </a>
                     <div className="p-2 sm:p-4 pb-10 sm:pb-12">
-                    <h4 className="text-sm sm:text-lg font-semibold text-gray-900 mb-1">{ep.title}</h4>
-                    <p className="text-xs sm:text-sm text-gray-600">{ep.subtitle}</p>
+                    <h4 className="text-sm sm:text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">{ep.title}</h4>
+                    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">{ep.subtitle}</p>
                   </div>
                     
                     {/* Play Button - Bottom Right - Absolute to entire card */}
@@ -369,7 +369,7 @@ export default function Portfolio() {
                 ];
                 
                 return episodes.map((ep) => (
-                  <div key={ep.num} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105 relative">
+                  <div key={ep.num} className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105 relative">
                     <a
                       href={ep.url}
                       target="_blank"
@@ -392,8 +392,8 @@ export default function Portfolio() {
                       />
                     </a>
                     <div className="p-2 sm:p-4 pb-10 sm:pb-12">
-                      <h4 className="text-sm sm:text-lg font-semibold text-gray-900 mb-1">{ep.title}</h4>
-                      <p className="text-sm text-gray-600">{ep.subtitle}</p>
+                      <h4 className="text-sm sm:text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">{ep.title}</h4>
+                      <p className="text-sm text-gray-600 dark:text-gray-300">{ep.subtitle}</p>
                     </div>
                     
                     {/* Play Button - Bottom Right - Absolute to entire card */}
@@ -435,7 +435,7 @@ export default function Portfolio() {
                 ];
                 
                 return episodes.map((ep) => (
-                  <div key={ep.num} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105 relative">
+                  <div key={ep.num} className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105 relative">
                     <a
                       href={ep.url}
                       target="_blank"
@@ -453,8 +453,8 @@ export default function Portfolio() {
                       />
                     </a>
                     <div className="p-2 sm:p-4 pb-10 sm:pb-12">
-                      <h4 className="text-sm sm:text-lg font-semibold text-gray-900 mb-1">{ep.title}</h4>
-                      <p className="text-sm text-gray-600">{ep.subtitle}</p>
+                      <h4 className="text-sm sm:text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">{ep.title}</h4>
+                      <p className="text-sm text-gray-600 dark:text-gray-300">{ep.subtitle}</p>
                     </div>
                       
                       {/* Play Button - Bottom Right - Absolute to entire card */}
@@ -491,7 +491,7 @@ export default function Portfolio() {
                   ];
                   
                   return lastEpisodes.map((ep) => (
-                    <div key={ep.num} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105 relative">
+                    <div key={ep.num} className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105 relative">
                       <a
                         href={ep.url}
                         target="_blank"
@@ -509,8 +509,8 @@ export default function Portfolio() {
                         />
                       </a>
                       <div className="p-2 sm:p-4 pb-10 sm:pb-12">
-                        <h4 className="text-sm sm:text-lg font-semibold text-gray-900 mb-1">{ep.title}</h4>
-                        <p className="text-sm text-gray-600">{ep.subtitle}</p>
+                        <h4 className="text-sm sm:text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">{ep.title}</h4>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">{ep.subtitle}</p>
                       </div>
                         
                         {/* Play Button - Bottom Right - Absolute to entire card */}
@@ -568,7 +568,7 @@ export default function Portfolio() {
               return products.map((product, index) => (
                 <div 
                   key={product.num} 
-                  className={`bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105 relative ${
+                  className={`bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105 relative ${
                     index === 16 ? 'lg:col-start-2' : ''
                   }`}
                 >
@@ -589,8 +589,8 @@ export default function Portfolio() {
                     />
                   </a>
                   <div className="p-2 sm:p-4 pb-10 sm:pb-12">
-                    <h4 className="text-sm sm:text-lg font-semibold text-gray-900 mb-1">{product.title}</h4>
-                    <p className="text-sm text-gray-600">{product.subtitle}</p>
+                    <h4 className="text-sm sm:text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">{product.title}</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">{product.subtitle}</p>
                   </div>
                     
                     {/* Play Button - Bottom Right - Absolute to entire card */}
@@ -799,7 +799,7 @@ export default function Portfolio() {
               <p className="text-base sm:text-lg text-gray-800 mb-1 sm:mb-2 font-medium">
                 Interessiert an meinem Portfolio?
               </p>
-              <p className="text-sm sm:text-base text-gray-600">
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
                 Gerne zeige ich Ihnen weitere Referenzen.
               </p>
             </div>

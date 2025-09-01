@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -29,9 +30,11 @@ export default function RootLayout({
   return (
     <html lang="de" className="scroll-smooth">
       <body
-        className={`${inter.variable} ${poppins.variable} antialiased`}
+        className={`${inter.variable} ${poppins.variable} antialiased bg-background text-foreground`}
       >
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
