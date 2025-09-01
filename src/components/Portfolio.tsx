@@ -309,7 +309,7 @@ export default function Portfolio() {
               ];
               
               return episodes.map((ep) => (
-                <div key={ep.num} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105">
+                <div key={ep.num} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105 relative">
                   <a
                     href={ep.url}
                     target="_blank"
@@ -326,11 +326,12 @@ export default function Portfolio() {
                       }}
                     />
                   </a>
-                    <div className="p-3 sm:p-4 relative">
+                    <div className="p-2 sm:p-4 pb-10 sm:pb-12">
                     <h4 className="text-sm sm:text-lg font-semibold text-gray-900 mb-1">{ep.title}</h4>
                     <p className="text-xs sm:text-sm text-gray-600">{ep.subtitle}</p>
+                  </div>
                     
-                    {/* Play Button - Bottom Right */}
+                    {/* Play Button - Bottom Right - Absolute to entire card */}
                     <a
                       href={ep.url}
                       target="_blank"
@@ -348,7 +349,6 @@ export default function Portfolio() {
                         <path d="M8 5v14l11-7z"/>
                       </svg>
                     </a>
-                  </div>
                 </div>
               ));
             })()}
@@ -369,7 +369,7 @@ export default function Portfolio() {
                 ];
                 
                 return episodes.map((ep) => (
-                  <div key={ep.num} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105">
+                  <div key={ep.num} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105 relative">
                     <a
                       href={ep.url}
                       target="_blank"
@@ -391,29 +391,29 @@ export default function Portfolio() {
                         }}
                       />
                     </a>
-                    <div className="p-4 relative">
+                    <div className="p-2 sm:p-4 pb-10 sm:pb-12">
                       <h4 className="text-sm sm:text-lg font-semibold text-gray-900 mb-1">{ep.title}</h4>
                       <p className="text-sm text-gray-600">{ep.subtitle}</p>
-                      
-                      {/* Play Button - Bottom Right */}
-                      <a
-                        href={ep.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="absolute bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-2 transition-all duration-200 transform hover:scale-110 shadow-sm hover:shadow-md flex items-center justify-center shadow-blue-500/30 hover:shadow-blue-500/50"
-                        style={{
-                          boxShadow: '0 0 10px rgba(59, 130, 246, 0.3), 0 0 20px rgba(59, 130, 246, 0.1)'
-                        }}
-                      >
-                        <svg 
-                          className="w-4 h-4" 
-                          fill="currentColor" 
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M8 5v14l11-7z"/>
-                        </svg>
-                      </a>
                     </div>
+                    
+                    {/* Play Button - Bottom Right - Absolute to entire card */}
+                    <a
+                      href={ep.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-1.5 sm:p-2 transition-all duration-200 transform hover:scale-110 shadow-sm hover:shadow-md flex items-center justify-center shadow-blue-500/30 hover:shadow-blue-500/50"
+                      style={{
+                        boxShadow: '0 0 10px rgba(59, 130, 246, 0.3), 0 0 20px rgba(59, 130, 246, 0.1)'
+                      }}
+                    >
+                      <svg 
+                        className="w-3 h-3 sm:w-4 sm:h-4" 
+                        fill="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    </a>
                   </div>
                 ));
               })()}
@@ -428,14 +428,14 @@ export default function Portfolio() {
               {/* Erste 4 Episoden */}
               {(() => {
                 const episodes = [
-                  { num: 1, title: "Ratschkammerl Folge 1", subtitle: "Vorstellungsrunde", url: "https://youtu.be/NE1esKSDdj0?si=Ao1l9vHFqHcjlz9f" },
-                  { num: 2, title: "Ratschkammerl Folge 2", subtitle: "Verenas & Tamaras Spezialfolge", url: "https://youtu.be/YjZ24ZG996o?si=1hJduO6g3Lh6uI0s" },
-                  { num: 3, title: "Ratschkammerl Folge 3", subtitle: "Wie läuft eine Ausbildung ab?", url: "https://youtu.be/EdW-aOTy9Z0?si=tUmr18w5Kw56AiDw" },
-                  { num: 4, title: "Ratschkammerl Folge 4", subtitle: "Karrierefolge", url: "https://youtu.be/cc06RnhNv28?si=O-_TZ7JugzIzP0W3" }
+                  { num: 1, title: "Ratschkammerl #01", subtitle: "Vorstellungsrunde", url: "https://youtu.be/NE1esKSDdj0?si=Ao1l9vHFqHcjlz9f" },
+                  { num: 2, title: "Ratschkammerl #02", subtitle: "Verenas & Tamaras Spezialfolge", url: "https://youtu.be/YjZ24ZG996o?si=1hJduO6g3Lh6uI0s" },
+                  { num: 3, title: "Ratschkammerl #03", subtitle: "Wie läuft eine Ausbildung ab?", url: "https://youtu.be/EdW-aOTy9Z0?si=tUmr18w5Kw56AiDw" },
+                  { num: 4, title: "Ratschkammerl #04", subtitle: "Karrierefolge", url: "https://youtu.be/cc06RnhNv28?si=O-_TZ7JugzIzP0W3" }
                 ];
                 
                 return episodes.map((ep) => (
-                  <div key={ep.num} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105">
+                  <div key={ep.num} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105 relative">
                     <a
                       href={ep.url}
                       target="_blank"
@@ -452,29 +452,29 @@ export default function Portfolio() {
                         }}
                       />
                     </a>
-                    <div className="p-4 relative">
+                    <div className="p-2 sm:p-4 pb-10 sm:pb-12">
                       <h4 className="text-sm sm:text-lg font-semibold text-gray-900 mb-1">{ep.title}</h4>
                       <p className="text-sm text-gray-600">{ep.subtitle}</p>
+                    </div>
                       
-                      {/* Play Button - Bottom Right */}
+                      {/* Play Button - Bottom Right - Absolute to entire card */}
                       <a
                         href={ep.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="absolute bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-2 transition-all duration-200 transform hover:scale-110 shadow-sm hover:shadow-md flex items-center justify-center shadow-blue-500/30 hover:shadow-blue-500/50"
+                        className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-1.5 sm:p-2 transition-all duration-200 transform hover:scale-110 shadow-sm hover:shadow-md flex items-center justify-center shadow-blue-500/30 hover:shadow-blue-500/50"
                         style={{
                           boxShadow: '0 0 10px rgba(59, 130, 246, 0.3), 0 0 20px rgba(59, 130, 246, 0.1)'
                         }}
                       >
                         <svg 
-                          className="w-4 h-4" 
+                          className="w-3 h-3 sm:w-4 sm:h-4" 
                           fill="currentColor" 
                           viewBox="0 0 24 24"
                         >
                           <path d="M8 5v14l11-7z"/>
                         </svg>
                       </a>
-                    </div>
                   </div>
                 ));
               })()}
@@ -485,13 +485,13 @@ export default function Portfolio() {
               <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8 max-w-4xl">
                 {(() => {
                   const lastEpisodes = [
-                    { num: 5, title: "Ratschkammerl Folge 5", subtitle: "Stemp's Zauberbackstube", url: "https://youtu.be/rgeF0DRiCLM?si=pMwf88JJ3arKPXsI" },
-                    { num: 6, title: "Ratschkammerl Folge 6", subtitle: "Berufsbild Rezeptionistin", url: "https://youtu.be/bz2tle_Kqrc?si=uiaB2v7vLZwRzQb9" },
-                    { num: 7, title: "Ratschkammerl Folge 7", subtitle: "Allrounder Maria zu Gast", url: "https://youtu.be/vzdFyYje3Go?si=zqaDaSoWOg_4ucWy" }
+                    { num: 5, title: "Ratschkammerl #05", subtitle: "Stemp's Zauberbackstube", url: "https://youtu.be/rgeF0DRiCLM?si=pMwf88JJ3arKPXsI" },
+                    { num: 6, title: "Ratschkammerl #06", subtitle: "Berufsbild Rezeptionistin", url: "https://youtu.be/bz2tle_Kqrc?si=uiaB2v7vLZwRzQb9" },
+                    { num: 7, title: "Ratschkammerl #07", subtitle: "Allrounder Maria zu Gast", url: "https://youtu.be/vzdFyYje3Go?si=zqaDaSoWOg_4ucWy" }
                   ];
                   
                   return lastEpisodes.map((ep) => (
-                    <div key={ep.num} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105">
+                    <div key={ep.num} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105 relative">
                       <a
                         href={ep.url}
                         target="_blank"
@@ -508,29 +508,29 @@ export default function Portfolio() {
                           }}
                         />
                       </a>
-                      <div className="p-4 relative">
+                      <div className="p-2 sm:p-4 pb-10 sm:pb-12">
                         <h4 className="text-sm sm:text-lg font-semibold text-gray-900 mb-1">{ep.title}</h4>
                         <p className="text-sm text-gray-600">{ep.subtitle}</p>
+                      </div>
                         
-                        {/* Play Button - Bottom Right */}
+                        {/* Play Button - Bottom Right - Absolute to entire card */}
                         <a
                           href={ep.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="absolute bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-2 transition-all duration-200 transform hover:scale-110 shadow-sm hover:shadow-md flex items-center justify-center shadow-blue-500/30 hover:shadow-blue-500/50"
+                          className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-1.5 sm:p-2 transition-all duration-200 transform hover:scale-110 shadow-sm hover:shadow-md flex items-center justify-center shadow-blue-500/30 hover:shadow-blue-500/50"
                           style={{
                             boxShadow: '0 0 10px rgba(59, 130, 246, 0.3), 0 0 20px rgba(59, 130, 246, 0.1)'
                           }}
                         >
                           <svg 
-                            className="w-4 h-4" 
+                            className="w-3 h-3 sm:w-4 sm:h-4" 
                             fill="currentColor" 
                             viewBox="0 0 24 24"
                           >
                             <path d="M8 5v14l11-7z"/>
                           </svg>
                         </a>
-                      </div>
                     </div>
                   ));
                 })()}
@@ -568,7 +568,7 @@ export default function Portfolio() {
               return products.map((product, index) => (
                 <div 
                   key={product.num} 
-                  className={`bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105 ${
+                  className={`bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105 relative ${
                     index === 16 ? 'lg:col-start-2' : ''
                   }`}
                 >
@@ -588,29 +588,29 @@ export default function Portfolio() {
                       }}
                     />
                   </a>
-                  <div className="p-4 relative">
+                  <div className="p-2 sm:p-4 pb-10 sm:pb-12">
                     <h4 className="text-sm sm:text-lg font-semibold text-gray-900 mb-1">{product.title}</h4>
                     <p className="text-sm text-gray-600">{product.subtitle}</p>
+                  </div>
                     
-                    {/* Play Button - Bottom Right */}
+                    {/* Play Button - Bottom Right - Absolute to entire card */}
                     <a
                       href={product.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="absolute bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-2 transition-all duration-200 transform hover:scale-110 shadow-sm hover:shadow-md flex items-center justify-center shadow-blue-500/30 hover:shadow-blue-500/50"
+                      className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-1.5 sm:p-2 transition-all duration-200 transform hover:scale-110 shadow-sm hover:shadow-md flex items-center justify-center shadow-blue-500/30 hover:shadow-blue-500/50"
                       style={{
                         boxShadow: '0 0 10px rgba(59, 130, 246, 0.3), 0 0 20px rgba(59, 130, 246, 0.1)'
                       }}
                     >
                       <svg 
-                        className="w-4 h-4" 
+                        className="w-3 h-3 sm:w-4 sm:h-4" 
                         fill="currentColor" 
                         viewBox="0 0 24 24"
                       >
                         <path d="M8 5v14l11-7z"/>
                       </svg>
                     </a>
-                  </div>
                 </div>
               ));
             })()}
@@ -794,27 +794,34 @@ export default function Portfolio() {
         )}
 
         <div className="text-center mt-12 sm:mt-16">
-          <p className="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6">
-            Interessiert an meinem Portfolio? Gerne zeige ich Ihnen weitere Referenzen.
-          </p>
-          <button
-            onClick={() => {
-              const element = document.getElementById('contact')
-              if (element) {
-                const headerHeight = 80
-                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-                const offsetPosition = elementPosition - headerHeight
+          <div className="bg-gradient-to-br from-blue-50 via-white to-blue-50 border border-blue-100 rounded-2xl shadow-xl backdrop-blur-sm p-6 sm:p-8 mx-4 sm:mx-auto max-w-md sm:max-w-2xl">
+            <div className="mb-4 sm:mb-6">
+              <p className="text-base sm:text-lg text-gray-800 mb-1 sm:mb-2 font-medium">
+                Interessiert an meinem Portfolio?
+              </p>
+              <p className="text-sm sm:text-base text-gray-600">
+                Gerne zeige ich Ihnen weitere Referenzen.
+              </p>
+            </div>
+            <button
+              onClick={() => {
+                const element = document.getElementById('contact')
+                if (element) {
+                  const headerHeight = 80
+                  const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+                  const offsetPosition = elementPosition - headerHeight
 
-                window.scrollTo({
-                  top: offsetPosition,
-                  behavior: 'smooth'
-                })
-              }
-            }}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-lg text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg w-full sm:w-auto"
-          >
-            Vollständiges Portfolio anfordern
-          </button>
+                  window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                  })
+                }
+              }}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-1.5 sm:py-3 px-2 sm:px-6 rounded-lg text-sm sm:text-base transition-all duration-300 transform hover:scale-105 shadow-lg w-auto sm:w-auto"
+            >
+              Vollständiges Portfolio anfordern
+            </button>
+          </div>
         </div>
       </div>
     </section>
