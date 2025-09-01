@@ -189,7 +189,8 @@ export default function Hero() {
                 }}
                 className="border-2 border-slate-300 text-slate-100 hover:bg-slate-100 hover:text-slate-900 font-medium py-3 px-5 rounded-full text-sm transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex-1"
               >
-                Portfolio ansehen
+                <span className="hidden xxs:inline">Portfolio ansehen</span>
+                <span className="inline xxs:hidden">Referenzen</span>
               </button>
             </div>
           </div>
