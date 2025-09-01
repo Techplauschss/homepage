@@ -179,6 +179,8 @@ const StempTikTokGallery = () => {
 
 export default function Portfolio() {
   const [selectedCategory, setSelectedCategory] = useState('imageevent')
+  const [schulzeMobileView, setSchulzeMobileView] = useState<'iphone' | 'video'>('iphone') // Für Schulze mobile Navigation
+  const [stempMobileView, setStempMobileView] = useState<'iphone' | 'video'>('iphone') // Für Stemp mobile Navigation
 
   const portfolioItems: Array<{
     id: number;
@@ -618,37 +620,177 @@ export default function Portfolio() {
 
         {/* Social Media Section - Only show for social category */}
         {selectedCategory === 'social' && (
-          <div className="space-y-8 sm:space-y-12 lg:space-y-16">
-            {/* Erste Reihe */}
-            <div className="flex justify-center items-start gap-4 sm:gap-8 lg:gap-16 flex-wrap">
-              <div className="flex flex-col items-center">
-                <Image
-                  src={SchulzeiPhone}
-                  alt="Schulze iPhone Social Media Content"
-                  className="w-64 sm:w-64 lg:w-80 h-auto -mt-2 sm:-mt-4 lg:-mt-8"
-                  style={{
-                    filter: 'drop-shadow(0 8px 15px rgba(0, 0, 0, 0.3))'
-                  }}
-                />
+          <>
+            {/* Desktop Version */}
+            <div className="hidden sm:block space-y-8 sm:space-y-12 lg:space-y-16">
+              {/* Erste Reihe */}
+              <div className="flex justify-center items-start gap-4 sm:gap-8 lg:gap-16 flex-wrap">
+                <div className="flex flex-col items-center">
+                  <Image
+                    src={SchulzeiPhone}
+                    alt="Schulze iPhone Social Media Content"
+                    className="w-64 sm:w-64 lg:w-80 h-auto -mt-2 sm:-mt-4 lg:-mt-8"
+                    style={{
+                      filter: 'drop-shadow(0 8px 15px rgba(0, 0, 0, 0.3))'
+                    }}
+                  />
+                </div>
+                <VideoGallery />
               </div>
-              <VideoGallery />
-            </div>
-            
-            {/* Zweite Reihe */}
-            <div className="flex justify-center items-start gap-4 sm:gap-8 lg:gap-16 flex-wrap">
-              <div className="flex flex-col items-center">
-                <Image
-                  src={StempiPhone}
-                  alt="Stemp iPhone Social Media Content"
-                  className="w-64 sm:w-64 lg:w-80 h-auto -mt-2 sm:-mt-4 lg:-mt-8"
-                  style={{
-                    filter: 'drop-shadow(0 8px 15px rgba(0, 0, 0, 0.3))'
-                  }}
-                />
+              
+              {/* Zweite Reihe */}
+              <div className="flex justify-center items-start gap-4 sm:gap-8 lg:gap-16 flex-wrap">
+                <div className="flex flex-col items-center">
+                  <Image
+                    src={StempiPhone}
+                    alt="Stemp iPhone Social Media Content"
+                    className="w-64 sm:w-64 lg:w-80 h-auto -mt-2 sm:-mt-4 lg:-mt-8"
+                    style={{
+                      filter: 'drop-shadow(0 8px 15px rgba(0, 0, 0, 0.3))'
+                    }}
+                  />
+                </div>
+                <StempTikTokGallery />
               </div>
-              <StempTikTokGallery />
             </div>
-          </div>
+
+            {/* Mobile Version */}
+            <div className="sm:hidden space-y-12">
+              {/* Schulze Sektion */}
+              <div className="flex flex-col items-center space-y-6">
+                {/* Content */}
+                <div className="w-full flex justify-center">
+                  {schulzeMobileView === 'iphone' ? (
+                    <div className="flex flex-col items-center space-y-6">
+                      <Image
+                        src={SchulzeiPhone}
+                        alt="Schulze iPhone Social Media Content"
+                        className="w-72 h-auto"
+                        style={{
+                          filter: 'drop-shadow(0 8px 15px rgba(0, 0, 0, 0.3))'
+                        }}
+                      />
+                      
+                      {/* Modern Play Button Below iPhone */}
+                      <button
+                        onClick={() => setSchulzeMobileView('video')}
+                        className="group relative bg-gradient-to-br from-blue-500 via-blue-600 to-purple-700 hover:from-blue-600 hover:via-blue-700 hover:to-purple-800 text-white px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 overflow-hidden"
+                        style={{
+                          boxShadow: '0 20px 40px rgba(59, 130, 246, 0.3), 0 8px 32px rgba(139, 69, 219, 0.2)'
+                        }}
+                      >
+                        {/* Background shimmer effect */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                        
+                        <div className="relative flex items-center space-x-3">
+                          <div className="bg-white/20 backdrop-blur-sm rounded-full p-2 group-hover:bg-white/30 transition-colors duration-200">
+                            <svg className="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z"/>
+                            </svg>
+                          </div>
+                          <span className="font-semibold text-lg tracking-wide">Videos ansehen</span>
+                        </div>
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center space-y-6">
+                      <div className="w-full max-w-sm">
+                        <VideoGallery />
+                      </div>
+                      
+                      {/* Modern Back Button */}
+                      <button
+                        onClick={() => setSchulzeMobileView('iphone')}
+                        className="group relative bg-gradient-to-br from-gray-500 via-gray-600 to-slate-700 hover:from-gray-600 hover:via-gray-700 hover:to-slate-800 text-white px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 overflow-hidden"
+                        style={{
+                          boxShadow: '0 20px 40px rgba(75, 85, 99, 0.3), 0 8px 32px rgba(71, 85, 105, 0.2)'
+                        }}
+                      >
+                        {/* Background shimmer effect */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                        
+                        <div className="relative flex items-center space-x-3">
+                          <div className="bg-white/20 backdrop-blur-sm rounded-full p-2 group-hover:bg-white/30 transition-colors duration-200">
+                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                            </svg>
+                          </div>
+                          <span className="font-semibold text-lg tracking-wide">Zurück</span>
+                        </div>
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Stemp Sektion */}
+              <div className="flex flex-col items-center space-y-6">
+                {/* Content */}
+                <div className="w-full flex justify-center">
+                  {stempMobileView === 'iphone' ? (
+                    <div className="flex flex-col items-center space-y-6">
+                      <Image
+                        src={StempiPhone}
+                        alt="Stemp iPhone Social Media Content"
+                        className="w-72 h-auto"
+                        style={{
+                          filter: 'drop-shadow(0 8px 15px rgba(0, 0, 0, 0.3))'
+                        }}
+                      />
+                      
+                      {/* Modern Play Button Below iPhone */}
+                      <button
+                        onClick={() => setStempMobileView('video')}
+                        className="group relative bg-gradient-to-br from-blue-500 via-blue-600 to-purple-700 hover:from-blue-600 hover:via-blue-700 hover:to-purple-800 text-white px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 overflow-hidden"
+                        style={{
+                          boxShadow: '0 20px 40px rgba(59, 130, 246, 0.3), 0 8px 32px rgba(139, 69, 219, 0.2)'
+                        }}
+                      >
+                        {/* Background shimmer effect */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                        
+                        <div className="relative flex items-center space-x-3">
+                          <div className="bg-white/20 backdrop-blur-sm rounded-full p-2 group-hover:bg-white/30 transition-colors duration-200">
+                            <svg className="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z"/>
+                            </svg>
+                          </div>
+                          <span className="font-semibold text-lg tracking-wide">Videos ansehen</span>
+                        </div>
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center space-y-6">
+                      <div className="w-full max-w-sm">
+                        <StempTikTokGallery />
+                      </div>
+                      
+                      {/* Modern Back Button */}
+                      <button
+                        onClick={() => setStempMobileView('iphone')}
+                        className="group relative bg-gradient-to-br from-gray-500 via-gray-600 to-slate-700 hover:from-gray-600 hover:via-gray-700 hover:to-slate-800 text-white px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 overflow-hidden"
+                        style={{
+                          boxShadow: '0 20px 40px rgba(75, 85, 99, 0.3), 0 8px 32px rgba(71, 85, 105, 0.2)'
+                        }}
+                      >
+                        {/* Background shimmer effect */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                        
+                        <div className="relative flex items-center space-x-3">
+                          <div className="bg-white/20 backdrop-blur-sm rounded-full p-2 group-hover:bg-white/30 transition-colors duration-200">
+                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                            </svg>
+                          </div>
+                          <span className="font-semibold text-lg tracking-wide">Zurück</span>
+                        </div>
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </>
         )}
 
         <div className="text-center mt-12 sm:mt-16">
