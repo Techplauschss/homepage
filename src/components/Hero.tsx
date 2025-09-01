@@ -161,7 +161,7 @@ export default function Hero() {
             <p className={`text-sm mb-3 text-slate-100 leading-relaxed transition-all duration-1000 ease-out delay-400 ${
               isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
             }`}>
-              9+ Jahre Erfahrung in professioneller Videoproduktion deutschlandweit. Von Dokumentationen bis Social Media - ich schaffe Filme, die begeistern.
+              Universelle Erfahrung in professioneller Videoproduktion deutschlandweit. Von Dokumentationen bis Social Media - ich schaffe Filme, die begeistern.
             </p>
             
             <div className={`flex flex-row gap-3 items-start justify-start transition-all duration-1000 ease-out delay-600 ${
