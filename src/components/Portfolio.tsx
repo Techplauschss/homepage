@@ -618,16 +618,16 @@ export default function Portfolio() {
 
         {/* Social Media Section - Only show for social category */}
         {selectedCategory === 'social' && (
-          <div className="space-y-12 sm:space-y-16">
+          <div className="space-y-8 sm:space-y-12 lg:space-y-16">
             {/* Erste Reihe */}
-            <div className="flex justify-center items-start gap-8 sm:gap-16 flex-wrap">
+            <div className="flex justify-center items-start gap-4 sm:gap-8 lg:gap-16 flex-wrap">
               <div className="flex flex-col items-center">
                 <Image
                   src={SchulzeiPhone}
                   alt="Schulze iPhone Social Media Content"
-                  className="w-64 sm:w-80 h-auto -mt-4 sm:-mt-8"
+                  className="w-64 sm:w-64 lg:w-80 h-auto -mt-2 sm:-mt-4 lg:-mt-8"
                   style={{
-                    filter: 'drop-shadow(0 15px 20px rgba(0, 0, 0, 0.4))'
+                    filter: 'drop-shadow(0 8px 15px rgba(0, 0, 0, 0.3))'
                   }}
                 />
               </div>
@@ -635,14 +635,14 @@ export default function Portfolio() {
             </div>
             
             {/* Zweite Reihe */}
-            <div className="flex justify-center items-start gap-8 sm:gap-16 flex-wrap">
+            <div className="flex justify-center items-start gap-4 sm:gap-8 lg:gap-16 flex-wrap">
               <div className="flex flex-col items-center">
                 <Image
                   src={StempiPhone}
                   alt="Stemp iPhone Social Media Content"
-                  className="w-64 sm:w-80 h-auto -mt-4 sm:-mt-8"
+                  className="w-64 sm:w-64 lg:w-80 h-auto -mt-2 sm:-mt-4 lg:-mt-8"
                   style={{
-                    filter: 'drop-shadow(0 15px 20px rgba(0, 0, 0, 0.4))'
+                    filter: 'drop-shadow(0 8px 15px rgba(0, 0, 0, 0.3))'
                   }}
                 />
               </div>
