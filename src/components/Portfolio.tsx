@@ -51,7 +51,7 @@ const VideoGallery = () => {
             muted={currentVideoIndex === 0}
             className="w-full h-auto rounded-lg"
             preload="metadata"
-            onError={(e) => {
+            onError={() => {
               console.log('Video failed to load:', `/${currentVideo.file}`);
             }}
           >
@@ -137,7 +137,7 @@ const StempTikTokGallery = () => {
             muted={currentVideoIndex === 0}
             className="w-full h-auto rounded-lg"
             preload="metadata"
-            onError={(e) => {
+            onError={() => {
               console.log('TikTok failed to load:', `/${currentVideo.file}`);
             }}
           >
@@ -249,15 +249,17 @@ export default function Portfolio() {
             >
               {/* 16:9 Aspect Ratio Container */}
               <div className="relative w-full aspect-video overflow-hidden bg-gray-200 dark:bg-gray-700">
-                <img
+                <Image
                   src={item.image}
                   alt={item.title}
+                  width={400}
+                  height={225}
                   className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                   onError={(e) => {
                     console.log('Image failed to load:', item.image);
                     e.currentTarget.style.display = 'none';
                   }}
-                  onLoad={(e) => {
+                  onLoad={() => {
                     console.log('Image loaded successfully:', item.image);
                   }}
                 />
@@ -316,9 +318,11 @@ export default function Portfolio() {
                     rel="noopener noreferrer"
                     className="block relative aspect-video overflow-hidden cursor-pointer"
                   >
-                    <img
+                    <Image
                       src={`/minigame-thumbnails/${ep.num.toString().padStart(2, '0')}_thumbnail.jpg`}
                       alt={ep.title}
+                      width={320}
+                      height={180}
                       className="w-full h-full object-cover"
                       onError={(e) => {
                         console.log('Image failed to load:', `/minigame-thumbnails/${ep.num.toString().padStart(2, '0')}_thumbnail.jpg`);
@@ -376,9 +380,11 @@ export default function Portfolio() {
                       rel="noopener noreferrer"
                       className="block relative aspect-video overflow-hidden cursor-pointer"
                     >
-                      <img
+                      <Image
                         src={ep.num === 1 ? `/landesmusikrat_imagefilm.jpg` : ep.num === 2 ? `/stemp_imagefilm.jpg` : ep.num === 3 ? `/filmcrew_thumbnail.jpg` : ep.num === 4 ? `/landesmusikrat2_thumbnail.jpg` : `/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`}
                         alt={ep.title}
+                        width={320}
+                        height={180}
                         className="w-full h-full object-cover"
                         onError={(e) => {
                           const fallbackSrc = `/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`;
@@ -442,9 +448,11 @@ export default function Portfolio() {
                       rel="noopener noreferrer"
                       className="block relative aspect-video overflow-hidden cursor-pointer"
                     >
-                      <img
+                      <Image
                         src={`/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`}
                         alt={ep.title}
+                        width={320}
+                        height={180}
                         className="w-full h-full object-cover"
                         onError={(e) => {
                           console.log('Image failed to load:', `/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`);
@@ -498,9 +506,11 @@ export default function Portfolio() {
                         rel="noopener noreferrer"
                         className="block relative aspect-video overflow-hidden cursor-pointer"
                       >
-                        <img
+                        <Image
                           src={`/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`}
                           alt={ep.title}
+                          width={320}
+                          height={180}
                           className="w-full h-full object-cover"
                           onError={(e) => {
                             console.log('Image failed to load:', `/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`);
@@ -578,9 +588,11 @@ export default function Portfolio() {
                     rel="noopener noreferrer"
                     className="block relative aspect-video overflow-hidden cursor-pointer"
                   >
-                    <img
+                    <Image
                       src={`/techplausch-thumbnails/${product.num.toString().padStart(2, '0')} thumbnail.jpg`}
                       alt={product.title}
+                      width={320}
+                      height={180}
                       className="w-full h-full object-cover"
                       onError={(e) => {
                         console.log('Image failed to load:', `/techplausch-thumbnails/${product.num.toString().padStart(2, '0')} thumbnail.jpg`);

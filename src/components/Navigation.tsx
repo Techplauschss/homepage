@@ -6,7 +6,6 @@ import Image from 'next/image'
 import Logo from '@/assets/Logo.png'
 
 export default function Navigation() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
   const [windowWidth, setWindowWidth] = useState<number>(0)
 
@@ -17,16 +16,6 @@ export default function Navigation() {
     // Handle window resize
     const handleResize = () => {
       setWindowWidth(window.innerWidth)
-    }
-    
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
-  const [shouldShowContact, setShouldShowContact] = useState(true)
-
-  useEffect(() => {
-    const handleResize = () => {
-      setShouldShowContact(window.innerWidth <= 910)
     }
     
     handleResize() // Initial check
@@ -68,7 +57,6 @@ export default function Navigation() {
         behavior: 'smooth'
       })
     }
-    setIsMenuOpen(false)
   }
 
   return (
@@ -126,7 +114,7 @@ export default function Navigation() {
               >
                 Portfolio
               </button>
-                            <button
+              <button
                 onClick={() => scrollToSection('contact')}
                 className={`px-1 sm:px-2 md:px-3 py-2 text-[10px] sm:text-sm font-medium transition-colors ${
                   activeSection === 'contact' 
