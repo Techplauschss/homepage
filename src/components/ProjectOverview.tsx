@@ -182,6 +182,15 @@ export default function ProjectOverview() {
       status: "local",
       technologies: ["React", "TypeScript", "Vite", "Tailwind CSS"],
       type: "webapp"
+    },
+    {
+      id: 5,
+      title: "Cashflow",
+      description: "Finanz-Management Anwendung zur Verwaltung und Analyse von Cashflows. Interaktive Benutzeroberfläche für persönliche Finanzplanung.",
+      url: "https://cashflow-e8354.web.app",
+      status: "live",
+      technologies: ["Firebase", "JavaScript", "HTML", "CSS"],
+      type: "webapp"
     }
   ]
 
