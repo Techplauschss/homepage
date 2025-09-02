@@ -39,9 +39,11 @@ export default function About() {
             {/* Portrait Container */}
             <div className="relative group">
               <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-                <img
+                <Image
                   src="/Portrait_01.jpeg"
                   alt="Martin Sauer, Videograf für Dresden, Lausitz und Cottbus"
+                  width={600}
+                  height={800}
                   className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
                 />
                 {/* Gradient Overlay */}

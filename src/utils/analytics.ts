@@ -4,8 +4,16 @@
 export const GA_TRACKING_ID = 'G-XXXXXXXXXX' // Hier deine Google Analytics ID eintragen
 
 // Google Analytics Event Tracking
-export const gtag = (...args: any[]) => {
-  (window as any).gtag(...args)
+declare global {
+  interface Window {
+    gtag: (...args: unknown[]) => void;
+  }
+}
+
+export const gtag = (...args: unknown[]) => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag(...args)
+  }
 }
 
 // Page View Tracking
