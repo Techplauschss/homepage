@@ -191,6 +191,15 @@ export default function ProjectOverview() {
       status: "live",
       technologies: ["Firebase", "JavaScript", "HTML", "CSS"],
       type: "webapp"
+    },
+    {
+      id: 6,
+      title: "Journy",
+      description: "Moderne Reise- und Erlebnisplattform. Digitale Lösung für die Planung und Dokumentation von Reisen und Abenteuern.",
+      url: "https://journy-e76b1.web.app",
+      status: "live",
+      technologies: ["Firebase", "JavaScript", "TypeScript", "HTML", "CSS"],
+      type: "webapp"
     }
   ]
 
