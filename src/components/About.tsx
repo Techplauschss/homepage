@@ -15,7 +15,7 @@ export default function About() {
               Ich heiße <span className="font-semibold text-gray-900 dark:text-gray-100">Martin Sauer</span>,
               und seit mehr als fünf Jahren lebe ich meine Leidenschaft für die Videoproduktion. 
               Mit einem Auge fürs Detail und einem Gespür für Geschichten widme ich mich jedem 
-              Projekt mit Hingabe.
+              Projekt mit Hingabe, egal ob in der Region <strong>Dresden und der Lausitz  oder deutschlandweit.</strong>
             </p>
             <p className="text-sm sm:text-lg text-gray-700 dark:text-gray-300 mb-6 sm:mb-8 leading-relaxed">
               Meine Expertise erstreckt sich über alle Aspekte der Videoproduktion: von der ersten 
@@ -41,7 +41,7 @@ export default function About() {
               <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                 <img
                   src="/Portrait_01.jpeg"
-                  alt="Martin Sauer - Videoproduktion"
+                  alt="Martin Sauer, Videograf für Dresden, Lausitz und Cottbus"
                   className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
                 />
                 {/* Gradient Overlay */}

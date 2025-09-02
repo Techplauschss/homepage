@@ -4,16 +4,22 @@ import Services from '@/components/Services'
 import Portfolio from '@/components/Portfolio'
 import Contact from '@/components/Contact'
 import Navigation from '@/components/Navigation'
+import StructuredData from '@/components/StructuredData'
+import EnhancedSEO from '@/components/EnhancedSEO'
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <Navigation />
-      <Hero />
-      <About />
-      <Services />
-      <Portfolio />
-      <Contact />
-    </main>
+    <>
+      <StructuredData />
+      <EnhancedSEO />
+      <main className="min-h-screen">
+        <Navigation />
+        <Hero />
+        <About />
+        <Services />
+        <Portfolio />
+        <Contact />
+      </main>
+    </>
   );
 }
