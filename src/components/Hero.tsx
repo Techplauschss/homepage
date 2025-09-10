@@ -51,6 +51,9 @@ export default function Hero() {
             fill
             className="object-cover"
             priority
+            quality={100}
+            sizes="100vw"
+            placeholder="blur"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent w-2/3" />
         </div>
@@ -67,6 +70,9 @@ export default function Hero() {
             fill
             className="object-cover"
             priority
+            quality={95}
+            sizes="100vw"
+            placeholder="blur"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent w-2/3" />
         </div>
@@ -83,6 +89,9 @@ export default function Hero() {
             fill
             className="object-cover"
             priority
+            quality={95}
+            sizes="100vw"
+            placeholder="blur"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent w-2/3" />
         </div>
@@ -105,6 +114,9 @@ export default function Hero() {
               className="object-cover"
               style={{ objectPosition: '95% center' }}
               priority
+              quality={95}
+              sizes="100vw"
+              placeholder="blur"
             />
           </div>
 
@@ -121,6 +133,9 @@ export default function Hero() {
               className="object-cover"
               style={{ objectPosition: '95% center' }}
               priority
+              quality={95}
+              sizes="100vw"
+              placeholder="blur"
             />
           </div>
 
@@ -137,6 +152,9 @@ export default function Hero() {
               className="object-cover"
               style={{ objectPosition: '95% center' }}
               priority
+              quality={95}
+              sizes="100vw"
+              placeholder="blur"
             />
           </div>
 
