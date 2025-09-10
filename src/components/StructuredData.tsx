@@ -50,7 +50,7 @@ export default function StructuredData() {
   const professionalServiceData = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": "Imagefilme-Sauer - Videograf Dresden",
+    "name": "Imagefilme-Sauer - Imagefilme Sauer",
     "description": "Professionelle Videoproduktion und Imagefilme in Dresden, Cottbus und der Lausitz",
     "serviceType": "Videoproduktion",
     "provider": {
