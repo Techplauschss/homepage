@@ -366,9 +366,10 @@ export default function Portfolio() {
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 md:gap-8">
               {(() => {
                 const episodes = [
-                  { num: 1, title: "LMR Brandenburg e.V.", subtitle: "Imagefilm", url: "https://www.youtube.com/watch?v=9-8alDSuZd4" },
+                
+                  { num: 1, title: "LMR Brandenburg e.V.", subtitle: "Imagefilm", url: "https://youtu.be/aM7qndbgDPE?si=MQ_WniuHd8IRzvhv" },
+                  { num: 5, title: "Open Symphonic Orchestra", subtitle: "Imagefilm", url: "https://www.youtube.com/watch?v=aM7qndbgDPE" },
                   { num: 2, title: "Das Stemp Wellnessresort", subtitle: "Imagefilm", url: "https://youtu.be/_WJFP7WYW0c" },
-                  { num: 3, title: "Die Lausitz im Wandel", subtitle: "Dokumentation", url: "https://youtu.be/kbJD0z6fa58?si=ige7F7cvF7_uNh6n" },
                   { num: 4, title: "LMR Neujahrsempfang", subtitle: "Eventvideo", url: "https://youtu.be/df9zUzHkg3o?si=aqYO86f5RsSneIqH" }
                 ];
                 
@@ -381,7 +382,7 @@ export default function Portfolio() {
                       className="block relative aspect-video overflow-hidden cursor-pointer"
                     >
                       <Image
-                        src={ep.num === 1 ? `/landesmusikrat_imagefilm.jpg` : ep.num === 2 ? `/stemp_imagefilm.jpg` : ep.num === 3 ? `/filmcrew_thumbnail.jpg` : ep.num === 4 ? `/landesmusikrat2_thumbnail.jpg` : `/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`}
+                        src={ep.num === 1 ? `/landesmusikrat_imagefilm.jpg` : ep.num === 5 ? `/OSO_thumbnail.png` : ep.num === 2 ? `/stemp_imagefilm.jpg` : ep.num === 3 ? `/filmcrew_thumbnail.jpg` : ep.num === 4 ? `/landesmusikrat2_thumbnail.jpg` : `/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`}
                         alt={ep.title}
                         width={320}
                         height={180}
