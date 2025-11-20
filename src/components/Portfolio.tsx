@@ -556,6 +556,7 @@ export default function Portfolio() {
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-8">
             {(() => {
               const products = [
+                { num: 0, title: "iPhone 13 Pro in 2025", subtitle: "Review", url: "https://youtu.be/2DpQtF_T9rg?si=k8jceNjdIVmqe4DH" },
                 { num: 1, title: "iPhone 12 vs iPhone 13", subtitle: "Vergleich", url: "https://www.youtube.com/watch?v=oxfq-mdGgEQ" },
                 { num: 2, title: "iPhone 13 in 2024 kaufen", subtitle: "Review", url: "https://www.youtube.com/watch?v=LxjLWCHsyV8" },
                 { num: 3, title: "Der EINZIGE Laptop", subtitle: "Review", url: "https://www.youtube.com/watch?v=UKRMHywbUc8" },
@@ -573,15 +574,14 @@ export default function Portfolio() {
                 { num: 15, title: "iPhone 11 in 2023", subtitle: "Erster Eindruck", url: "https://www.youtube.com/watch?v=8XUCHGiQm4s" },
                 { num: 16, title: "Apple-Trick für Studenten", subtitle: "Tutorial", url: "https://www.youtube.com/watch?v=28hEMajG9w4" },
                 { num: 17, title: "iPhone Xr in 2023", subtitle: "Review", url: "https://www.youtube.com/watch?v=28ZLBUOpA9o" },
-                { num: 18, title: "AirPods I in 2023", subtitle: "Review", url: "https://www.youtube.com/watch?v=oKPV_erAoiQ" }
+                { num: 18, title: "AirPods I in 2023", subtitle: "Review", url: "https://www.youtube.com/watch?v=oKPV_erAoiQ" },
+                { num: 19, title: "Dieses Gerät sollte es nie geben...", subtitle: "Essayvideo", url: "https://youtu.be/tIksdA7YVmw?si=oEj6WpAESBqLsdLl" }
               ];
               
               return products.map((product, index) => (
                 <div 
                   key={product.num} 
-                  className={`bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105 relative ${
-                    index === 16 ? 'lg:col-start-2' : ''
-                  }`}
+                  className={`bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105 relative`}
                 >
                   <a
                     href={product.url}
@@ -590,7 +590,7 @@ export default function Portfolio() {
                     className="block relative aspect-video overflow-hidden cursor-pointer"
                   >
                     <Image
-                      src={`/techplausch-thumbnails/${product.num.toString().padStart(2, '0')} thumbnail.jpg`}
+                      src={product.num === 0 ? `/techplausch-thumbnails/00thumbnail.jpg` : `/techplausch-thumbnails/${product.num.toString().padStart(2, '0')} thumbnail.jpg`}
                       alt={product.title}
                       width={320}
                       height={180}
