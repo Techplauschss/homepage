@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import SchulzeiPhone from '../assets/some-thumbnails/Schulze_iPhone.png'
 import StempiPhone from '../assets/some-thumbnails/Stemp_iPhone.png'
+import LMRiPhone from '../assets/some-thumbnails/LMR_Iphone.png'
 
 // Video Gallery Component with Navigation
 const VideoGallery = () => {
@@ -52,10 +53,11 @@ const VideoGallery = () => {
             className="w-full h-auto rounded-lg"
             preload="metadata"
             onError={() => {
-              console.log('Video failed to load:', `/${currentVideo.file}`);
+              const videoSrc = currentVideo.file.startsWith('http') ? currentVideo.file : `/${currentVideo.file}`;
+              console.log('Video failed to load:', videoSrc);
             }}
           >
-            <source src={`/${currentVideo.file}`} type="video/mp4" />
+            <source src={currentVideo.file.startsWith('http') ? currentVideo.file : `/${currentVideo.file}`} type="video/mp4" />
             Ihr Browser unterstützt das Video-Format nicht.
           </video>
         </div>
@@ -138,10 +140,11 @@ const StempTikTokGallery = () => {
             className="w-full h-auto rounded-lg"
             preload="metadata"
             onError={() => {
-              console.log('TikTok failed to load:', `/${currentVideo.file}`);
+              const videoSrc = currentVideo.file.startsWith('http') ? currentVideo.file : `/${currentVideo.file}`;
+              console.log('TikTok failed to load:', videoSrc);
             }}
           >
-            <source src={`/${currentVideo.file}`} type="video/mp4" />
+            <source src={currentVideo.file.startsWith('http') ? currentVideo.file : `/${currentVideo.file}`} type="video/mp4" />
             Ihr Browser unterstützt das Video-Format nicht.
           </video>
         </div>
@@ -177,10 +180,93 @@ const StempTikTokGallery = () => {
   )
 }
 
+// LMR Video Gallery Component
+const LMRVideoGallery = () => {
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
+  
+  const videos = [
+    { id: '1', name: 'Akkordeontag', file: 'LMR01-Akkordeontag.mp4' },
+    { id: '2', name: 'LJAO', file: 'LMR02-LJAO.mp4' },
+    { id: '3', name: 'LJZO', file: 'LMR03-LJZO.mp4' },
+    { id: '4', name: 'Räumlichkeiten', file: 'LMR04-Räumlichkeiten.mp4' }
+  ]
+
+  const nextVideo = () => {
+    setCurrentVideoIndex((prev) => (prev + 1) % videos.length)
+  }
+
+  const prevVideo = () => {
+    setCurrentVideoIndex((prev) => (prev - 1 + videos.length) % videos.length)
+  }
+
+  const currentVideo = videos[currentVideoIndex]
+
+  return (
+    <div className="flex flex-col items-center space-y-4">
+      {/* Video Navigation Row */}
+      <div className="flex items-center justify-center space-x-4 group">
+        {/* Left Arrow */}
+        <button
+          onClick={prevVideo}
+          className="bg-black/50 hover:bg-black/70 text-white p-3 rounded-full opacity-60 group-hover:opacity-100 transition-all duration-300 hover:scale-110 backdrop-blur-sm"
+          aria-label="Vorheriges Video"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        {/* Video Container */}
+        <div className="relative w-64 sm:w-80 rounded-lg overflow-hidden shadow-lg">
+          <video 
+            key={currentVideo.file} // Force re-render when video changes
+            controls 
+            autoPlay={currentVideoIndex === 0}
+            muted={currentVideoIndex === 0}
+            className="w-full h-auto rounded-lg"
+            preload="metadata"
+          >
+            <source src={`/${currentVideo.file}`} type="video/mp4" />
+            Ihr Browser unterstützt das Video-Format nicht.
+          </video>
+        </div>
+
+        {/* Right Arrow */}
+        <button
+          onClick={nextVideo}
+          className="bg-black/50 hover:bg-black/70 text-white p-3 rounded-full opacity-60 group-hover:opacity-100 transition-all duration-300 hover:scale-110 backdrop-blur-sm"
+          aria-label="Nächstes Video"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+      
+      {/* Video Dots Indicator */}
+      <div className="flex justify-center items-center mt-4 space-x-1">
+        {videos.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentVideoIndex(index)}
+            className={`w-2 h-2 rounded-full transition-all duration-200 ${
+              index === currentVideoIndex 
+                ? 'bg-blue-600 w-6' 
+                : 'bg-gray-300 hover:bg-gray-400'
+            }`}
+            aria-label={`Video ${index + 1} anzeigen`}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function Portfolio() {
   const [selectedCategory, setSelectedCategory] = useState('imageevent')
   const [schulzeMobileView, setSchulzeMobileView] = useState<'iphone' | 'video'>('iphone') // Für Schulze mobile Navigation
   const [stempMobileView, setStempMobileView] = useState<'iphone' | 'video'>('iphone') // Für Stemp mobile Navigation
+  const [lmrMobileView, setLmrMobileView] = useState<'iphone' | 'video'>('iphone') // Für LMR mobile Navigation
 
   const portfolioItems: Array<{
     id: number;
@@ -205,7 +291,7 @@ export default function Portfolio() {
 
   return (
     <section id="portfolio" className="py-12 sm:py-16 md:py-20 bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[110rem] mx-auto px-6 sm:px-8 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4 sm:mb-6">
             Mein <span className="text-blue-600 dark:text-blue-400">Portfolio</span>
@@ -363,12 +449,13 @@ export default function Portfolio() {
         {/* Image- & Eventvideos Section - Only show for imageevent category */}
         {selectedCategory === 'imageevent' && (
           <div>
-            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 md:gap-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
               {(() => {
                 const episodes = [
                 
-                  { num: 1, title: "LMR Brandenburg e.V.", subtitle: "Imagefilm", url: "https://youtu.be/aM7qndbgDPE?si=MQ_WniuHd8IRzvhv" },
+                  { num: 1, title: "LMR Brandenburg e.V.", subtitle: "Imagefilm", url: "https://www.youtube.com/watch?v=9-8alDSuZd4" },
                   { num: 5, title: "Open Symphonic Orchestra", subtitle: "Imagefilm", url: "https://www.youtube.com/watch?v=aM7qndbgDPE" },
+                  { num: 6, title: "Hornberger TouchPoint", subtitle: "Animationsprojekt", url: "https://youtu.be/wzcxZ4PjLvs" },
                   { num: 2, title: "Das Stemp Wellnessresort", subtitle: "Imagefilm", url: "https://youtu.be/_WJFP7WYW0c" },
                   { num: 4, title: "LMR Neujahrsempfang", subtitle: "Eventvideo", url: "https://youtu.be/df9zUzHkg3o?si=aqYO86f5RsSneIqH" }
                 ];
@@ -382,7 +469,7 @@ export default function Portfolio() {
                       className="block relative aspect-video overflow-hidden cursor-pointer"
                     >
                       <Image
-                        src={ep.num === 1 ? `/landesmusikrat_imagefilm.jpg` : ep.num === 5 ? `/OSO_thumbnail.png` : ep.num === 2 ? `/stemp_imagefilm.jpg` : ep.num === 3 ? `/filmcrew_thumbnail.jpg` : ep.num === 4 ? `/landesmusikrat2_thumbnail.jpg` : `/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`}
+                        src={ep.num === 1 ? `/landesmusikrat_imagefilm.jpg` : ep.num === 5 ? `/OSO_thumbnail.png` : ep.num === 2 ? `/stemp_imagefilm.jpg` : ep.num === 3 ? `/filmcrew_thumbnail.jpg` : ep.num === 4 ? `/landesmusikrat2_thumbnail.jpg` : ep.num === 6 ? `/hornbergertp_thumbnail.jpg` : `/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`}
                         alt={ep.title}
                         width={320}
                         height={180}
@@ -636,7 +723,22 @@ export default function Portfolio() {
           <>
             {/* Desktop Version */}
             <div className="hidden sm:block space-y-8 sm:space-y-12 lg:space-y-16">
-              {/* Erste Reihe */}
+              {/* Neue Erste Reihe */}
+              <div className="flex justify-center items-start gap-4 sm:gap-8 lg:gap-16 flex-wrap">
+                <div className="flex flex-col items-center">
+                  <Image
+                    src={LMRiPhone}
+                    alt="LMR iPhone Social Media Content"
+                    className="w-64 sm:w-64 lg:w-80 h-auto -mt-2 sm:-mt-4 lg:-mt-8"
+                    style={{
+                      filter: 'drop-shadow(0 8px 15px rgba(0, 0, 0, 0.3))'
+                    }}
+                  />
+                </div>
+                <LMRVideoGallery />
+              </div>
+
+              {/* Alte Erste Reihe -> Zweite Reihe */}
               <div className="flex justify-center items-start gap-4 sm:gap-8 lg:gap-16 flex-wrap">
                 <div className="flex flex-col items-center">
                   <Image
@@ -651,7 +753,7 @@ export default function Portfolio() {
                 <VideoGallery />
               </div>
               
-              {/* Zweite Reihe */}
+              {/* Alte Zweite Reihe -> Dritte Reihe */}
               <div className="flex justify-center items-start gap-4 sm:gap-8 lg:gap-16 flex-wrap">
                 <div className="flex flex-col items-center">
                   <Image
@@ -669,6 +771,69 @@ export default function Portfolio() {
 
             {/* Mobile Version */}
             <div className="sm:hidden space-y-12">
+              {/* LMR Sektion */}
+              <div className="flex flex-col items-center space-y-6">
+                {/* Content */}
+                <div className="w-full flex justify-center">
+                  {lmrMobileView === 'iphone' ? (
+                    <div className="flex flex-col items-center space-y-6">
+                      <Image
+                        src={LMRiPhone}
+                        alt="LMR iPhone Social Media Content"
+                        className="w-72 h-auto"
+                        style={{
+                          filter: 'drop-shadow(0 8px 15px rgba(0, 0, 0, 0.3))'
+                        }}
+                      />
+                      
+                      <button
+                        onClick={() => setLmrMobileView('video')}
+                        className="group relative bg-gradient-to-br from-blue-500 via-blue-600 to-purple-700 hover:from-blue-600 hover:via-blue-700 hover:to-purple-800 text-white px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 overflow-hidden"
+                        style={{
+                          boxShadow: '0 20px 40px rgba(59, 130, 246, 0.3), 0 8px 32px rgba(139, 69, 219, 0.2)'
+                        }}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                        
+                        <div className="relative flex items-center space-x-3">
+                          <div className="bg-white/20 backdrop-blur-sm rounded-full p-2 group-hover:bg-white/30 transition-colors duration-200">
+                            <svg className="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z"/>
+                            </svg>
+                          </div>
+                          <span className="font-semibold text-lg tracking-wide">Videos ansehen</span>
+                        </div>
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center space-y-6">
+                      <div className="w-full max-w-sm">
+                        <LMRVideoGallery />
+                      </div>
+                      
+                      <button
+                        onClick={() => setLmrMobileView('iphone')}
+                        className="group relative bg-gradient-to-br from-gray-500 via-gray-600 to-slate-700 hover:from-gray-600 hover:via-gray-700 hover:to-slate-800 text-white px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 overflow-hidden"
+                        style={{
+                          boxShadow: '0 20px 40px rgba(75, 85, 99, 0.3), 0 8px 32px rgba(71, 85, 105, 0.2)'
+                        }}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                        
+                        <div className="relative flex items-center space-x-3">
+                          <div className="bg-white/20 backdrop-blur-sm rounded-full p-2 group-hover:bg-white/30 transition-colors duration-200">
+                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                            </svg>
+                          </div>
+                          <span className="font-semibold text-lg tracking-wide">Zurück</span>
+                        </div>
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+
               {/* Schulze Sektion */}
               <div className="flex flex-col items-center space-y-6">
                 {/* Content */}
