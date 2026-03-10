@@ -280,9 +280,9 @@ export default function Portfolio() {
   const categories = [
     { id: 'imageevent', name: 'Image- & Eventvideos' },
     { id: 'social', name: 'Social Media' },
+    { id: 'youtube', name: 'YouTube-Formate' },
     { id: 'product', name: 'Produktvideos' },
-    { id: 'recruiting', name: 'Podcasts' },
-    { id: 'youtube', name: 'YouTube-Formate' }
+    { id: 'recruiting', name: 'Podcasts' }
   ]
 
   const filteredItems = selectedCategory === 'imageevent'
@@ -453,8 +453,8 @@ export default function Portfolio() {
               {(() => {
                 const episodes = [
                 
-                  { num: 1, title: "LMR Brandenburg e.V.", subtitle: "Imagefilm", url: "https://www.youtube.com/watch?v=9-8alDSuZd4" },
                   { num: 5, title: "Open Symphonic Orchestra", subtitle: "Imagefilm", url: "https://www.youtube.com/watch?v=aM7qndbgDPE" },
+                  { num: 1, title: "LMR Brandenburg e.V.", subtitle: "Imagefilm", url: "https://www.youtube.com/watch?v=9-8alDSuZd4" },
                   { num: 6, title: "Hornberger TouchPoint", subtitle: "Animationsprojekt", url: "https://youtu.be/wzcxZ4PjLvs" },
                   { num: 2, title: "Das Stemp Wellnessresort", subtitle: "Imagefilm", url: "https://youtu.be/_WJFP7WYW0c" },
                   { num: 4, title: "LMR Neujahrsempfang", subtitle: "Eventvideo", url: "https://youtu.be/df9zUzHkg3o?si=aqYO86f5RsSneIqH" }
