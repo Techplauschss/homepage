@@ -449,7 +449,7 @@ export default function Portfolio() {
         {/* Image- & Eventvideos Section - Only show for imageevent category */}
         {selectedCategory === 'imageevent' && (
           <div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 max-w-6xl mx-auto">
               {(() => {
                 const episodes = [
                 
@@ -457,7 +457,8 @@ export default function Portfolio() {
                   { num: 1, title: "LMR Brandenburg e.V.", subtitle: "Imagefilm", url: "https://www.youtube.com/watch?v=9-8alDSuZd4" },
                   { num: 6, title: "Hornberger TouchPoint", subtitle: "Animationsprojekt", url: "https://youtu.be/wzcxZ4PjLvs" },
                   { num: 2, title: "Das Stemp Wellnessresort", subtitle: "Imagefilm", url: "https://youtu.be/_WJFP7WYW0c" },
-                  { num: 4, title: "LMR Neujahrsempfang", subtitle: "Eventvideo", url: "https://youtu.be/df9zUzHkg3o?si=aqYO86f5RsSneIqH" }
+                  { num: 4, title: "LMR Neujahrsempfang", subtitle: "Eventvideo", url: "https://youtu.be/df9zUzHkg3o?si=aqYO86f5RsSneIqH" },
+                  { num: 7, title: "Steuerberaterkammer Stuttgart", subtitle: "Videokurs", url: "https://youtu.be/v501RzWoDVU" }
                 ];
                 
                 return episodes.map((ep) => (
@@ -469,7 +470,7 @@ export default function Portfolio() {
                       className="block relative aspect-video overflow-hidden cursor-pointer"
                     >
                       <Image
-                        src={ep.num === 1 ? `/landesmusikrat_imagefilm.jpg` : ep.num === 5 ? `/OSO_thumbnail.png` : ep.num === 2 ? `/stemp_imagefilm.jpg` : ep.num === 3 ? `/filmcrew_thumbnail.jpg` : ep.num === 4 ? `/landesmusikrat2_thumbnail.jpg` : ep.num === 6 ? `/hornbergertp_thumbnail.jpg` : `/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`}
+                        src={ep.num === 1 ? `/landesmusikrat_imagefilm.jpg` : ep.num === 5 ? `/OSO_thumbnail.png` : ep.num === 2 ? `/stemp_imagefilm.jpg` : ep.num === 3 ? `/filmcrew_thumbnail.jpg` : ep.num === 4 ? `/landesmusikrat2_thumbnail.jpg` : ep.num === 6 ? `/hornbergertp_thumbnail.jpg` : ep.num === 7 ? `/stbkstuttgart-thumbnail.jpg` : `/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`}
                         alt={ep.title}
                         width={320}
                         height={180}
