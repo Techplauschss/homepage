@@ -327,7 +327,7 @@ export default function Contact() {
         {/* Footer */}
         <div className="border-t border-gray-700 mt-12 sm:mt-16 pt-6 sm:pt-8 text-center">
           <p className="text-gray-400 mb-3 sm:mb-4 text-sm sm:text-base">
-            © 2024 Imagefilme-Sauer. Alle Rechte vorbehalten.
+            © 2026 Imagefilme-Sauer. Alle Rechte vorbehalten.
           </p>
           <div className="flex justify-center space-x-4 sm:space-x-6">
             <a href="/datenschutz" className="text-gray-400 hover:text-blue-400 transition-colors text-sm sm:text-base">
