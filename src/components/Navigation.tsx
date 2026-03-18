@@ -60,7 +60,8 @@ export default function Navigation() {
   }
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm">
+    <>
+      <nav className="sticky top-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm">
       <div className="px-2 sm:px-4 md:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3 md:py-6">
           <div className="flex-shrink-0 flex items-center ml-1 sm:ml-2 md:ml-4 lg:ml-8">
@@ -128,8 +129,29 @@ export default function Navigation() {
           </div>
 
         </div>
-      </div>
+        </div>
+      </nav>
 
-    </nav>
+      {/* Dauerhafter Kontakt-Button (Floating Action Button) */}
+      <Link 
+        href="/#contact"
+        onClick={(e) => {
+          const element = document.getElementById('contact')
+          if (element) {
+            e.preventDefault()
+            scrollToSection('contact')
+          }
+        }}
+        className="fixed bottom-6 right-6 sm:bottom-10 sm:right-10 z-[100] bg-blue-600 hover:bg-blue-700 text-white rounded-full p-4 shadow-xl hover:shadow-2xl hover:shadow-blue-600/40 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 flex items-center justify-center group"
+        aria-label="Kontakt aufnehmen"
+      >
+        <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+        <span className="absolute right-full mr-4 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-sm font-medium px-4 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-lg hidden sm:block">
+          Jetzt anfragen
+        </span>
+      </Link>
+    </>
   )
 }

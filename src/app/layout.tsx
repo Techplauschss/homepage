@@ -16,7 +16,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Imagefilme Sauer | Videoproduktion & Imagefilme Lausitz | Martin Sauer",
+  title: "Image- & Videoproduktionen Sauer: Deutschlandweite Videoproduktionen",
   description: "Professioneller Videograf in Dresden, Cottbus & Lausitz. Spezialist für Imagefilme, Recruiting-Videos, Werbevideoproduktion, Hochzeitsvideos & Eventvideos. Jetzt kostenlos beraten lassen!",
   keywords: "Imagefilme Sauer, Videoproduktion Dresden, Imagefilm Dresden, Videograf Cottbus, Videoproduktion Lausitz, Imagevideo, Werbevideo, Recruitingvideo, Hochzeitsvideo Dresden, Eventvideo Cottbus, Corporate Video, Produktvideo, Drohnenvideo",
   authors: [{ name: "Martin Sauer - Imagefilme-Sauer" }],
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     canonical: "https://imagefilme-sauer.de"
   },
   openGraph: {
-    title: "Imagefilme Sauer | Videoproduktion & Imagefilme Lausitz",
+    title: "Imagefilme Sauer | Videoproduktion & Imagefilme",
     description: "Professioneller Videograf in Dresden, Cottbus & Lausitz. Imagefilme, Recruiting-Videos, Werbevideos & mehr.",
     url: "https://imagefilme-sauer.de",
     siteName: "Imagefilme-Sauer",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Imagefilme Sauer | Videoproduktion & Imagefilme Lausitz",
+    title: "Imagefilme Sauer | Videoproduktion & Imagefilme",
     description: "Professioneller Videograf in Dresden, Cottbus & Lausitz für Imagefilme, Recruiting-Videos & mehr.",
     images: ["/Portrait_01.jpeg"]
   },

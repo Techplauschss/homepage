@@ -5,6 +5,7 @@ import Image from 'next/image'
 import SchulzeiPhone from '../assets/some-thumbnails/Schulze_iPhone.png'
 import StempiPhone from '../assets/some-thumbnails/Stemp_iPhone.png'
 import LMRiPhone from '../assets/some-thumbnails/LMR_Iphone.png'
+import FadeInUp from '@/components/FadeInUp'
 
 // Video Gallery Component with Navigation
 const VideoGallery = () => {
@@ -290,35 +291,38 @@ export default function Portfolio() {
     : portfolioItems.filter(item => item.category === selectedCategory)
 
   return (
-    <section id="portfolio" className="py-12 sm:py-16 md:py-20 bg-gray-50 dark:bg-gray-900">
+    <section id="portfolio" className="py-12 sm:py-16 md:py-20 bg-gray-50 dark:bg-gray-900 overflow-hidden">
       <div className="max-w-[110rem] mx-auto px-6 sm:px-8 lg:px-8">
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4 sm:mb-6">
-            Mein <span className="text-blue-600 dark:text-blue-400">Portfolio</span>
-          </h2>
-          <p className="text-sm sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 max-w-3xl mx-auto mb-6 sm:mb-8">
-            Entdecken Sie eine Auswahl meiner erfolgreich realisierten Projekte 
-            und lassen Sie sich von der Vielfalt meiner Arbeit inspirieren.
-          </p>
+        <FadeInUp>
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4 sm:mb-6">
+              Mein <span className="text-blue-600 dark:text-blue-400">Portfolio</span>
+            </h2>
+            <p className="text-sm sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 max-w-3xl mx-auto mb-6 sm:mb-8">
+              Entdecken Sie eine Auswahl meiner erfolgreich realisierten Projekte 
+              und lassen Sie sich von der Vielfalt meiner Arbeit inspirieren.
+            </p>
 
-          {/* Filter Buttons */}
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`px-3 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
-                  selectedCategory === category.id
-                    ? 'bg-blue-600 dark:bg-blue-500 text-white shadow-lg'
-                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 shadow-md'
-                }`}
-              >
-                {category.name}
-              </button>
-            ))}
+            {/* Filter Buttons */}
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12">
+              {categories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => setSelectedCategory(category.id)}
+                  className={`px-3 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
+                    selectedCategory === category.id
+                      ? 'bg-blue-600 dark:bg-blue-500 text-white shadow-lg'
+                      : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 shadow-md'
+                  }`}
+                >
+                  {category.name}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
+        </FadeInUp>
 
+        <FadeInUp delay="200">
         {/* Portfolio Grid */}
         <div className={`grid gap-4 sm:gap-6 md:gap-8 ${
           selectedCategory === 'youtube' || selectedCategory === 'recruiting' || selectedCategory === 'product'
@@ -971,37 +975,40 @@ export default function Portfolio() {
             </div>
           </>
         )}
+        </FadeInUp>
 
-        <div className="text-center mt-12 sm:mt-16">
-          <div className="bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-slate-800 dark:via-slate-900 dark:to-slate-800 border border-blue-100 dark:border-slate-700 rounded-2xl shadow-xl backdrop-blur-sm p-6 sm:p-8 mx-4 sm:mx-auto max-w-md sm:max-w-2xl">
-            <div className="mb-4 sm:mb-6">
-              <p className="text-base sm:text-lg text-gray-800 dark:text-slate-200 mb-1 sm:mb-2 font-medium">
-                Interessiert an meinem Portfolio?
-              </p>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-slate-300">
-                Gerne zeige ich Ihnen weitere Referenzen.
-              </p>
+        <FadeInUp>
+          <div className="text-center mt-12 sm:mt-16">
+            <div className="bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-slate-800 dark:via-slate-900 dark:to-slate-800 border border-blue-100 dark:border-slate-700 rounded-2xl shadow-xl backdrop-blur-sm p-6 sm:p-8 mx-4 sm:mx-auto max-w-md sm:max-w-2xl">
+              <div className="mb-4 sm:mb-6">
+                <p className="text-base sm:text-lg text-gray-800 dark:text-slate-200 mb-1 sm:mb-2 font-medium">
+                  Interessiert an meinem Portfolio?
+                </p>
+                <p className="text-sm sm:text-base text-gray-600 dark:text-slate-300">
+                  Gerne zeige ich Ihnen weitere Referenzen.
+                </p>
+              </div>
+              <button
+                onClick={() => {
+                  const element = document.getElementById('contact')
+                  if (element) {
+                    const headerHeight = 80
+                    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+                    const offsetPosition = elementPosition - headerHeight
+
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth'
+                    })
+                  }
+                }}
+                className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 text-white font-semibold py-1.5 sm:py-3 px-2 sm:px-6 rounded-lg text-sm sm:text-base transition-all duration-300 transform hover:scale-105 shadow-lg w-auto sm:w-auto"
+              >
+                Vollständiges Portfolio anfordern
+              </button>
             </div>
-            <button
-              onClick={() => {
-                const element = document.getElementById('contact')
-                if (element) {
-                  const headerHeight = 80
-                  const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-                  const offsetPosition = elementPosition - headerHeight
-
-                  window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                  })
-                }
-              }}
-              className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 text-white font-semibold py-1.5 sm:py-3 px-2 sm:px-6 rounded-lg text-sm sm:text-base transition-all duration-300 transform hover:scale-105 shadow-lg w-auto sm:w-auto"
-            >
-              Vollständiges Portfolio anfordern
-            </button>
           </div>
-        </div>
+        </FadeInUp>
       </div>
     </section>
   )

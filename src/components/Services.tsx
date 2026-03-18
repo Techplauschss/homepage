@@ -1,5 +1,7 @@
 'use client'
 
+import FadeInUp from '@/components/FadeInUp'
+
 export default function Services() {
   const services = [
     {
@@ -80,60 +82,66 @@ export default function Services() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
-            Optimale <span className="text-blue-400 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Videolösungen</span>
-          </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
-            Von der ersten Idee bis zum fertigen Film - ich biete Ihnen das komplette Spektrum 
-            moderner Videoproduktion aus einer Hand.
-          </p>
-        </div>
+        <FadeInUp>
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
+              Optimale <span className="text-blue-400 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Videolösungen</span>
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+              Von der ersten Idee bis zum fertigen Film - ich biete Ihnen das komplette Spektrum 
+              moderner Videoproduktion aus einer Hand.
+            </p>
+          </div>
+        </FadeInUp>
 
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8">
-          {services.map((service, index) => (
-            <div key={index} className="bg-white/10 backdrop-blur-lg rounded-lg sm:rounded-xl p-4 sm:p-6 lg:p-8 hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-2 border border-white/20 shadow-xl hover:shadow-2xl text-center">
-              <div className="text-blue-400 mb-4 sm:mb-5 lg:mb-6 flex justify-center">
-                <div className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10">
-                  {service.icon}
+        <FadeInUp delay="200">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8">
+            {services.map((service, index) => (
+              <div key={index} className="bg-white/10 backdrop-blur-lg rounded-lg sm:rounded-xl p-4 sm:p-6 lg:p-8 hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-2 border border-white/20 shadow-xl hover:shadow-2xl text-center">
+                <div className="text-blue-400 mb-4 sm:mb-5 lg:mb-6 flex justify-center">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10">
+                    {service.icon}
+                  </div>
                 </div>
+                <h3 className="text-sm sm:text-lg lg:text-xl font-bold text-white mb-3 sm:mb-4 lg:mb-5 leading-tight">{service.title}</h3>
+                <p className="hidden sm:block text-sm lg:text-base text-gray-100 mb-4 lg:mb-5 leading-relaxed">{service.description}</p>
+                <ul className="space-y-1.5 sm:space-y-2 lg:space-y-2.5 text-left">
+                  {service.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-center text-xs sm:text-sm text-gray-100 justify-start">
+                      <svg className="w-3 h-3 sm:w-4 sm:h-4 lg:w-4 lg:h-4 text-blue-400 mr-2 sm:mr-2.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                      <span className="text-xs sm:text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <h3 className="text-sm sm:text-lg lg:text-xl font-bold text-white mb-3 sm:mb-4 lg:mb-5 leading-tight">{service.title}</h3>
-              <p className="hidden sm:block text-sm lg:text-base text-gray-100 mb-4 lg:mb-5 leading-relaxed">{service.description}</p>
-              <ul className="space-y-1.5 sm:space-y-2 lg:space-y-2.5 text-left">
-                {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-xs sm:text-sm text-gray-100 justify-start">
-                    <svg className="w-3 h-3 sm:w-4 sm:h-4 lg:w-4 lg:h-4 text-blue-400 mr-2 sm:mr-2.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-xs sm:text-sm">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </FadeInUp>
 
-        <div className="text-center mt-12 sm:mt-16">
-          <button
-            onClick={() => {
-              const element = document.getElementById('contact')
-              if (element) {
-                const headerHeight = 80
-                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-                const offsetPosition = elementPosition - headerHeight
+        <FadeInUp>
+          <div className="text-center mt-12 sm:mt-16">
+            <button
+              onClick={() => {
+                const element = document.getElementById('contact')
+                if (element) {
+                  const headerHeight = 80
+                  const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+                  const offsetPosition = elementPosition - headerHeight
 
-                window.scrollTo({
-                  top: offsetPosition,
-                  behavior: 'smooth'
-                })
-              }
-            }}
-            className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-lg text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl border border-white/20 backdrop-blur-sm w-full sm:w-auto"
-          >
-            Kostenloses Beratungsgespräch
-          </button>
-        </div>
+                  window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                  })
+                }
+              }}
+              className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-lg text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl border border-white/20 backdrop-blur-sm w-full sm:w-auto"
+            >
+              Kostenloses Beratungsgespräch
+            </button>
+          </div>
+        </FadeInUp>
       </div>
     </section>
   )
