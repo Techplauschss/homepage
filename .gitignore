@@ -45,3 +45,9 @@ next-env.d.ts
 *.psd
 *.ai
 *.sketch
+
+# Unbearbeitete Foto-Rohdaten (nicht fürs Web bestimmt)
+/public/hochzeit-sample/
+
+# IDE / local configs
+.claude/

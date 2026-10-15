@@ -29,6 +29,13 @@ export default function About() {
       alt: 'Richard Wöhr GmbH',
       text: 'Die Zusammenarbeit mit Image- & Videoproduktionen Sauer war absolut unkompliziert und effizient. Unser bestehendes Videomaterial wurde in kürzester Zeit professionell neu aufbereitet – wir sind mit der schnellen Umsetzung und dem Ergebnis sehr zufrieden.',
       author: 'Richard Wöhr GmbH'
+    },
+    {
+      id: 4,
+      logo: '/dhsn-logo-circle.png',
+      alt: 'Duale Hochschule Sachsen',
+      text: 'Herr Martin Sauer hat in seiner Funktion als Produzent maßgeblich zum erfolgreichen Gelingen des Projektes ‚Erstellung zweier Imagefilme für die Studiengänge Betriebswirtschaft – Handel sowie Betriebswirtschaft – Industrie‘ an der Dualen Hochschule Sachsen, Staatliche Studienakademie Dresden beigetragen. Wir danken für das Engagement, die kreative Leistung und die vertrauensvolle Zusammenarbeit.',
+      author: 'Duale Hochschule Sachsen'
     }
   ]
 

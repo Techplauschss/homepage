@@ -453,66 +453,87 @@ export default function Portfolio() {
         {/* Image- & Eventvideos Section - Only show for imageevent category */}
         {selectedCategory === 'imageevent' && (
           <div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 max-w-6xl mx-auto">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 md:gap-8">
               {(() => {
                 const episodes = [
                 
+                  { num: 8, title: "DHSN Betriebswirtschaft Industrie", subtitle: "Imagefilm", url: "https://youtu.be/1miNnMAPaRs" },
                   { num: 5, title: "Open Symphonic Orchestra", subtitle: "Imagefilm", url: "https://www.youtube.com/watch?v=aM7qndbgDPE" },
                   { num: 1, title: "LMR Brandenburg e.V.", subtitle: "Imagefilm", url: "https://www.youtube.com/watch?v=9-8alDSuZd4" },
                   { num: 6, title: "Hornberger TouchPoint", subtitle: "Animationsprojekt", url: "https://youtu.be/wzcxZ4PjLvs" },
                   { num: 2, title: "Das Stemp Wellnessresort", subtitle: "Imagefilm", url: "https://youtu.be/_WJFP7WYW0c" },
                   { num: 4, title: "LMR Neujahrsempfang", subtitle: "Eventvideo", url: "https://youtu.be/df9zUzHkg3o?si=aqYO86f5RsSneIqH" },
-                  { num: 7, title: "Steuerberaterkammer Stuttgart", subtitle: "Videokurs", url: "https://youtu.be/v501RzWoDVU" }
+                  { num: 7, title: "Steuerberaterkammer Stuttgart", subtitle: "Videokurs", url: "https://youtu.be/v501RzWoDVU" },
+                  { num: 9, title: "DHSN Betriebswirtschaft Handel", subtitle: "Imagefilm", url: "https://youtu.be/78Mf-T-mnwU" }
                 ];
                 
                 return episodes.map((ep) => (
                   <div key={ep.num} className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden transform hover:scale-105 relative">
-                    <a
-                      href={ep.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block relative aspect-video overflow-hidden cursor-pointer"
-                    >
-                      <Image
-                        src={ep.num === 1 ? `/landesmusikrat_imagefilm.jpg` : ep.num === 5 ? `/OSO_thumbnail.png` : ep.num === 2 ? `/stemp_imagefilm.jpg` : ep.num === 3 ? `/filmcrew_thumbnail.jpg` : ep.num === 4 ? `/landesmusikrat2_thumbnail.jpg` : ep.num === 6 ? `/hornbergertp_thumbnail.jpg` : ep.num === 7 ? `/stbkstuttgart-thumbnail.jpg` : `/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`}
-                        alt={ep.title}
-                        width={320}
-                        height={180}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          const fallbackSrc = `/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`;
-                          console.log('Image failed to load:', e.currentTarget.src, 'falling back to:', fallbackSrc);
-                          if (e.currentTarget.src !== fallbackSrc) {
-                            e.currentTarget.src = fallbackSrc;
-                          } else {
-                            e.currentTarget.style.display = 'none';
-                          }
-                        }}
-                      />
-                    </a>
+                    <div className="block relative aspect-video overflow-hidden">
+                      {ep.url ? (
+                        <a
+                          href={ep.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block w-full h-full cursor-pointer"
+                        >
+                          <Image
+                            src={ep.num === 1 ? `/landesmusikrat_imagefilm.jpg` : ep.num === 5 ? `/OSO_thumbnail.png` : ep.num === 2 ? `/stemp_imagefilm.jpg` : ep.num === 3 ? `/filmcrew_thumbnail.jpg` : ep.num === 4 ? `/landesmusikrat2_thumbnail.jpg` : ep.num === 6 ? `/hornbergertp_thumbnail.jpg` : ep.num === 7 ? `/stbkstuttgart-thumbnail.jpg` : ep.num === 8 || ep.num === 9 ? `/dhsn_imagefilm.jpg` : `/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`}
+                            alt={ep.title}
+                            width={640}
+                            height={360}
+                            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                            quality={85}
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              const fallbackSrc = `/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`;
+                              console.log('Image failed to load:', e.currentTarget.src, 'falling back to:', fallbackSrc);
+                              if (e.currentTarget.src !== fallbackSrc) {
+                                e.currentTarget.src = fallbackSrc;
+                              } else {
+                                e.currentTarget.style.display = 'none';
+                              }
+                            }}
+                          />
+                        </a>
+                      ) : (
+                        <Image
+                          src={ep.num === 8 || ep.num === 9 ? `/dhsn_imagefilm.jpg` : `/podcast-thumbnails/${ep.num.toString().padStart(2, '0')} thumbnail.jpg`}
+                          alt={ep.title || 'Demnächst'}
+                          width={640}
+                          height={360}
+                          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                          quality={85}
+                          className="w-full h-full object-cover"
+                          onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                        />
+                      )}
+                    </div>
                     <div className="p-2 sm:p-4 pb-10 sm:pb-12">
                       <h4 className="text-sm sm:text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">{ep.title}</h4>
                       <p className="text-sm text-gray-600 dark:text-gray-300">{ep.subtitle}</p>
                     </div>
                     
                     {/* Play Button - Bottom Right - Absolute to entire card */}
-                    <a
-                      href={ep.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-1.5 sm:p-2 transition-all duration-200 transform hover:scale-110 shadow-sm hover:shadow-md flex items-center justify-center shadow-blue-500/30 hover:shadow-blue-500/50"
-                      style={{
-                        boxShadow: '0 0 10px rgba(59, 130, 246, 0.3), 0 0 20px rgba(59, 130, 246, 0.1)'
-                      }}
-                    >
-                      <svg 
-                        className="w-3 h-3 sm:w-4 sm:h-4" 
-                        fill="currentColor" 
-                        viewBox="0 0 24 24"
+                    {ep.url && (
+                      <a
+                        href={ep.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-1.5 sm:p-2 transition-all duration-200 transform hover:scale-110 shadow-sm hover:shadow-md flex items-center justify-center shadow-blue-500/30 hover:shadow-blue-500/50"
+                        style={{
+                          boxShadow: '0 0 10px rgba(59, 130, 246, 0.3), 0 0 20px rgba(59, 130, 246, 0.1)'
+                        }}
                       >
-                        <path d="M8 5v14l11-7z"/>
-                      </svg>
-                    </a>
+                        <svg 
+                          className="w-3 h-3 sm:w-4 sm:h-4" 
+                          fill="currentColor" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                      </a>
+                    )}
                   </div>
                 ));
               })()}
