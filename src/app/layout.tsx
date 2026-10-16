@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
@@ -15,12 +15,18 @@ const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
+export const viewport: Viewport = {
+  themeColor: "#3b82f6",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
-  title: "Image- & Videoproduktionen Sauer: Deutschlandweite Videoproduktionen",
-  description: "Professioneller Videograf in Dresden, Cottbus & Lausitz. Spezialist für Imagefilme, Recruiting-Videos, Werbevideoproduktion, Hochzeitsvideos & Eventvideos. Jetzt kostenlos beraten lassen!",
-  keywords: "Imagefilme Sauer, Videoproduktion Dresden, Imagefilm Dresden, Videograf Cottbus, Videoproduktion Lausitz, Imagevideo, Werbevideo, Recruitingvideo, Hochzeitsvideo Dresden, Eventvideo Cottbus, Corporate Video, Produktvideo, Drohnenvideo",
+  metadataBase: new URL("https://imagefilme-sauer.de"),
+  title: "Videoproduktion & Imagefilm Dresden, Lausitz & Sachsen | Martin Sauer",
+  description: "Professionelle Videoproduktion & Imagefilme in Dresden, Cottbus & der Lausitz. Spezialist für Unternehmensfilme, Recruiting-Videos & Eventvideos. Jetzt anfragen!",
+  keywords: "Videoproduktion Dresden, Imagefilm Dresden, Imagefilm erstellen lassen, Videograf Cottbus, Videoproduktion Lausitz, Unternehmensfilm Sachsen, Recruiting Video, Werbevideo, Eventvideo",
   authors: [{ name: "Martin Sauer - Imagefilme-Sauer" }],
-  viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
   alternates: {
     canonical: "https://imagefilme-sauer.de"

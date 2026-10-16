@@ -202,6 +202,13 @@ export default function Contact() {
                 />
               </div>
 
+              <div className="text-xs text-gray-400 leading-relaxed">
+                Mit dem Absenden dieser Anfrage stimmen Sie zu, dass Ihre Angaben zur Beantwortung Ihrer Kontaktanfrage verarbeitet werden. Weitere Informationen finden Sie in der{' '}
+                <a href="/datenschutz" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+                  Datenschutzerklärung
+                </a>.
+              </div>
+
               <button
                 type="submit"
                 disabled={isSubmitting}

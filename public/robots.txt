@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://imagefilme-sauer.de/sitemap.xml

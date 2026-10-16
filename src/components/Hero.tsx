@@ -47,11 +47,11 @@ export default function Hero() {
         >
           <Image
             src={Frontphoto1}
-            alt="Videoproduktion Hintergrund"
+            alt="Professionelle Videoproduktion Dresden Hintergrund"
             fill
             className="object-cover"
             priority
-            quality={100}
+            quality={85}
             sizes="100vw"
             placeholder="blur"
           />
@@ -66,13 +66,11 @@ export default function Hero() {
         >
           <Image
             src={Frontphoto2}
-            alt="Videoproduktion Hintergrund 2"
+            alt="Imagefilm Produktion Sachsen Hintergrund"
             fill
             className="object-cover"
-            priority
-            quality={95}
+            quality={85}
             sizes="100vw"
-            placeholder="blur"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent w-2/3" />
         </div>
@@ -85,13 +83,11 @@ export default function Hero() {
         >
           <Image
             src={Frontphoto3}
-            alt="Videoproduktion Hintergrund 3"
+            alt="Videoproduzent Martin Sauer bei der Arbeit"
             fill
             className="object-cover"
-            priority
-            quality={95}
+            quality={85}
             sizes="100vw"
-            placeholder="blur"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent w-2/3" />
         </div>
@@ -109,12 +105,12 @@ export default function Hero() {
           >
             <Image
               src={Frontphoto1}
-              alt="Videoproduktion Hintergrund"
+              alt="Videoproduktion Dresden"
               fill
               className="object-cover"
               style={{ objectPosition: '95% center' }}
               priority
-              quality={95}
+              quality={85}
               sizes="100vw"
               placeholder="blur"
             />
@@ -128,14 +124,12 @@ export default function Hero() {
           >
             <Image
               src={Frontphoto2}
-              alt="Videoproduktion Hintergrund 2"
+              alt="Imagefilm Produktion"
               fill
               className="object-cover"
               style={{ objectPosition: '95% center' }}
-              priority
-              quality={95}
+              quality={85}
               sizes="100vw"
-              placeholder="blur"
             />
           </div>
 
@@ -147,24 +141,22 @@ export default function Hero() {
           >
             <Image
               src={Frontphoto3}
-              alt="Videoproduktion Hintergrund 3"
+              alt="Videograf Sachsen"
               fill
               className="object-cover"
               style={{ objectPosition: '95% center' }}
-              priority
-              quality={95}
+              quality={85}
               sizes="100vw"
-              placeholder="blur"
             />
           </div>
 
           {/* Mobile Overlay Title */}
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/80 via-slate-900/40 to-transparent p-4 z-20">
-            <h1 className={`text-2xl font-bold text-white leading-tight font-poppins tracking-tight transition-all duration-1000 ease-out drop-shadow-lg ${
+            <h2 className={`text-2xl font-bold text-white leading-tight font-poppins tracking-tight transition-all duration-1000 ease-out drop-shadow-lg ${
               isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
             }`}>
               Videoproduktionen nach Maß.
-            </h1>
+            </h2>
             <p className={`text-lg mt-2 text-blue-100 leading-tight transition-all duration-1000 ease-out delay-200 drop-shadow-lg ${
               isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
             }`}>

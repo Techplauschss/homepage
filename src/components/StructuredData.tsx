@@ -1,17 +1,25 @@
-'use client'
-
 export default function StructuredData() {
-  const localBusinessData = {
+  const businessData = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Imagefilme-Sauer",
-    "description": "Professioneller Videograf und Videoproduktion in Dresden, Cottbus und der Lausitz. Spezialist für Imagefilme, Recruiting-Videos, Werbevideos, Hochzeitsvideos und Eventvideos.",
+    "@type": "ProfessionalService",
+    "@id": "https://imagefilme-sauer.de/#business",
+    "name": "Image- & Videoproduktionen Sauer",
+    "alternateName": "Imagefilme Sauer",
     "url": "https://imagefilme-sauer.de",
-    "telephone": "+49-XXX-XXXXXXX", // Hier deine echte Telefonnummer eintragen
-    "email": "kontakt@imagefilme-sauer.de", // Hier deine echte E-Mail eintragen
+    "logo": "https://imagefilme-sauer.de/favicon.png",
+    "image": "https://imagefilme-sauer.de/Portrait_01.jpeg",
+    "telephone": "+49 151 53352436",
+    "email": "service@imagefilme-sauer.de",
+    "priceRange": "€€ - €€€",
+    "founder": {
+      "@type": "Person",
+      "name": "Martin Sauer",
+      "jobTitle": "Videoproduzent & Videograf"
+    },
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Dresden",
+      "postalCode": "01159",
       "addressRegion": "Sachsen",
       "addressCountry": "DE"
     },
@@ -21,92 +29,70 @@ export default function StructuredData() {
         "name": "Dresden"
       },
       {
-        "@type": "City", 
+        "@type": "City",
         "name": "Cottbus"
       },
       {
-        "@type": "GeoCircle",
+        "@type": "AdministrativeArea",
         "name": "Lausitz"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Sachsen"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Brandenburg"
+      },
+      {
+        "@type": "Country",
+        "name": "Deutschland"
       }
     ],
     "serviceType": [
       "Videoproduktion",
       "Imagefilm",
+      "Unternehmensfilm",
       "Recruiting Video",
       "Werbevideo",
-      "Hochzeitsvideo",
       "Eventvideo",
-      "Corporate Video",
-      "Produktvideo"
+      "Drohnenaufnahmen",
+      "Postproduktion"
     ],
-    "priceRange": "€€",
-    "image": "https://imagefilme-sauer.de/Portrait_01.jpeg",
-    "founder": {
-      "@type": "Person",
-      "name": "Martin Sauer"
-    }
-  };
-
-  const professionalServiceData = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Imagefilme-Sauer - Imagefilme Sauer",
-    "description": "Professionelle Videoproduktion und Imagefilme in Dresden, Cottbus und der Lausitz",
-    "serviceType": "Videoproduktion",
-    "provider": {
-      "@type": "Person",
-      "name": "Martin Sauer",
-      "jobTitle": "Videograf",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Dresden",
-        "addressRegion": "Sachsen",
-        "addressCountry": "DE"
-      }
-    },
-    "areaServed": ["Dresden", "Cottbus", "Lausitz"],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      "name": "Videoproduktion Services",
+      "name": "Videoproduktion Dienstleistungen",
       "itemListElement": [
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Imagefilm Produktion",
-            "description": "Professionelle Imagefilme für Unternehmen in Dresden und Umgebung"
+            "name": "Imagefilm Produktion Dresden & Lausitz",
+            "description": "Professionelle Imagefilme und Unternehmensporträts für Unternehmen, Institutionen und Organisationen in Sachsen und Brandenburg."
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Recruiting Video",
-            "description": "Recruiting-Videos zur Mitarbeitergewinnung"
+            "name": "Recruiting-Videos",
+            "description": "Zielgerichtete Mitarbeitergewinnung und Employer Branding durch emotionale Videoformate."
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Werbevideo",
-            "description": "Werbevideos für Marketing und Werbung"
+            "name": "Eventfilme & Dokumentation",
+            "description": "Dokumentation von Firmenjubiläen, Kongressen, Messen und Kulturevents."
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Hochzeitsvideo",
-            "description": "Hochzeitsvideos in Dresden und der Lausitz"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Eventvideo",
-            "description": "Professionelle Eventvideos in Cottbus und Umgebung"
+            "name": "Produkt- & Werbevideos",
+            "description": "Dynamische Produktvideos und Werbespots für Web, Social Media und Kampagnen."
           }
         }
       ]
@@ -131,13 +117,7 @@ export default function StructuredData() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(localBusinessData)
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(professionalServiceData)
+          __html: JSON.stringify(businessData)
         }}
       />
       <script

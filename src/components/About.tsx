@@ -102,11 +102,11 @@ export default function About() {
 
         {/* Kundenstimmen / Testimonials */}
         <FadeInUp delay="200">
-          <div className="hidden sm:block mt-12 sm:mt-16 mx-auto max-w-5xl px-4">
+          <div className="block mt-12 sm:mt-16 mx-auto max-w-5xl px-2 sm:px-4">
             
-            <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 items-center sm:items-stretch">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-10 items-center sm:items-stretch">
               {/* Logos */}
-              <div className="flex flex-row sm:flex-col justify-center items-center gap-4 sm:gap-6 flex-shrink-0">
+              <div className="flex flex-row sm:flex-col justify-center items-center gap-3 sm:gap-4 lg:gap-6 flex-shrink-0 flex-wrap">
                 {testimonials.map((t, index) => (
                   <div
                     key={t.id}
@@ -129,7 +129,7 @@ export default function About() {
                       alt={t.alt}
                       width={144}
                       height={144}
-                      className={`w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full shadow-md bg-white dark:bg-gray-800 object-contain p-2 transition-all duration-300 ${
+                      className={`w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full shadow-md bg-white dark:bg-gray-800 object-contain p-1.5 sm:p-2 transition-all duration-300 ${
                         activeTestimonial !== index
                           ? 'opacity-50 grayscale scale-95'
                           : 'opacity-100 scale-100 ring-2 ring-blue-500/40'
@@ -140,13 +140,13 @@ export default function About() {
               </div>
 
               {/* Text Box */}
-              <div className="relative flex-1 bg-gradient-to-br from-white to-blue-50/50 dark:from-gray-800 dark:to-gray-900/50 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] p-6 sm:p-8 md:p-10 border border-blue-100/60 dark:border-gray-700/50 flex items-center overflow-hidden">
+              <div className="relative flex-1 w-full bg-gradient-to-br from-white to-blue-50/50 dark:from-gray-800 dark:to-gray-900/50 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] p-5 sm:p-8 md:p-10 border border-blue-100/60 dark:border-gray-700/50 flex items-center overflow-hidden">
                 {/* Decorative Quote Icon */}
-                <svg className="absolute top-4 left-4 sm:top-6 sm:left-6 w-20 h-20 sm:w-24 sm:h-24 text-blue-600/5 dark:text-blue-400/5 transform -scale-x-100 pointer-events-none" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
+                <svg className="absolute top-4 left-4 sm:top-6 sm:left-6 w-16 h-16 sm:w-24 sm:h-24 text-blue-600/5 dark:text-blue-400/5 transform -scale-x-100 pointer-events-none" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
                   <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                 </svg>
 
-                <div className="relative w-full min-h-[260px] sm:min-h-[200px] flex items-center z-10">
+                <div className="relative w-full min-h-[310px] sm:min-h-[220px] flex items-center z-10">
                   {/* Testimonial Texts */}
               {testimonials.map((t, index) => {
                 const isActive = activeTestimonial === index;
@@ -164,7 +164,7 @@ export default function About() {
                     }`}
                   >
                     <blockquote className="max-w-3xl mx-auto sm:mx-0 text-center sm:text-left">
-                        <p className="text-sm sm:text-base md:text-lg text-gray-700 dark:text-gray-200 leading-relaxed mb-4 sm:mb-6 font-medium">
+                        <p className="text-xs sm:text-base md:text-lg text-gray-700 dark:text-gray-200 leading-relaxed mb-3 sm:mb-5 font-medium">
                           "{t.text}"
                         </p>
                         <footer className="flex items-center justify-center sm:justify-start gap-3 sm:gap-4">

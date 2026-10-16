@@ -117,11 +117,7 @@ export default function Navigation() {
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
-                className={`px-1 sm:px-2 md:px-3 py-2 text-[10px] sm:text-sm font-medium transition-colors ${
-                  activeSection === 'contact' 
-                    ? 'text-blue-600 dark:text-blue-400 font-bold' 
-                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
-                } ${windowWidth > 910 ? 'block' : 'hidden'}`}
+                className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm transition-all duration-300 shadow-sm hover:shadow"
               >
                 Kontakt
               </button>

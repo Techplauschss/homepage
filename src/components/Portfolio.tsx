@@ -49,8 +49,8 @@ const VideoGallery = () => {
           <video 
             key={currentVideo.file} // Force re-render when video changes
             controls 
-            autoPlay={currentVideoIndex === 0}
-            muted={currentVideoIndex === 0}
+            playsInline
+            muted
             className="w-full h-auto rounded-lg"
             preload="metadata"
             onError={() => {
@@ -136,8 +136,8 @@ const StempTikTokGallery = () => {
           <video 
             key={currentVideo.file} // Force re-render when video changes
             controls 
-            autoPlay={currentVideoIndex === 0}
-            muted={currentVideoIndex === 0}
+            playsInline
+            muted
             className="w-full h-auto rounded-lg"
             preload="metadata"
             onError={() => {
@@ -222,8 +222,8 @@ const LMRVideoGallery = () => {
           <video 
             key={currentVideo.file} // Force re-render when video changes
             controls 
-            autoPlay={currentVideoIndex === 0}
-            muted={currentVideoIndex === 0}
+            playsInline
+            muted
             className="w-full h-auto rounded-lg"
             preload="metadata"
           >
